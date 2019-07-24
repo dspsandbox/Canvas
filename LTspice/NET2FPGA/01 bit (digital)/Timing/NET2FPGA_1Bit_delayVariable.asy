@@ -8,7 +8,7 @@ PIN -80 0 LEFT 8
 PINATTR PinName in[1]
 PINATTR SpiceOrder 1
 PIN -80 32 LEFT 8
-PINATTR PinName delay[48]
+PINATTR PinName delay[32]
 PINATTR SpiceOrder 2
 PIN -80 64 LEFT 8
 PINATTR PinName clr[1]

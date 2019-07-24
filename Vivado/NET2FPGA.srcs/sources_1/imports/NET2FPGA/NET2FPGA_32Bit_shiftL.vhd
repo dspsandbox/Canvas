@@ -32,7 +32,7 @@ begin
 	variable shiftL : integer;
 	begin
 		if rising_edge(clk) then
-			shiftL:=to_integer(unsigned(dataShiftL(3 downto 0)));
+			shiftL:=to_integer(unsigned(dataShiftL(4 downto 0)));
 			dataOut<=STD_LOGIC_VECTOR(shift_left(signed(dataIn),shiftL));
 		end if;
 
