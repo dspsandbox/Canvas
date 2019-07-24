@@ -1,0 +1,16 @@
+Version 4
+SymbolType CELL
+LINE Normal 192 32 -48 32
+RECTANGLE Normal -48 0 192 64 2
+TEXT 49 16 Left 2 >>
+SYMATTR SpiceModel FPGA_shiftR
+SYMATTR Prefix X
+PIN -48 16 LEFT 8
+PINATTR PinName in[48]
+PINATTR SpiceOrder 1
+PIN -48 48 LEFT 8
+PINATTR PinName shiftR[48]
+PINATTR SpiceOrder 2
+PIN 192 16 RIGHT 8
+PINATTR PinName out[48]
+PINATTR SpiceOrder 3

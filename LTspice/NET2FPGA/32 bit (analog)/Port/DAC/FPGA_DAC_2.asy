@@ -1,0 +1,8 @@
+Version 4
+SymbolType CELL
+RECTANGLE Normal -80 -16 16 15 2
+SYMATTR SpiceModel FPGA_DAC_2
+SYMATTR Prefix X
+PIN -80 0 LEFT 8
+PINATTR PinName DAC_2
+PINATTR SpiceOrder 1

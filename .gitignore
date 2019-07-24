@@ -1,8 +1,8 @@
 *.pyc
 *.log
 *.jou
-/.Xil
-/NET2FPGA.cache
-/NET2FPGA.hw
-/NET2FPGA.runs
-/NET2FPGA.sim
+Vivado/.Xil/*
+Vivado/NET2FPGA.cache/*
+Vivado/NET2FPGA.hw/*
+Vivado/NET2FPGA.runs/*
+Vivado/NET2FPGA.sim/*

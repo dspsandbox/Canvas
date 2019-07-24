@@ -1,0 +1,8 @@
+Version 4
+SymbolType CELL
+RECTANGLE Normal -96 -16 0 16 2
+SYMATTR SpiceModel FPGA_ADC_1
+SYMATTR Prefix X
+PIN 0 0 RIGHT 8
+PINATTR PinName ADC_1
+PINATTR SpiceOrder 1
