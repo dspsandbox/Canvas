@@ -1,0 +1,8 @@
+*.pyc
+*.log
+*.jou
+/.Xil
+/NET2FPGA.cache
+/NET2FPGA.hw
+/NET2FPGA.runs
+/NET2FPGA.sim
