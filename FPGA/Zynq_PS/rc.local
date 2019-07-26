@@ -1,0 +1,3 @@
+#!bin/sh -e
+/home/NET2FPGA/setBitstream.sh 
+exit 0

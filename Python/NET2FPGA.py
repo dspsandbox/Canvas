@@ -192,7 +192,7 @@ class CLIENT:
             print("")
         return self.process
 
-    def getWorkspaceContent(self,pathOutput):
+    def getWorkspaceContent(self,pathOutput,filePathConstants):
         if self.debug:
             print("GET WORKSPACE CONTENT")
         sendData=[["GET WORKSPACE CONTENT"],[self.pathWorkspace],[self.key]]
@@ -211,6 +211,25 @@ class CLIENT:
             f=open(filePath,"wb+")
             f.write(fileContent)
             f.close()
+            
+            pathConstants=os.path.dirname(filePathConstants)
+            if not os.path.isdir(pathConstants):
+                os.makedirs(pathConstants)
+            if not os.path.isfile(filePathConstants):
+                fileName=os.path.join(pathConstants,"constants.py")
+                f=open(fileName,"wb+")
+                f.write("# CONSTANTS FILE\r\n")
+                f.write("# Please set the 1Bit and 32Bit constant registers you need (by default they are set to 0). \r\n")
+                f.write("\r\n# For 1Bit constants registers use:\r\n") 
+                f.write("# const1Bit[<regAddr>]=<regVal>  where <regAddr>=0,1,...,255    and  <regVal>=0,1\r\n")
+                f.write("\r\n# For 32Bit constants registers use:\r\n")
+                f.write("# const32Bit[<regAddr>]=<regVal>  where <regAddr>=0,1,...,255    and  <regVal>=-2^31,...,0,...,2^31-1\r\n")
+                f.write("\r\n# Example:\r\n\r\n")
+                f.write("# const1Bit[0]=0 \r\n")
+                f.write("# const1Bit[3]=1 \r\n")
+                f.write("# const32Bit[0]=-52 \r\n")
+                f.write("# const32Bit[1]=1024 \r\n")
+                f.close()
         if self.debug:   
             print ("Response/process: %s"%self.process)
             print ("Workspace content written to: %s"%pathOutput)
