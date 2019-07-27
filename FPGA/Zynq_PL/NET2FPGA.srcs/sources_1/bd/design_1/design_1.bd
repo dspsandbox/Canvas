@@ -211,7 +211,7 @@
                 "value": "250"
               },
               "CLKOUT2_REQUESTED_PHASE": {
-                "value": "45"
+                "value": "135"
               },
               "CLKOUT2_USED": {
                 "value": "true"
@@ -238,7 +238,7 @@
                 "value": "0.500"
               },
               "MMCM_CLKOUT1_PHASE": {
-                "value": "45.000"
+                "value": "135.000"
               },
               "MMCM_DIVCLK_DIVIDE": {
                 "value": "1"
@@ -737,16 +737,16 @@
                   }
                 },
                 "interface_nets": {
-                  "auto_cc_to_m01_couplers": {
-                    "interface_ports": [
-                      "M_AXI",
-                      "auto_cc/M_AXI"
-                    ]
-                  },
                   "m01_couplers_to_auto_cc": {
                     "interface_ports": [
                       "S_AXI",
                       "auto_cc/S_AXI"
+                    ]
+                  },
+                  "auto_cc_to_m01_couplers": {
+                    "interface_ports": [
+                      "M_AXI",
+                      "auto_cc/M_AXI"
                     ]
                   }
                 },
@@ -883,28 +883,28 @@
                   "m00_couplers/M_AXI"
                 ]
               },
-              "xbar_to_m02_couplers": {
-                "interface_ports": [
-                  "xbar/M02_AXI",
-                  "m02_couplers/S_AXI"
-                ]
-              },
               "s00_couplers_to_xbar": {
                 "interface_ports": [
                   "s00_couplers/M_AXI",
                   "xbar/S00_AXI"
                 ]
               },
-              "xbar_to_m00_couplers": {
-                "interface_ports": [
-                  "xbar/M00_AXI",
-                  "m00_couplers/S_AXI"
-                ]
-              },
               "m02_couplers_to_axi_interconnect": {
                 "interface_ports": [
                   "M02_AXI",
                   "m02_couplers/M_AXI"
+                ]
+              },
+              "xbar_to_m02_couplers": {
+                "interface_ports": [
+                  "xbar/M02_AXI",
+                  "m02_couplers/S_AXI"
+                ]
+              },
+              "xbar_to_m00_couplers": {
+                "interface_ports": [
+                  "xbar/M00_AXI",
+                  "m00_couplers/S_AXI"
                 ]
               },
               "m01_couplers_to_axi_interconnect": {
@@ -993,10 +993,10 @@
           }
         },
         "interface_nets": {
-          "processing_system7_0_FIXED_IO": {
+          "axi_interconnect_0_M01_AXI": {
             "interface_ports": [
-              "FIXED_IO",
-              "processing_system7/FIXED_IO"
+              "axi_interconnect/M01_AXI",
+              "axi_gpio_regVal/S_AXI"
             ]
           },
           "processing_system7_0_M_AXI_GP0": {
@@ -1005,22 +1005,22 @@
               "axi_interconnect/S00_AXI"
             ]
           },
+          "processing_system7_0_DDR": {
+            "interface_ports": [
+              "DDR",
+              "processing_system7/DDR"
+            ]
+          },
           "axi_interconnect_0_M00_AXI": {
             "interface_ports": [
               "axi_interconnect/M00_AXI",
               "axi_gpio_regAddr/S_AXI"
             ]
           },
-          "axi_interconnect_0_M01_AXI": {
+          "processing_system7_0_FIXED_IO": {
             "interface_ports": [
-              "axi_interconnect/M01_AXI",
-              "axi_gpio_regVal/S_AXI"
-            ]
-          },
-          "processing_system7_0_DDR": {
-            "interface_ports": [
-              "DDR",
-              "processing_system7/DDR"
+              "FIXED_IO",
+              "processing_system7/FIXED_IO"
             ]
           },
           "axi_interconnect_0_M02_AXI": {
