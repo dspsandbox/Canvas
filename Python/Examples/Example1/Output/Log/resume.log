@@ -1,33 +1,24 @@
-2019-07-26T17:35:34.136000
+2019-07-27T16:00:09.642000
 CREATE WORKSPACE                                OK
 --------------------------------------------------
-2019-07-26T17:35:34.170000
+2019-07-27T16:00:09.887000
 SET NET INPUT                                   OK
 --------------------------------------------------
-2019-07-26T17:35:34.223000
+2019-07-27T16:00:10.128000
 RUN NET PARSER                                  OK
 --------------------------------------------------
-2019-07-26T17:35:34.259000
+2019-07-27T16:00:10.302000
 CHECK DATABASE                                  OK
 --------------------------------------------------
-2019-07-26T17:35:34.314000
-RUN NET2VHDL                                 ERROR
-
-Traceback (most recent call last):
-  File "E:\NET2FPGA\Server_container\TCPCallbackLib.py", line 288, in callback_run_NET2VHDL
-    copyfile(filePath_DSP_Core_Git,filePathDSP_core)
-  File "C:\Users\pgomez\AppData\Local\Continuum\Anaconda2\lib\shutil.py", line 96, in copyfile
-    with open(src, 'rb') as fsrc:
-IOError: [Errno 2] No such file or directory: 'IMPLEMENTATION\\_GIT\\FPGA\\Zynq_PL\\NET2FPGA.srcs\\sources_1\\imports\\NET2FPGA\\NET2FPGA_base_DSP_core.vhd'
-
+2019-07-27T16:00:10.588000
+RUN NET2VHDL                                    OK
 --------------------------------------------------
-2019-07-26T17:35:34.593000
-SYNTHESIS/IMPLEMENTATION                     ERROR
+2019-07-27T16:04:03.241000
+SYNTHESIS                                    ERROR
 
-Traceback (most recent call last):
-  File "E:\NET2FPGA\Server_container\VivadoServer.py", line 128, in loop
-    copytree(pathVivadoProjectGit,pathVivadoProjectLocal)
-  File "C:\Users\pgomez\AppData\Local\Continuum\Anaconda2\lib\shutil.py", line 185, in copytree
-    names = os.listdir(src)
-WindowsError: [Error 3] The system cannot find the path specified: 'IMPLEMENTATION\\_GIT\\FPGA\\Zynq_PL\\*.*'
+Please check Log/runme_synth.log.
+--------------------------------------------------
+2019-07-27T16:04:03.245000
+IMPLEMENTATION                               ERROR
 
+Please check Log/runme_impl.log.

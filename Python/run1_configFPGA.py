@@ -26,14 +26,15 @@ ssh.exec_command("chmod +x /home/NET2FPGA/setBitstream.sh")                     
 #TRANSFER/COMPILE setConstants.c
 sftp.put(filePathSetConstants,"/home/NET2FPGA/setConstants.c")                       #Sends setConstants.c
 ssh.exec_command("gcc /home/NET2FPGA/setConstants.c -o /home/NET2FPGA/setConstants") #Compiles setConstants.c
+ssh.exec_command("chmod +x /home/NET2FPGA/setConstants")                             #Makes setConstants executable
 
 #CONFIGURE BOOT BEHAVIOUR
 rcLocalContent=""
 rcLocalContent+="#!bin/sh -e\n"
 if autoBitstream:
     rcLocalContent+="/home/NET2FPGA/setBitstream.sh \n"
-# if autoConstants:
-    # rcLocalContent+="/home/NET2FPGA/setConstants\n"
+if autoConstants:
+    rcLocalContent+="/home/NET2FPGA/setConstants \n"
 rcLocalContent+="exit 0\n"
 
 f=open(filePathRcLocal,"wb+")
@@ -41,6 +42,4 @@ f.write(rcLocalContent)
 f.close()
 
 sftp.put(filePathRcLocal,"/etc/rc.local")                                            #Configures rc.local file (is executed after boot of PS)
-
-# sftp.put("../FPGA/Zynq_PS/const32Bit.txt","/home/NET2FPGA/const32Bit.txt")
-# sftp.put("../FPGA/Zynq_PS/const1Bit.txt","/home/NET2FPGA/const1Bit.txt")
+ssh.close()

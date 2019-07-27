@@ -30,26 +30,18 @@ entity NET2FPGA_base_DAC is
            dac_rst_o: out STD_LOGIC);
 end NET2FPGA_base_DAC;
 
-
-
-
 architecture Behavioral of NET2FPGA_base_DAC is
-	signal dac_clk_wrt: STD_LOGIC:='0';
-	
 	begin
 	
-	
-	dac_clk_o<=dac_clk_wrt;
-	dac_wrt_o<=dac_clk_wrt;
 	dac_rst_o<='0';
 	
-	ODDR_dac_clk_wrt : ODDR
+	ODDR_dac_clk : ODDR
 		generic map(
 		DDR_CLK_EDGE => "SAME_EDGE", -- "OPPOSITE_EDGE" or "SAME_EDGE"
 		INIT => '0', -- Initial value for Q port ('1' or '0')
 		SRTYPE => "SYNC") -- Reset Type ("ASYNC" or "SYNC")
 		port map (
-		Q => dac_clk_wrt, -- 1-bit DDR output
+		Q => dac_clk_o, -- 1-bit DDR output
 		C => clk250, -- 1-bit clock input
 		CE => '1', -- 1-bit clock enable input
 		D1 => '1', -- 1-bit data input (positive edge)
@@ -58,7 +50,20 @@ architecture Behavioral of NET2FPGA_base_DAC is
 		S => '0' -- 1-bit set input
 		);
 	
-	
+	ODDR_dac_wrt : ODDR
+		generic map(
+		DDR_CLK_EDGE => "SAME_EDGE", -- "OPPOSITE_EDGE" or "SAME_EDGE"
+		INIT => '0', -- Initial value for Q port ('1' or '0')
+		SRTYPE => "SYNC") -- Reset Type ("ASYNC" or "SYNC")
+		port map (
+		Q => dac_wrt_o, -- 1-bit DDR output
+		C => clk250, -- 1-bit clock input
+		CE => '1', -- 1-bit clock enable input
+		D1 => '1', -- 1-bit data input (positive edge)
+		D2 => '0', -- 1-bit data input (negative edge)
+		R => '0', -- 1-bit reset input
+		S => '0' -- 1-bit set input
+		);
 			
 	ODDR_dac_sel : ODDR
 		generic map(

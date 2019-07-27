@@ -33,4 +33,4 @@ sftp = ssh.open_sftp()                                                          
 sftp.put(filePathConst1Bit,"/home/NET2FPGA/const1Bit.txt")                           #Send const1Bit.txt to FPGA (PS)
 sftp.put(filePathConst32Bit,"/home/NET2FPGA/const32Bit.txt")                         #Send const32Bit.txt to FPGA (PS)
 ssh.exec_command("/home/NET2FPGA/setConstants")                                      #Set constants on FPGA (PL)
-
+ssh.close()

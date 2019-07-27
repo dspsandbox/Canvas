@@ -18,3 +18,6 @@ ssh.connect(FPGA_SSH_IP, username=FPGA_SSH_USERNAME,password=FPGA_SSH_PASSWORD) 
 sftp = ssh.open_sftp()                                                               #Open SFTP (SSH File Transfer Protocol)
 sftp.put(filePathBitstream,"/home/NET2FPGA/bitstream.bit")                           #Send bitstream.bit to FPGA (PS)
 ssh.exec_command("/home/NET2FPGA/setBitstream.sh")                                   #Run bitstream.bit on FPGA (PL)
+ssh.close()
+
+
