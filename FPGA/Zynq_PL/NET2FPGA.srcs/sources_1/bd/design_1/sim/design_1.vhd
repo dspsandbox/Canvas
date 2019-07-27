@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
---Date        : Wed Jul 24 10:55:33 2019
+--Date        : Sat Jul 27 17:06:35 2019
 --Host        : PC1091 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -2456,19 +2456,6 @@ entity design_1 is
 end design_1;
 
 architecture STRUCTURE of design_1 is
-  component design_1_NET2FPGA_base_DAC_0_0 is
-  port (
-    clk125 : in STD_LOGIC;
-    clk250 : in STD_LOGIC;
-    dac_data1_o : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    dac_data2_o : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    dac_dat_o : out STD_LOGIC_VECTOR ( 13 downto 0 );
-    dac_clk_o : out STD_LOGIC;
-    dac_wrt_o : out STD_LOGIC;
-    dac_sel_o : out STD_LOGIC;
-    dac_rst_o : out STD_LOGIC
-  );
-  end component design_1_NET2FPGA_base_DAC_0_0;
   component design_1_NET2FPGA_base_conver_0_0 is
   port (
     clk : in STD_LOGIC;
@@ -2519,6 +2506,19 @@ architecture STRUCTURE of design_1 is
     led : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component design_1_NET2FPGA_base_DSP_co_0_0;
+  component design_1_NET2FPGA_base_DAC_0_0 is
+  port (
+    clk125 : in STD_LOGIC;
+    clk250 : in STD_LOGIC;
+    dac_data1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_data2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_dat_o : out STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_clk_o : out STD_LOGIC;
+    dac_wrt_o : out STD_LOGIC;
+    dac_sel_o : out STD_LOGIC;
+    dac_rst_o : out STD_LOGIC
+  );
+  end component design_1_NET2FPGA_base_DAC_0_0;
   signal ADC_and_DAC_clk_clk250 : STD_LOGIC;
   signal ADC_and_DAC_clk_clk_out1 : STD_LOGIC;
   signal ADC_clk_adc_cdcs_o : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -2624,8 +2624,8 @@ DAC: component design_1_NET2FPGA_base_DAC_0_0
       clk250 => ADC_and_DAC_clk_clk250,
       dac_clk_o => NET2FPGA_base_DAC_dac_clk_o,
       dac_dat_o(13 downto 0) => NET2FPGA_base_DAC_dac_dat_o(13 downto 0),
-      dac_data1_o(13 downto 0) => NET2FPGA_base_DSP_co_0_dac_data1_o(13 downto 0),
-      dac_data2_o(13 downto 0) => NET2FPGA_base_DSP_co_0_dac_data2_o(13 downto 0),
+      dac_data1(13 downto 0) => NET2FPGA_base_DSP_co_0_dac_data1_o(13 downto 0),
+      dac_data2(13 downto 0) => NET2FPGA_base_DSP_co_0_dac_data2_o(13 downto 0),
       dac_rst_o => NET2FPGA_base_DAC_dac_rst_o,
       dac_sel_o => NET2FPGA_base_DAC_dac_sel_o,
       dac_wrt_o => NET2FPGA_base_DAC_dac_wrt_o

@@ -299,7 +299,7 @@ proc create_hier_cell_ADC { parentCell nameHier } {
    CONFIG.CLKOUT2_PHASE_ERROR {96.948} \
    CONFIG.CLKOUT2_REQUESTED_DUTY_CYCLE {50} \
    CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {250} \
-   CONFIG.CLKOUT2_REQUESTED_PHASE {90} \
+   CONFIG.CLKOUT2_REQUESTED_PHASE {-90} \
    CONFIG.CLKOUT2_USED {true} \
    CONFIG.MMCM_CLKFBOUT_MULT_F {8.000} \
    CONFIG.MMCM_CLKIN1_PERIOD {8.000} \
@@ -308,7 +308,7 @@ proc create_hier_cell_ADC { parentCell nameHier } {
    CONFIG.MMCM_CLKOUT0_PHASE {0.000} \
    CONFIG.MMCM_CLKOUT1_DIVIDE {4} \
    CONFIG.MMCM_CLKOUT1_DUTY_CYCLE {0.500} \
-   CONFIG.MMCM_CLKOUT1_PHASE {90.000} \
+   CONFIG.MMCM_CLKOUT1_PHASE {-90.000} \
    CONFIG.MMCM_DIVCLK_DIVIDE {1} \
    CONFIG.NUM_OUT_CLKS {2} \
    CONFIG.PRIM_IN_FREQ {125} \
@@ -485,8 +485,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net NET2FPGA_base_DAC_dac_rst_o [get_bd_ports dac_rst_o] [get_bd_pins DAC/dac_rst_o]
   connect_bd_net -net NET2FPGA_base_DAC_dac_sel_o [get_bd_ports dac_sel_o] [get_bd_pins DAC/dac_sel_o]
   connect_bd_net -net NET2FPGA_base_DAC_dac_wrt_o [get_bd_ports dac_wrt_o] [get_bd_pins DAC/dac_wrt_o]
-  connect_bd_net -net NET2FPGA_base_DSP_co_0_dac_data1_o [get_bd_pins DAC/dac_data1_o] [get_bd_pins convertType_32_14_DAC1/dataOut]
-  connect_bd_net -net NET2FPGA_base_DSP_co_0_dac_data2_o [get_bd_pins DAC/dac_data2_o] [get_bd_pins convertType_32_14_DAC2/dataOut]
+  connect_bd_net -net NET2FPGA_base_DSP_co_0_dac_data1_o [get_bd_pins DAC/dac_data1] [get_bd_pins convertType_32_14_DAC1/dataOut]
+  connect_bd_net -net NET2FPGA_base_DSP_co_0_dac_data2_o [get_bd_pins DAC/dac_data2] [get_bd_pins convertType_32_14_DAC2/dataOut]
   connect_bd_net -net NET2FPGA_base_DSP_co_0_digital_o [get_bd_ports digital_o] [get_bd_pins DSP_core/digitalOut]
   connect_bd_net -net NET2FPGA_base_DSP_co_0_led_o [get_bd_ports led_o] [get_bd_pins DSP_core/led]
   connect_bd_net -net NET2FPGA_base_DSP_core_dac1 [get_bd_pins DSP_core/dac1] [get_bd_pins convertType_32_14_DAC1/dataIn]

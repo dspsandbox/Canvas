@@ -71,6 +71,8 @@ set_property PACKAGE_PIN V18     [get_ports adc_cdcs_o]
 set_property IOSTANDARD LVCMOS33 [get_ports {dac_data_o[*]}]
 set_property SLEW       SLOW     [get_ports {dac_data_o[*]}]
 set_property DRIVE      4        [get_ports {dac_data_o[*]}]
+#set_property IOB        FALSE     [get_ports {dac_data_o[*]}]
+
 
 set_property PACKAGE_PIN M19 [get_ports {dac_data_o[0]}]
 set_property PACKAGE_PIN M20 [get_ports {dac_data_o[1]}]
@@ -105,6 +107,11 @@ set_property PACKAGE_PIN M17 [get_ports dac_wrt_o]
 set_property PACKAGE_PIN N16 [get_ports dac_sel_o]
 set_property PACKAGE_PIN M18 [get_ports dac_clk_o]
 set_property PACKAGE_PIN N15 [get_ports dac_rst_o]
+
+#set_property IOB        FALSE     [get_ports {dac_wrt_o}]
+#set_property IOB        FALSE     [get_ports {dac_sel_o}]
+#set_property IOB        FALSE     [get_ports {dac_clk_o}]
+#set_property IOB        FALSE     [get_ports {dac_rst_o}]
 
 
 #######################
@@ -181,4 +188,6 @@ set_property PACKAGE_PIN M15 [get_ports {digital_o[7]}]
 create_clock -period 8.000 -name adc_clk [get_ports adc_clk_p_i]
 set_input_delay -clock adc_clk 3.400 [get_ports adc_data1_i[*]]
 set_input_delay -clock adc_clk 3.400 [get_ports adc_data2_i[*]]
-
+#create_generated_clock -name dac_clk250  -divide_by 1 -source [get_pins design_1_i/DAC/U0/ODDR_dac_clk/C] [get_ports dac_clk_o]
+#set_output_delay -clock [get_clocks dac_clk250] -max 1 [get_ports dac_data_o[*]]
+#set_output_delay -clock [get_clocks dac_clk250] -min -1 [get_ports dac_data_o[*]]
