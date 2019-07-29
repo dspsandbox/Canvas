@@ -12,17 +12,15 @@ source design_1_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'e:/Redpitaya/ip_repo/configIP_1.0'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Vivado/2018.3/data/ip'.
-WARNING: [IP_Flow 19-4995] The host OS only allows 260 characters in a normal path. The IP cache path is more than 80 characters. If you experience issues with IP caching, please consider changing the IP cache to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. 
-Current IP cache path is e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.cache/ip 
-add_files: Time (s): cpu = 00:00:02 ; elapsed = 00:00:20 . Memory (MB): peak = 399.551 ; gain = 20.469
+add_files: Time (s): cpu = 00:00:02 ; elapsed = 00:00:19 . Memory (MB): peak = 398.391 ; gain = 20.113
 Command: synth_design -top design_1_wrapper -part xc7z010clg400-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 4836 
+INFO: Helper process launched with PID 8580 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 518.023 ; gain = 111.570
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 517.867 ; gain = 112.566
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'design_1_wrapper' [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:53]
 INFO: [Synth 8-3491] module 'design_1' declared at 'E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/synth/design_1.vhd:2415' bound to instance 'design_1_i' of component 'design_1' [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:93]
@@ -98,7 +96,7 @@ INFO: [Synth 8-6157] synthesizing module 'MMCME2_ADV' [E:/Vivado/2018.3/scripts/
 	Parameter CLKOUT0_USE_FINE_PS bound to: FALSE - type: string 
 	Parameter CLKOUT1_DIVIDE bound to: 4 - type: integer 
 	Parameter CLKOUT1_DUTY_CYCLE bound to: 0.500000 - type: float 
-	Parameter CLKOUT1_PHASE bound to: 135.000000 - type: float 
+	Parameter CLKOUT1_PHASE bound to: -90.000000 - type: float 
 	Parameter CLKOUT1_USE_FINE_PS bound to: FALSE - type: string 
 	Parameter CLKOUT2_DIVIDE bound to: 1 - type: integer 
 	Parameter CLKOUT2_DUTY_CYCLE bound to: 0.500000 - type: float 
@@ -149,7 +147,7 @@ INFO: [Synth 8-6155] done synthesizing module 'design_1_xlconstant_0_1' (10#1) [
 INFO: [Synth 8-256] done synthesizing module 'ADC_imp_TF1HV4' (11#1) [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/synth/design_1.vhd:25]
 INFO: [Synth 8-3491] module 'design_1_NET2FPGA_base_DAC_0_0' declared at 'e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_NET2FPGA_base_DAC_0_0/synth/design_1_NET2FPGA_base_DAC_0_0.vhd:56' bound to instance 'DAC' of component 'design_1_NET2FPGA_base_DAC_0_0' [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/synth/design_1.vhd:2621]
 INFO: [Synth 8-638] synthesizing module 'design_1_NET2FPGA_base_DAC_0_0' [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_NET2FPGA_base_DAC_0_0/synth/design_1_NET2FPGA_base_DAC_0_0.vhd:70]
-INFO: [Synth 8-3491] module 'NET2FPGA_base_DAC' declared at 'E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DAC.vhd:21' bound to instance 'U0' of component 'NET2FPGA_base_DAC' [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_NET2FPGA_base_DAC_0_0/synth/design_1_NET2FPGA_base_DAC_0_0.vhd:95]
+INFO: [Synth 8-3491] module 'NET2FPGA_base_DAC' declared at 'E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DAC.vhd:21' bound to instance 'U0' of component 'NET2FPGA_base_DAC' [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_NET2FPGA_base_DAC_0_0/synth/design_1_NET2FPGA_base_DAC_0_0.vhd:101]
 INFO: [Synth 8-638] synthesizing module 'NET2FPGA_base_DAC' [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DAC.vhd:33]
 	Parameter DDR_CLK_EDGE bound to: SAME_EDGE - type: string 
 	Parameter INIT bound to: 1'b0 
@@ -276,7 +274,7 @@ INFO: [Synth 8-3491] module 'design_1_NET2FPGA_base_DSP_co_0_0' declared at 'e:/
 INFO: [Synth 8-638] synthesizing module 'design_1_NET2FPGA_base_DSP_co_0_0' [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_NET2FPGA_base_DSP_co_0_0/synth/design_1_NET2FPGA_base_DSP_co_0_0.vhd:72]
 	Parameter PORT_WIDTH bound to: 32 - type: integer 
 	Parameter CONSTANT_REGISTER_DEPTH bound to: 8 - type: integer 
-INFO: [Synth 8-3491] module 'NET2FPGA_base_DSP_core' declared at 'E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:24' bound to instance 'U0' of component 'NET2FPGA_base_DSP_core' [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_NET2FPGA_base_DSP_co_0_0/synth/design_1_NET2FPGA_base_DSP_co_0_0.vhd:103]
+INFO: [Synth 8-3491] module 'NET2FPGA_base_DSP_core' declared at 'E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:24' bound to instance 'U0' of component 'NET2FPGA_base_DSP_core' [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_NET2FPGA_base_DSP_co_0_0/synth/design_1_NET2FPGA_base_DSP_co_0_0.vhd:107]
 INFO: [Synth 8-638] synthesizing module 'NET2FPGA_base_DSP_core' [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:40]
 	Parameter PORT_WIDTH bound to: 32 - type: integer 
 	Parameter CONSTANT_REGISTER_DEPTH bound to: 8 - type: integer 
@@ -313,108 +311,107 @@ INFO: [Synth 8-638] synthesizing module 'c_add_0' [e:/NET2FPGA/Server_container/
 INFO: [Synth 8-3491] module 'c_addsub_v12_0_12' declared at 'e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/ip/c_add_0/hdl/c_addsub_v12_0_vh_rfs.vhd:7026' bound to instance 'U0' of component 'c_addsub_v12_0_12' [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/ip/c_add_0/synth/c_add_0.vhd:136]
 INFO: [Synth 8-256] done synthesizing module 'c_add_0' (21#1) [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/ip/c_add_0/synth/c_add_0.vhd:69]
 INFO: [Synth 8-256] done synthesizing module 'NET2FPGA_32Bit_add' (22#1) [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_32Bit_add.vhd:32]
-WARNING: [Synth 8-6014] Unused sequential element regType_reg was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:69]
-WARNING: [Synth 8-6014] Unused sequential element regAddr_var_reg was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:70]
-WARNING: [Synth 8-6014] Unused sequential element regVal32Bit_var_reg was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:71]
-WARNING: [Synth 8-6014] Unused sequential element regVal1Bit_var_reg was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:72]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[255] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[254] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[253] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[252] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[251] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[250] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[249] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[248] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[247] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[246] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[245] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[244] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[243] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[242] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[241] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[240] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[239] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[238] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[237] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[236] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[235] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[234] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[233] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[232] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[231] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[230] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[229] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[228] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[227] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[226] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[225] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[224] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[223] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[222] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[221] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[220] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[219] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[218] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[217] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[216] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[215] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[214] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[213] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[212] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[211] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[210] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[209] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[208] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[207] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[206] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[205] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[204] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[203] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[202] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[201] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[200] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[199] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[198] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[197] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[196] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[195] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[194] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[193] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[192] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[191] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[190] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[189] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[188] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[187] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[186] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[185] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[184] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[183] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[182] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[181] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[180] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[179] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[178] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[177] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[176] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[175] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[174] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[173] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[172] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[171] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[170] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[169] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[168] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[167] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[166] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[165] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[164] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[163] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[162] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[161] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
-WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[160] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:75]
+WARNING: [Synth 8-6014] Unused sequential element regType_reg was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:76]
+WARNING: [Synth 8-6014] Unused sequential element regAddr_var_reg was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:77]
+WARNING: [Synth 8-6014] Unused sequential element regVal32Bit_var_reg was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:78]
+WARNING: [Synth 8-6014] Unused sequential element regVal1Bit_var_reg was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:79]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[255] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[254] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[253] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[252] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[251] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[250] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[249] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[248] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[247] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[246] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[245] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[244] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[243] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[242] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[241] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[240] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[239] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[238] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[237] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[236] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[235] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[234] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[233] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[232] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[231] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[230] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[229] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[228] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[227] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[226] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[225] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[224] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[223] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[222] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[221] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[220] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[219] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[218] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[217] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[216] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[215] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[214] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[213] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[212] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[211] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[210] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[209] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[208] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[207] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[206] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[205] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[204] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[203] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[202] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[201] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[200] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[199] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[198] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[197] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[196] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[195] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[194] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[193] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[192] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[191] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[190] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[189] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[188] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[187] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[186] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[185] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[184] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[183] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[182] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[181] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[180] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[179] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[178] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[177] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[176] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[175] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[174] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[173] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[172] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[171] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[170] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[169] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[168] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[167] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[166] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[165] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[164] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[163] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[162] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[161] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
+WARNING: [Synth 8-6014] Unused sequential element constantRegister32Bit_reg[160] was removed.  [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:82]
 INFO: [Common 17-14] Message 'Synth 8-6014' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-WARNING: [Synth 8-3848] Net digitalOut in module/entity NET2FPGA_base_DSP_core does not have driver. [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:36]
 INFO: [Synth 8-256] done synthesizing module 'NET2FPGA_base_DSP_core' (23#1) [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_DSP_core.vhd:40]
 INFO: [Synth 8-256] done synthesizing module 'design_1_NET2FPGA_base_DSP_co_0_0' (24#1) [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_NET2FPGA_base_DSP_co_0_0/synth/design_1_NET2FPGA_base_DSP_co_0_0.vhd:72]
 INFO: [Synth 8-638] synthesizing module 'PS_ZYNQ_imp_1930RS9' [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/synth/design_1.vhd:1822]
@@ -2428,7 +2425,7 @@ INFO: [Synth 8-3491] module 'design_1_NET2FPGA_base_sync_0_0' declared at 'e:/NE
 INFO: [Synth 8-638] synthesizing module 'design_1_NET2FPGA_base_sync_0_0' [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_NET2FPGA_base_sync_0_0/synth/design_1_NET2FPGA_base_sync_0_0.vhd:64]
 	Parameter PORT_WIDTH bound to: 8 - type: integer 
 	Parameter CONSTANT_REGISTER_DEPTH bound to: 8 - type: integer 
-INFO: [Synth 8-3491] module 'NET2FPGA_base_sync' declared at 'E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_sync.vhd:24' bound to instance 'U0' of component 'NET2FPGA_base_sync' [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_NET2FPGA_base_sync_0_0/synth/design_1_NET2FPGA_base_sync_0_0.vhd:87]
+INFO: [Synth 8-3491] module 'NET2FPGA_base_sync' declared at 'E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_sync.vhd:24' bound to instance 'U0' of component 'NET2FPGA_base_sync' [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_NET2FPGA_base_sync_0_0/synth/design_1_NET2FPGA_base_sync_0_0.vhd:91]
 INFO: [Synth 8-638] synthesizing module 'NET2FPGA_base_sync' [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/imports/NET2FPGA/NET2FPGA_base_sync.vhd:33]
 	Parameter PORT_WIDTH bound to: 8 - type: integer 
 	Parameter CONSTANT_REGISTER_DEPTH bound to: 8 - type: integer 
@@ -2538,7 +2535,7 @@ WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has un
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port FTMD_TRACEIN_DATA[23]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 737.977 ; gain = 331.523
+Finished RTL Elaboration : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 738.336 ; gain = 333.035
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -2551,13 +2548,13 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 737.977 ; gain = 331.523
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:00:44 . Memory (MB): peak = 738.336 ; gain = 333.035
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 737.977 ; gain = 331.523
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:41 ; elapsed = 00:00:44 . Memory (MB): peak = 738.336 ; gain = 333.035
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 622 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Device 21-403] Loading part xc7z010clg400-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -2598,7 +2595,7 @@ Finished Parsing XDC File [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FP
 Parsing XDC File [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_1/design_1_util_ds_buf_0_1_board.xdc] for cell 'design_1_i/ADC/BUFG/U0'
 Finished Parsing XDC File [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_1/design_1_util_ds_buf_0_1_board.xdc] for cell 'design_1_i/ADC/BUFG/U0'
 INFO: [Timing 38-2] Deriving generated clocks
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 913.148 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 912.887 ; gain = 0.000
 Parsing XDC File [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/constrs_1/imports/sdc/NET2FPGA_redpitaya.xdc]
 Finished Parsing XDC File [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/constrs_1/imports/sdc/NET2FPGA_redpitaya.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/constrs_1/imports/sdc/NET2FPGA_redpitaya.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
@@ -2607,7 +2604,7 @@ Parsing XDC File [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_P
 Finished Parsing XDC File [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.runs/synth_1/dont_touch.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 913.148 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 912.887 ; gain = 0.000
 Sourcing Tcl File [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'design_1_i/PS_ZYNQ/axi_interconnect/m00_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/handshake'
 Finished Sourcing Tcl File [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'design_1_i/PS_ZYNQ/axi_interconnect/m00_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/handshake'
 Sourcing Tcl File [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'design_1_i/PS_ZYNQ/axi_interconnect/m00_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_aw/handshake'
@@ -2702,26 +2699,26 @@ Sourcing Tcl File [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] 
 Finished Sourcing Tcl File [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'design_1_i/PS_ZYNQ/axi_interconnect/m02_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_r/handshake/xpm_cdc_single_src2dest_inst'
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 913.148 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 912.887 ; gain = 0.000
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 913.148 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 912.887 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 602 instances were transformed.
   FDR => FDRE: 600 instances
   SRL16 => SRL16E: 2 instances
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 913.148 ; gain = 0.000
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 913.148 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 912.887 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.042 . Memory (MB): peak = 912.887 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:52 ; elapsed = 00:00:55 . Memory (MB): peak = 913.148 ; gain = 506.695
+Finished Constraint Validation : Time (s): cpu = 00:00:52 ; elapsed = 00:00:55 . Memory (MB): peak = 912.887 ; gain = 507.586
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:52 ; elapsed = 00:00:55 . Memory (MB): peak = 913.148 ; gain = 506.695
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:52 ; elapsed = 00:00:55 . Memory (MB): peak = 912.887 ; gain = 507.586
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -2810,7 +2807,7 @@ Applied set_property DONT_TOUCH = true for design_1_i/PS_ZYNQ/axi_interconnect/m
 Applied set_property DONT_TOUCH = true for design_1_i/PS_ZYNQ/axi_interconnect/m02_couplers/auto_cc/inst/\gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_b /handshake/xpm_cdc_single_src2dest_inst. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for design_1_i/PS_ZYNQ/axi_interconnect/m02_couplers/auto_cc/inst/\gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_r /handshake/xpm_cdc_single_src2dest_inst. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:53 ; elapsed = 00:00:56 . Memory (MB): peak = 913.148 ; gain = 506.695
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:52 ; elapsed = 00:00:56 . Memory (MB): peak = 912.887 ; gain = 507.586
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5545] ROM "constantRegister32Bit_reg[0]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'slave_attachment'
@@ -3190,7 +3187,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'dest_state_reg' using enco
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'axi_protocol_converter_v2_1_18_b2s_rd_cmd_fsm'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 913.148 ; gain = 506.695
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:56 ; elapsed = 00:01:00 . Memory (MB): peak = 912.887 ; gain = 507.586
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3223,7 +3220,6 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-INFO: [Synth 8-5545] ROM "U0/constantRegister32Bit_reg[0]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-4471] merging register 'bus2ip_reset_reg' into 'AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/rst_reg' [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ipshared/a7c9/hdl/axi_gpio_v2_0_vh_rfs.vhd:1677]
 INFO: [Synth 8-3936] Found unconnected internal register 'inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/aw.aw_pipe/m_payload_i_reg' and it is trimmed from '66' to '62' bits. [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ipshared/cc23/hdl/axi_register_slice_v2_1_vl_rfs.v:642]
 INFO: [Synth 8-3936] Found unconnected internal register 'inst/gen_axilite.gen_b2s_conv.axilite_b2s/SI_REG/ar.ar_pipe/m_payload_i_reg' and it is trimmed from '66' to '62' bits. [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ipshared/cc23/hdl/axi_register_slice_v2_1_vl_rfs.v:642]
@@ -3404,7 +3400,7 @@ INFO: [Synth 8-3886] merging instance 'design_1_i/PS_ZYNQ/axi_interconnect/m01_c
 INFO: [Synth 8-3886] merging instance 'design_1_i/PS_ZYNQ/axi_interconnect/m01_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/m_areset_dly_reg[2]' (FD) to 'design_1_i/PS_ZYNQ/axi_interconnect/m01_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_b/s_areset_dly_reg[2]'
 INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:02 ; elapsed = 00:01:05 . Memory (MB): peak = 913.148 ; gain = 506.695
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:01 ; elapsed = 00:01:05 . Memory (MB): peak = 912.887 ; gain = 507.586
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3418,13 +3414,13 @@ Start Applying XDC Timing Constraints
 INFO: [Synth 8-5578] Moved timing constraint from pin 'design_1_i/ADC/clk_wiz/inst/clk_in1' to pin '{design_1_i/ADC/BUFG/U0/USE_BUFG.GEN_BUFG[0].BUFG_U/O}'
 INFO: [Synth 8-5819] Moved 1 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:14 ; elapsed = 00:01:18 . Memory (MB): peak = 1116.598 ; gain = 710.145
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:13 ; elapsed = 00:01:18 . Memory (MB): peak = 1116.086 ; gain = 710.785
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:15 ; elapsed = 00:01:19 . Memory (MB): peak = 1137.125 ; gain = 730.672
+Finished Timing Optimization : Time (s): cpu = 00:01:14 ; elapsed = 00:01:18 . Memory (MB): peak = 1137.105 ; gain = 731.805
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3436,7 +3432,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:18 ; elapsed = 00:01:22 . Memory (MB): peak = 1159.176 ; gain = 752.723
+Finished Technology Mapping : Time (s): cpu = 00:01:17 ; elapsed = 00:01:22 . Memory (MB): peak = 1159.262 ; gain = 753.961
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3562,7 +3558,7 @@ WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/
 WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:588]
 INFO: [Common 17-14] Message 'Synth 8-5396' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:19 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.176 ; gain = 752.723
+Finished IO Insertion : Time (s): cpu = 00:01:19 ; elapsed = 00:01:23 . Memory (MB): peak = 1159.262 ; gain = 753.961
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -3575,7 +3571,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:19 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.176 ; gain = 752.723
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:19 ; elapsed = 00:01:23 . Memory (MB): peak = 1159.262 ; gain = 753.961
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3587,25 +3583,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:20 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.176 ; gain = 752.723
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:19 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.262 ; gain = 753.961
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:20 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.176 ; gain = 752.723
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:19 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.262 ; gain = 753.961
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:20 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.176 ; gain = 752.723
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:19 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.262 ; gain = 753.961
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:20 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.176 ; gain = 752.723
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:19 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.262 ; gain = 753.961
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -3642,15 +3638,14 @@ Report Cell Usage:
 |19    |FDSE       |   122|
 |20    |IBUF       |    37|
 |21    |IBUFDS     |     1|
-|22    |OBUF       |    22|
-|23    |OBUFT      |    13|
+|22    |OBUF       |    35|
 +------+-----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:20 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.176 ; gain = 752.723
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:19 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.262 ; gain = 753.961
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 1348 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:01:15 . Memory (MB): peak = 1159.176 ; gain = 577.551
-Synthesis Optimization Complete : Time (s): cpu = 00:01:20 ; elapsed = 00:01:25 . Memory (MB): peak = 1159.176 ; gain = 752.723
+Synthesis finished with 0 errors, 0 critical warnings and 1335 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:01:15 . Memory (MB): peak = 1159.262 ; gain = 579.410
+Synthesis Optimization Complete : Time (s): cpu = 00:01:19 ; elapsed = 00:01:24 . Memory (MB): peak = 1159.262 ; gain = 753.961
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 440 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -3658,19 +3653,19 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. design_1_i/ADC/clk_wiz/inst/clkin1_ibufg 
 Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1159.176 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1159.262 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 402 instances were transformed.
   FDR => FDRE: 400 instances
   SRL16 => SRL16E: 2 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-700 Infos, 324 Warnings, 0 Critical Warnings and 0 Errors encountered.
+699 Infos, 322 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:23 ; elapsed = 00:01:28 . Memory (MB): peak = 1159.176 ; gain = 759.625
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1159.176 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:23 ; elapsed = 00:01:28 . Memory (MB): peak = 1159.262 ; gain = 760.871
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1159.262 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.runs/synth_1/design_1_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Jul 27 17:47:13 2019...
+INFO: [Common 17-206] Exiting Vivado at Mon Jul 29 10:49:53 2019...
