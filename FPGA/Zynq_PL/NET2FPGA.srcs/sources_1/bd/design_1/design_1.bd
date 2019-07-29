@@ -176,10 +176,10 @@
                 "value": "BUFG"
               },
               "CLKOUT1_JITTER": {
-                "value": "119.348"
+                "value": "128.871"
               },
               "CLKOUT1_PHASE_ERROR": {
-                "value": "96.948"
+                "value": "112.379"
               },
               "CLKOUT1_REQUESTED_OUT_FREQ": {
                 "value": "125"
@@ -194,10 +194,10 @@
                 "value": "BUFG"
               },
               "CLKOUT2_JITTER": {
-                "value": "104.759"
+                "value": "112.962"
               },
               "CLKOUT2_PHASE_ERROR": {
-                "value": "96.948"
+                "value": "112.379"
               },
               "CLKOUT2_REQUESTED_DUTY_CYCLE": {
                 "value": "50"
@@ -206,7 +206,7 @@
                 "value": "250"
               },
               "CLKOUT2_REQUESTED_PHASE": {
-                "value": "-90"
+                "value": "-120"
               },
               "CLKOUT2_USED": {
                 "value": "true"
@@ -236,28 +236,28 @@
                 "value": "HIGH"
               },
               "MMCM_CLKFBOUT_MULT_F": {
-                "value": "8.000"
+                "value": "6.000"
               },
               "MMCM_CLKIN1_PERIOD": {
                 "value": "8.000"
               },
               "MMCM_CLKIN2_PERIOD": {
-                "value": "10.000"
+                "value": "10.0"
               },
               "MMCM_CLKOUT0_DIVIDE_F": {
-                "value": "8.000"
+                "value": "6.000"
               },
               "MMCM_CLKOUT0_PHASE": {
                 "value": "0.000"
               },
               "MMCM_CLKOUT1_DIVIDE": {
-                "value": "4"
+                "value": "3"
               },
               "MMCM_CLKOUT1_DUTY_CYCLE": {
                 "value": "0.500"
               },
               "MMCM_CLKOUT1_PHASE": {
-                "value": "-90.000"
+                "value": "-120.000"
               },
               "MMCM_COMPENSATION": {
                 "value": "ZHOLD"
@@ -652,16 +652,16 @@
                   }
                 },
                 "interface_nets": {
-                  "auto_cc_to_m00_couplers": {
-                    "interface_ports": [
-                      "M_AXI",
-                      "auto_cc/M_AXI"
-                    ]
-                  },
                   "m00_couplers_to_auto_cc": {
                     "interface_ports": [
                       "S_AXI",
                       "auto_cc/S_AXI"
+                    ]
+                  },
+                  "auto_cc_to_m00_couplers": {
+                    "interface_ports": [
+                      "M_AXI",
+                      "auto_cc/M_AXI"
                     ]
                   }
                 },
@@ -1000,10 +1000,10 @@
           }
         },
         "interface_nets": {
-          "axi_interconnect_0_M02_AXI": {
+          "processing_system7_0_DDR": {
             "interface_ports": [
-              "axi_interconnect/M02_AXI",
-              "axi_gpio_WrtEn/S_AXI"
+              "DDR",
+              "processing_system7/DDR"
             ]
           },
           "processing_system7_0_M_AXI_GP0": {
@@ -1012,28 +1012,28 @@
               "axi_interconnect/S00_AXI"
             ]
           },
+          "axi_interconnect_0_M02_AXI": {
+            "interface_ports": [
+              "axi_interconnect/M02_AXI",
+              "axi_gpio_WrtEn/S_AXI"
+            ]
+          },
           "axi_interconnect_0_M00_AXI": {
             "interface_ports": [
               "axi_interconnect/M00_AXI",
               "axi_gpio_regAddr/S_AXI"
             ]
           },
-          "axi_interconnect_0_M01_AXI": {
-            "interface_ports": [
-              "axi_interconnect/M01_AXI",
-              "axi_gpio_regVal/S_AXI"
-            ]
-          },
-          "processing_system7_0_DDR": {
-            "interface_ports": [
-              "DDR",
-              "processing_system7/DDR"
-            ]
-          },
           "processing_system7_0_FIXED_IO": {
             "interface_ports": [
               "FIXED_IO",
               "processing_system7/FIXED_IO"
+            ]
+          },
+          "axi_interconnect_0_M01_AXI": {
+            "interface_ports": [
+              "axi_interconnect/M01_AXI",
+              "axi_gpio_regVal/S_AXI"
             ]
           }
         },
