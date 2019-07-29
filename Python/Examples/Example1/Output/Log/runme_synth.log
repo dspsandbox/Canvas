@@ -12,15 +12,15 @@ source design_1_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'e:/Redpitaya/ip_repo/configIP_1.0'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Vivado/2018.3/data/ip'.
-add_files: Time (s): cpu = 00:00:02 ; elapsed = 00:00:20 . Memory (MB): peak = 397.844 ; gain = 29.637
+add_files: Time (s): cpu = 00:00:02 ; elapsed = 00:00:20 . Memory (MB): peak = 398.633 ; gain = 28.887
 Command: synth_design -top design_1_wrapper -part xc7z010clg400-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 12556 
+INFO: Helper process launched with PID 13844 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 516.320 ; gain = 111.582
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 517.059 ; gain = 111.516
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'design_1_wrapper' [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:53]
 INFO: [Synth 8-3491] module 'design_1' declared at 'E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/synth/design_1.vhd:2415' bound to instance 'design_1_i' of component 'design_1' [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:93]
@@ -85,18 +85,18 @@ INFO: [Synth 8-6157] synthesizing module 'IBUF' [E:/Vivado/2018.3/scripts/rt/dat
 INFO: [Synth 8-6155] done synthesizing module 'IBUF' (4#1) [E:/Vivado/2018.3/scripts/rt/data/unisim_comp.v:20408]
 INFO: [Synth 8-6157] synthesizing module 'MMCME2_ADV' [E:/Vivado/2018.3/scripts/rt/data/unisim_comp.v:26717]
 	Parameter BANDWIDTH bound to: HIGH - type: string 
-	Parameter CLKFBOUT_MULT_F bound to: 6.000000 - type: float 
+	Parameter CLKFBOUT_MULT_F bound to: 8.000000 - type: float 
 	Parameter CLKFBOUT_PHASE bound to: 0.000000 - type: float 
 	Parameter CLKFBOUT_USE_FINE_PS bound to: FALSE - type: string 
 	Parameter CLKIN1_PERIOD bound to: 8.000000 - type: float 
 	Parameter CLKIN2_PERIOD bound to: 0.000000 - type: float 
-	Parameter CLKOUT0_DIVIDE_F bound to: 6.000000 - type: float 
+	Parameter CLKOUT0_DIVIDE_F bound to: 8.000000 - type: float 
 	Parameter CLKOUT0_DUTY_CYCLE bound to: 0.500000 - type: float 
 	Parameter CLKOUT0_PHASE bound to: 0.000000 - type: float 
 	Parameter CLKOUT0_USE_FINE_PS bound to: FALSE - type: string 
-	Parameter CLKOUT1_DIVIDE bound to: 3 - type: integer 
+	Parameter CLKOUT1_DIVIDE bound to: 4 - type: integer 
 	Parameter CLKOUT1_DUTY_CYCLE bound to: 0.500000 - type: float 
-	Parameter CLKOUT1_PHASE bound to: -165.000000 - type: float 
+	Parameter CLKOUT1_PHASE bound to: -90.000000 - type: float 
 	Parameter CLKOUT1_USE_FINE_PS bound to: FALSE - type: string 
 	Parameter CLKOUT2_DIVIDE bound to: 1 - type: integer 
 	Parameter CLKOUT2_DUTY_CYCLE bound to: 0.500000 - type: float 
@@ -2512,7 +2512,7 @@ WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has un
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port FTMD_TRACEIN_DATA[23]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 706.145 ; gain = 301.406
+Finished RTL Elaboration : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 706.355 ; gain = 300.813
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -2525,13 +2525,13 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:40 ; elapsed = 00:00:43 . Memory (MB): peak = 706.145 ; gain = 301.406
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 706.355 ; gain = 300.813
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:40 ; elapsed = 00:00:43 . Memory (MB): peak = 706.145 ; gain = 301.406
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 706.355 ; gain = 300.813
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 621 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Device 21-403] Loading part xc7z010clg400-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -2572,7 +2572,7 @@ Finished Parsing XDC File [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FP
 Parsing XDC File [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_1/design_1_util_ds_buf_0_1_board.xdc] for cell 'design_1_i/ADC/BUFG/U0'
 Finished Parsing XDC File [e:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_1/design_1_util_ds_buf_0_1_board.xdc] for cell 'design_1_i/ADC/BUFG/U0'
 INFO: [Timing 38-2] Deriving generated clocks
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 956.191 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 954.844 ; gain = 0.000
 Parsing XDC File [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/constrs_1/imports/sdc/NET2FPGA_redpitaya.xdc]
 Finished Parsing XDC File [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/constrs_1/imports/sdc/NET2FPGA_redpitaya.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.srcs/constrs_1/imports/sdc/NET2FPGA_redpitaya.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
@@ -2581,7 +2581,7 @@ Parsing XDC File [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_P
 Finished Parsing XDC File [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.runs/synth_1/dont_touch.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 956.191 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 954.844 ; gain = 0.000
 Sourcing Tcl File [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'design_1_i/PS_ZYNQ/axi_interconnect/m00_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/handshake'
 Finished Sourcing Tcl File [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'design_1_i/PS_ZYNQ/axi_interconnect/m00_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/handshake'
 Sourcing Tcl File [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'design_1_i/PS_ZYNQ/axi_interconnect/m00_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_aw/handshake'
@@ -2676,26 +2676,26 @@ Sourcing Tcl File [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] 
 Finished Sourcing Tcl File [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'design_1_i/PS_ZYNQ/axi_interconnect/m02_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_r/handshake/xpm_cdc_single_src2dest_inst'
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 956.191 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 954.844 ; gain = 0.000
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 956.191 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 954.844 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 602 instances were transformed.
   FDR => FDRE: 600 instances
   SRL16 => SRL16E: 2 instances
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 956.191 ; gain = 0.000
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.046 . Memory (MB): peak = 956.191 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 954.844 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 954.844 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:51 ; elapsed = 00:00:54 . Memory (MB): peak = 956.191 ; gain = 551.453
+Finished Constraint Validation : Time (s): cpu = 00:00:46 ; elapsed = 00:00:49 . Memory (MB): peak = 954.844 ; gain = 549.301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:51 ; elapsed = 00:00:54 . Memory (MB): peak = 956.191 ; gain = 551.453
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:46 ; elapsed = 00:00:49 . Memory (MB): peak = 954.844 ; gain = 549.301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -2783,7 +2783,7 @@ Applied set_property DONT_TOUCH = true for design_1_i/PS_ZYNQ/axi_interconnect/m
 Applied set_property DONT_TOUCH = true for design_1_i/PS_ZYNQ/axi_interconnect/m02_couplers/auto_cc/inst/\gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_b /handshake/xpm_cdc_single_src2dest_inst. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for design_1_i/PS_ZYNQ/axi_interconnect/m02_couplers/auto_cc/inst/\gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_r /handshake/xpm_cdc_single_src2dest_inst. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:51 ; elapsed = 00:00:54 . Memory (MB): peak = 956.191 ; gain = 551.453
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:47 ; elapsed = 00:00:50 . Memory (MB): peak = 954.844 ; gain = 549.301
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5545] ROM "constantRegister32Bit_reg[1]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "constantRegister32Bit_reg[0]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
@@ -3164,7 +3164,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'dest_state_reg' using enco
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'axi_protocol_converter_v2_1_18_b2s_rd_cmd_fsm'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:55 ; elapsed = 00:00:58 . Memory (MB): peak = 956.191 ; gain = 551.453
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:50 ; elapsed = 00:00:54 . Memory (MB): peak = 954.844 ; gain = 549.301
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3944,7 +3944,7 @@ INFO: [Synth 8-3886] merging instance 'design_1_i/PS_ZYNQ/axi_interconnect/m01_c
 INFO: [Synth 8-3886] merging instance 'design_1_i/PS_ZYNQ/axi_interconnect/m01_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/m_areset_dly_reg[2]' (FD) to 'design_1_i/PS_ZYNQ/axi_interconnect/m01_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_b/s_areset_dly_reg[2]'
 INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:00 ; elapsed = 00:01:04 . Memory (MB): peak = 956.191 ; gain = 551.453
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:56 ; elapsed = 00:00:59 . Memory (MB): peak = 954.844 ; gain = 549.301
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3958,13 +3958,13 @@ Start Applying XDC Timing Constraints
 INFO: [Synth 8-5578] Moved timing constraint from pin 'design_1_i/ADC/clk_wiz/inst/clk_in1' to pin '{design_1_i/ADC/BUFG/U0/USE_BUFG.GEN_BUFG[0].BUFG_U/O}'
 INFO: [Synth 8-5819] Moved 1 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:08 ; elapsed = 00:01:12 . Memory (MB): peak = 1079.695 ; gain = 674.957
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:04 ; elapsed = 00:01:08 . Memory (MB): peak = 1073.520 ; gain = 667.977
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:09 ; elapsed = 00:01:13 . Memory (MB): peak = 1100.289 ; gain = 695.551
+Finished Timing Optimization : Time (s): cpu = 00:01:05 ; elapsed = 00:01:09 . Memory (MB): peak = 1094.426 ; gain = 688.883
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3976,7 +3976,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:12 ; elapsed = 00:01:16 . Memory (MB): peak = 1122.066 ; gain = 717.328
+Finished Technology Mapping : Time (s): cpu = 00:01:08 ; elapsed = 00:01:12 . Memory (MB): peak = 1116.359 ; gain = 710.816
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -4102,7 +4102,7 @@ WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/
 WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [E:/Vivado/2018.3/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:588]
 INFO: [Common 17-14] Message 'Synth 8-5396' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:14 ; elapsed = 00:01:18 . Memory (MB): peak = 1122.066 ; gain = 717.328
+Finished IO Insertion : Time (s): cpu = 00:01:09 ; elapsed = 00:01:14 . Memory (MB): peak = 1116.359 ; gain = 710.816
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -4115,7 +4115,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:14 ; elapsed = 00:01:18 . Memory (MB): peak = 1122.066 ; gain = 717.328
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:09 ; elapsed = 00:01:14 . Memory (MB): peak = 1116.359 ; gain = 710.816
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -4127,25 +4127,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:14 ; elapsed = 00:01:18 . Memory (MB): peak = 1122.066 ; gain = 717.328
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 1116.359 ; gain = 710.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:14 ; elapsed = 00:01:18 . Memory (MB): peak = 1122.066 ; gain = 717.328
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 1116.359 ; gain = 710.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:14 ; elapsed = 00:01:18 . Memory (MB): peak = 1122.066 ; gain = 717.328
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 1116.359 ; gain = 710.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:14 ; elapsed = 00:01:18 . Memory (MB): peak = 1122.066 ; gain = 717.328
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 1116.359 ; gain = 710.816
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -4374,11 +4374,11 @@ Report Instance Areas:
 |167   |      xlslice                                                             |design_1_xlslice_0_0                                              |     0|
 +------+--------------------------------------------------------------------------+------------------------------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:14 ; elapsed = 00:01:18 . Memory (MB): peak = 1122.066 ; gain = 717.328
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 1116.359 ; gain = 710.816
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1331 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:01:10 . Memory (MB): peak = 1122.066 ; gain = 467.281
-Synthesis Optimization Complete : Time (s): cpu = 00:01:14 ; elapsed = 00:01:19 . Memory (MB): peak = 1122.066 ; gain = 717.328
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:01:05 . Memory (MB): peak = 1116.359 ; gain = 462.328
+Synthesis Optimization Complete : Time (s): cpu = 00:01:10 ; elapsed = 00:01:14 . Memory (MB): peak = 1116.359 ; gain = 710.816
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 439 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -4386,7 +4386,7 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. design_1_i/ADC/clk_wiz/inst/clkin1_ibufg 
 Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1125.949 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1121.883 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 402 instances were transformed.
   FDR => FDRE: 400 instances
@@ -4395,10 +4395,10 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 697 Infos, 329 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:18 ; elapsed = 00:01:22 . Memory (MB): peak = 1125.949 ; gain = 728.105
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1125.949 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:14 ; elapsed = 00:01:18 . Memory (MB): peak = 1121.883 ; gain = 723.250
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1121.883 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'E:/NET2FPGA/Server_container/IMPLEMENTATION/_LOCAL/FPGA/Zynq_PL/NET2FPGA.runs/synth_1/design_1_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Jul 29 13:00:06 2019...
+INFO: [Common 17-206] Exiting Vivado at Mon Jul 29 13:36:04 2019...
