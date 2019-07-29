@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
---Date        : Sat Jul 27 17:06:35 2019
+--Date        : Mon Jul 29 10:28:11 2019
 --Host        : PC1091 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -16,8 +16,8 @@ entity ADC_imp_TF1HV4 is
     adc_cdcs_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     adc_clk_n_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     adc_clk_p_i : in STD_LOGIC_VECTOR ( 0 to 0 );
-    clk125 : out STD_LOGIC;
-    clk250 : out STD_LOGIC;
+    clk : out STD_LOGIC;
+    dac_clk : out STD_LOGIC;
     reset : in STD_LOGIC
   );
 end ADC_imp_TF1HV4;
@@ -64,8 +64,8 @@ begin
   adc_cdcs_o(0) <= ADC_clk_adc_cdcs_o(0);
   adc_clk_n_i_1(0) <= adc_clk_n_i(0);
   adc_clk_p_i_1(0) <= adc_clk_p_i(0);
-  clk125 <= ADC_and_DAC_clk_clk_out1;
-  clk250 <= ADC_and_DAC_clk_clk250;
+  clk <= ADC_and_DAC_clk_clk_out1;
+  dac_clk <= ADC_and_DAC_clk_clk250;
 BUFG: component design_1_util_ds_buf_0_1
      port map (
       BUFG_I(0) => util_ds_buf_0_IBUF_OUT(0),
@@ -2470,13 +2470,6 @@ architecture STRUCTURE of design_1 is
     dataOut : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component design_1_NET2FPGA_base_conver_0_1;
-  component design_1_NET2FPGA_base_sync_0_0 is
-  port (
-    clk125 : in STD_LOGIC;
-    dataIn : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    dataOut : out STD_LOGIC_VECTOR ( 7 downto 0 )
-  );
-  end component design_1_NET2FPGA_base_sync_0_0;
   component design_1_NET2FPGA_base_conver_0_2 is
   port (
     clk : in STD_LOGIC;
@@ -2491,9 +2484,22 @@ architecture STRUCTURE of design_1 is
     dataOut : out STD_LOGIC_VECTOR ( 13 downto 0 )
   );
   end component design_1_NET2FPGA_base_convertType_32_14_DAC1_0;
+  component design_1_NET2FPGA_base_DAC_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    dac_clk : in STD_LOGIC;
+    dac_data1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_data2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_dat_o : out STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_clk_o : out STD_LOGIC;
+    dac_wrt_o : out STD_LOGIC;
+    dac_sel_o : out STD_LOGIC;
+    dac_rst_o : out STD_LOGIC
+  );
+  end component design_1_NET2FPGA_base_DAC_0_0;
   component design_1_NET2FPGA_base_DSP_co_0_0 is
   port (
-    clk125 : in STD_LOGIC;
+    clk : in STD_LOGIC;
     regAddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     regVal : in STD_LOGIC_VECTOR ( 31 downto 0 );
     regWrtEn : in STD_LOGIC;
@@ -2506,19 +2512,13 @@ architecture STRUCTURE of design_1 is
     led : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component design_1_NET2FPGA_base_DSP_co_0_0;
-  component design_1_NET2FPGA_base_DAC_0_0 is
+  component design_1_NET2FPGA_base_sync_0_0 is
   port (
-    clk125 : in STD_LOGIC;
-    clk250 : in STD_LOGIC;
-    dac_data1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    dac_data2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    dac_dat_o : out STD_LOGIC_VECTOR ( 13 downto 0 );
-    dac_clk_o : out STD_LOGIC;
-    dac_wrt_o : out STD_LOGIC;
-    dac_sel_o : out STD_LOGIC;
-    dac_rst_o : out STD_LOGIC
+    clk : in STD_LOGIC;
+    dataIn : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    dataOut : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
-  end component design_1_NET2FPGA_base_DAC_0_0;
+  end component design_1_NET2FPGA_base_sync_0_0;
   signal ADC_and_DAC_clk_clk250 : STD_LOGIC;
   signal ADC_and_DAC_clk_clk_out1 : STD_LOGIC;
   signal ADC_clk_adc_cdcs_o : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -2614,14 +2614,14 @@ ADC: entity work.ADC_imp_TF1HV4
       adc_cdcs_o(0) => ADC_clk_adc_cdcs_o(0),
       adc_clk_n_i(0) => adc_clk_n_i_1,
       adc_clk_p_i(0) => adc_clk_p_i_1,
-      clk125 => ADC_and_DAC_clk_clk_out1,
-      clk250 => ADC_and_DAC_clk_clk250,
+      clk => ADC_and_DAC_clk_clk_out1,
+      dac_clk => ADC_and_DAC_clk_clk250,
       reset => PS_ZYNQ_peripheral_reset(0)
     );
 DAC: component design_1_NET2FPGA_base_DAC_0_0
      port map (
-      clk125 => ADC_and_DAC_clk_clk_out1,
-      clk250 => ADC_and_DAC_clk_clk250,
+      clk => ADC_and_DAC_clk_clk_out1,
+      dac_clk => ADC_and_DAC_clk_clk250,
       dac_clk_o => NET2FPGA_base_DAC_dac_clk_o,
       dac_dat_o(13 downto 0) => NET2FPGA_base_DAC_dac_dat_o(13 downto 0),
       dac_data1(13 downto 0) => NET2FPGA_base_DSP_co_0_dac_data1_o(13 downto 0),
@@ -2634,7 +2634,7 @@ DSP_core: component design_1_NET2FPGA_base_DSP_co_0_0
      port map (
       adc1(31 downto 0) => NET2FPGA_base_conver_0_dataOut(31 downto 0),
       adc2(31 downto 0) => NET2FPGA_base_convertType_14_32_ADC2_dataOut(31 downto 0),
-      clk125 => ADC_and_DAC_clk_clk_out1,
+      clk => ADC_and_DAC_clk_clk_out1,
       dac1(31 downto 0) => NET2FPGA_base_DSP_core_dac1(31 downto 0),
       dac2(31 downto 0) => NET2FPGA_base_DSP_core_dac2(31 downto 0),
       digitalIn(7 downto 0) => NET2FPGA_base_sync_0_dataOut(7 downto 0),
@@ -2699,7 +2699,7 @@ convertType_32_14_DAC2: component design_1_NET2FPGA_base_convertType_32_14_DAC1_
     );
 sync_digitalIn: component design_1_NET2FPGA_base_sync_0_0
      port map (
-      clk125 => ADC_and_DAC_clk_clk_out1,
+      clk => ADC_and_DAC_clk_clk_out1,
       dataIn(7 downto 0) => digital_i_1(7 downto 0),
       dataOut(7 downto 0) => NET2FPGA_base_sync_0_dataOut(7 downto 0)
     );

@@ -12,5 +12,5 @@
 const1Bit[0]=0
 # const1Bit[0]=1 
 # const1Bit[3]=1 
-const32Bit[0]=0*2**30
+const32Bit[0]=2**30
 # const32Bit[1]=1024 

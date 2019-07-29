@@ -55,8 +55,8 @@ USE ieee.numeric_std.ALL;
 
 ENTITY design_1_NET2FPGA_base_DAC_0_0 IS
   PORT (
-    clk125 : IN STD_LOGIC;
-    clk250 : IN STD_LOGIC;
+    clk : IN STD_LOGIC;
+    dac_clk : IN STD_LOGIC;
     dac_data1 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
     dac_data2 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
     dac_dat_o : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
@@ -72,8 +72,8 @@ ARCHITECTURE design_1_NET2FPGA_base_DAC_0_0_arch OF design_1_NET2FPGA_base_DAC_0
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF design_1_NET2FPGA_base_DAC_0_0_arch: ARCHITECTURE IS "yes";
   COMPONENT NET2FPGA_base_DAC IS
     PORT (
-      clk125 : IN STD_LOGIC;
-      clk250 : IN STD_LOGIC;
+      clk : IN STD_LOGIC;
+      dac_clk : IN STD_LOGIC;
       dac_data1 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
       dac_data2 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
       dac_dat_o : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
@@ -85,11 +85,17 @@ ARCHITECTURE design_1_NET2FPGA_base_DAC_0_0_arch OF design_1_NET2FPGA_base_DAC_0
   END COMPONENT NET2FPGA_base_DAC;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF design_1_NET2FPGA_base_DAC_0_0_arch: ARCHITECTURE IS "module_ref";
+  ATTRIBUTE X_INTERFACE_INFO : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER OF dac_clk: SIGNAL IS "XIL_INTERFACENAME dac_clk, FREQ_HZ 250000000, PHASE -90.0, CLK_DOMAIN /ADC/clk_wiz_clk_out1, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF dac_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 dac_clk CLK";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 125000000, PHASE 0.0, CLK_DOMAIN /ADC/clk_wiz_clk_out1, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
 BEGIN
   U0 : NET2FPGA_base_DAC
     PORT MAP (
-      clk125 => clk125,
-      clk250 => clk250,
+      clk => clk,
+      dac_clk => dac_clk,
       dac_data1 => dac_data1,
       dac_data2 => dac_data2,
       dac_dat_o => dac_dat_o,

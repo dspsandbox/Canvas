@@ -55,7 +55,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY design_1_NET2FPGA_base_DSP_co_0_0 IS
   PORT (
-    clk125 : IN STD_LOGIC;
+    clk : IN STD_LOGIC;
     regAddr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     regVal : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     regWrtEn : IN STD_LOGIC;
@@ -78,7 +78,7 @@ ARCHITECTURE design_1_NET2FPGA_base_DSP_co_0_0_arch OF design_1_NET2FPGA_base_DS
       CONSTANT_REGISTER_DEPTH : INTEGER
     );
     PORT (
-      clk125 : IN STD_LOGIC;
+      clk : IN STD_LOGIC;
       regAddr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       regVal : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       regWrtEn : IN STD_LOGIC;
@@ -99,6 +99,10 @@ ARCHITECTURE design_1_NET2FPGA_base_DSP_co_0_0_arch OF design_1_NET2FPGA_base_DS
   ATTRIBUTE CORE_GENERATION_INFO OF design_1_NET2FPGA_base_DSP_co_0_0_arch: ARCHITECTURE IS "design_1_NET2FPGA_base_DSP_co_0_0,NET2FPGA_base_DSP_core,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=NET2FPGA_base_DSP_core,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,PORT_WIDTH=32,CONSTANT_REGISTER_DEPTH=8}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF design_1_NET2FPGA_base_DSP_co_0_0_arch: ARCHITECTURE IS "module_ref";
+  ATTRIBUTE X_INTERFACE_INFO : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 125000000, PHASE 0.0, CLK_DOMAIN /ADC/clk_wiz_clk_out1, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
 BEGIN
   U0 : NET2FPGA_base_DSP_core
     GENERIC MAP (
@@ -106,7 +110,7 @@ BEGIN
       CONSTANT_REGISTER_DEPTH => 8
     )
     PORT MAP (
-      clk125 => clk125,
+      clk => clk,
       regAddr => regAddr,
       regVal => regVal,
       regWrtEn => regWrtEn,

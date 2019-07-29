@@ -24,7 +24,7 @@ use xil_defaultlib.all;
 entity NET2FPGA_base_DSP_core is
 	Generic(PORT_WIDTH : integer := 32;
 			CONSTANT_REGISTER_DEPTH : integer := 8);
-    Port ( clk125 : in STD_LOGIC;
+    Port ( clk : in STD_LOGIC;
            regAddr : in STD_LOGIC_VECTOR (31 downto 0);
            regVal : in STD_LOGIC_VECTOR (31 downto 0);
            regWrtEn : in STD_LOGIC;
@@ -44,6 +44,13 @@ type constantRegister1BitType is array (((2**CONSTANT_REGISTER_DEPTH)-1) downto 
 
 signal constantRegister32Bit :  constantRegister32BitType:= (others=>(others=>'0'));
 signal constantRegister1Bit :  constantRegister1BitType:= (others=>'0');
+signal adc1_reg : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= ((PORT_WIDTH-1)=>'1',others=>'0');
+signal adc2_reg : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= ((PORT_WIDTH-1)=>'1',others=>'0');
+signal dac1_reg : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= ((PORT_WIDTH-1)=>'1',others=>'0');
+signal dac2_reg : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= ((PORT_WIDTH-1)=>'1',others=>'0');
+signal digitalIn_reg : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
+signal digitalOut_reg : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
+signal led_reg : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
 
 ---------------------------------------------------------------------------------------------------
 --NET2FPGA SIGNALS START
@@ -51,13 +58,13 @@ signal constantRegister1Bit :  constantRegister1BitType:= (others=>'0');
 ---------------------------------------------------------------------------------------------------
 
 begin
-	process(clk125)
+	process(clk)
 	variable regAddr_var : integer :=0;
 	variable regVal32Bit_var : STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0):= (others=>'0');
 	variable regVal1Bit_var : STD_LOGIC:='0';
 	variable regType: STD_LOGIC := '0';  --   regType=1 -> 32bit   regType=0 -> 1 bit
 	begin
-		if rising_edge(clk125) then
+		if rising_edge(clk) then
 		--Parse communication for setting constants
 			if regWrtEn='1' then
 				regType:= regAddr(31);
@@ -75,6 +82,14 @@ begin
 		end if;
 	end process;
 
+--port <-> register assignements
+adc1_reg<=adc1;
+adc2_reg<=adc2;
+dac1<=dac1_reg;
+dac2<=dac1_reg;
+digitalIn_reg<=digitalIn;
+digitalOut<=digitalOut_reg;
+led<=led_reg;
 ---------------------------------------------------------------------------------------------------
 --NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS START
 --NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS END

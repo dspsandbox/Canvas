@@ -19,8 +19,8 @@ library UNISIM;
 use UNISIM.VComponents.all;
 
 entity NET2FPGA_base_DAC is
-    Port ( clk125 : in STD_LOGIC;
-    	   clk250 : in STD_LOGIC;
+    Port ( clk : in STD_LOGIC;
+    	   dac_clk : in STD_LOGIC;
            dac_data1 : in STD_LOGIC_VECTOR (13 downto 0);
            dac_data2 : in STD_LOGIC_VECTOR (13 downto 0);
            dac_dat_o : out STD_LOGIC_VECTOR (13 downto 0);
@@ -42,7 +42,7 @@ architecture Behavioral of NET2FPGA_base_DAC is
 		SRTYPE => "SYNC") -- Reset Type ("ASYNC" or "SYNC")
 		port map (
 		Q => dac_clk_o, -- 1-bit DDR output
-		C => clk250, -- 1-bit clock input
+		C => dac_clk, -- 1-bit clock input
 		CE => '1', -- 1-bit clock enable input
 		D1 => '1', -- 1-bit data input (positive edge)
 		D2 => '0', -- 1-bit data input (negative edge)
@@ -57,7 +57,7 @@ architecture Behavioral of NET2FPGA_base_DAC is
 		SRTYPE => "SYNC") -- Reset Type ("ASYNC" or "SYNC")
 		port map (
 		Q => dac_wrt_o, -- 1-bit DDR output
-		C => clk250, -- 1-bit clock input
+		C => dac_clk, -- 1-bit clock input
 		CE => '1', -- 1-bit clock enable input
 		D1 => '1', -- 1-bit data input (positive edge)
 		D2 => '0', -- 1-bit data input (negative edge)
@@ -72,7 +72,7 @@ architecture Behavioral of NET2FPGA_base_DAC is
 		SRTYPE => "SYNC") -- Reset Type ("ASYNC" or "SYNC")
 		port map (
 		Q => dac_sel_o, -- 1-bit DDR output
-		C => clk125, -- 1-bit clock input
+		C => clk, -- 1-bit clock input
 		CE => '1', -- 1-bit clock enable input
 		D1 => '0', -- 1-bit data input (positive edge)
 		D2 => '1', -- 1-bit data input (negative edge)
@@ -88,7 +88,7 @@ architecture Behavioral of NET2FPGA_base_DAC is
 			SRTYPE => "SYNC") -- Reset Type ("ASYNC" or "SYNC")
 			port map (
 			Q => dac_dat_o(i), -- 1-bit DDR output
-			C => clk125, -- 1-bit clock input
+			C => clk, -- 1-bit clock input
 			CE => '1', -- 1-bit clock enable input
 			D1 => dac_data1(i), -- 1-bit data input (positive edge)
 			D2 => dac_data2(i), -- 1-bit data input (negative edge)

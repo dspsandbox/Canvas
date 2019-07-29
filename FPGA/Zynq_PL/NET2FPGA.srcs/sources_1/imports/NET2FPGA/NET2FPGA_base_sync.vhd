@@ -24,7 +24,7 @@ use xil_defaultlib.all;
 entity NET2FPGA_base_sync is
 	Generic(PORT_WIDTH : integer := 8;
 			CONSTANT_REGISTER_DEPTH : integer := 8);
-    Port ( clk125 : in STD_LOGIC;
+    Port ( clk : in STD_LOGIC;
            dataIn: in STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0);
            dataOut: out STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0)
          );
@@ -37,10 +37,10 @@ signal dataMeta: STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= (others=>'0');
 
 
 begin
-	process(clk125)
+	process(clk)
 	
 	begin
-		if rising_edge(clk125) then
+		if rising_edge(clk) then
             dataMeta<=dataIn;
             dataOut<=dataMeta;
 		end if;

@@ -86,17 +86,17 @@ begin
 --X_NET2FPGA_32Bit_DAC1_0:
 dac1<=N000;
 
---X_NET2FPGA_32Bit_ADC1_0:
-N000<=adc1;
+--X_NET2FPGA_32Bit_const_0:
+N000<=constantRegister32Bit(0);
 
 --X_NET2FPGA_32Bit_DAC2_0:
 dac2<=N001;
 
 X_NET2FPGA_32Bit_add_0 : entity xil_defaultlib.NET2FPGA_32Bit_add
-port map(clk=>clk125,reset=>N003,dataInA=>N000,dataInB=>N002,dataOut=>N001);
+port map(clk=>clk125,reset=>N003,dataInA=>N002,dataInB=>N000,dataOut=>N001);
 
---X_NET2FPGA_32Bit_const_0:
-N002<=constantRegister32Bit(0);
+--X_NET2FPGA_32Bit_ADC1_0:
+N002<=adc1;
 
 --X_NET2FPGA_1Bit_in0_0:
 N003<=digitalIn(0);

@@ -270,8 +270,8 @@ proc create_hier_cell_ADC { parentCell nameHier } {
   create_bd_pin -dir O -from 0 -to 0 adc_cdcs_o
   create_bd_pin -dir I -from 0 -to 0 -type clk adc_clk_n_i
   create_bd_pin -dir I -from 0 -to 0 -type clk adc_clk_p_i
-  create_bd_pin -dir O -type clk clk125
-  create_bd_pin -dir O -type clk clk250
+  create_bd_pin -dir O -type clk clk
+  create_bd_pin -dir O -type clk dac_clk
   create_bd_pin -dir I -type rst reset
 
   # Create instance: BUFG, and set properties
@@ -318,8 +318,8 @@ proc create_hier_cell_ADC { parentCell nameHier } {
   set const_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 const_1 ]
 
   # Create port connections
-  connect_bd_net -net ADC_and_DAC_clk_clk250 [get_bd_pins clk250] [get_bd_pins clk_wiz/clk_out2]
-  connect_bd_net -net ADC_and_DAC_clk_clk_out1 [get_bd_pins clk125] [get_bd_pins clk_wiz/clk_out1]
+  connect_bd_net -net ADC_and_DAC_clk_clk250 [get_bd_pins dac_clk] [get_bd_pins clk_wiz/clk_out2]
+  connect_bd_net -net ADC_and_DAC_clk_clk_out1 [get_bd_pins clk] [get_bd_pins clk_wiz/clk_out1]
   connect_bd_net -net ADC_clk_adc_cdcs_o [get_bd_pins adc_cdcs_o] [get_bd_pins const_1/dout]
   connect_bd_net -net PS_ZYNQ_peripheral_reset [get_bd_pins reset] [get_bd_pins clk_wiz/reset]
   connect_bd_net -net adc_clk_n_i_1 [get_bd_pins adc_clk_n_i] [get_bd_pins IBUF/IBUF_DS_N]
@@ -477,8 +477,8 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins PS_ZYNQ/FIXED_IO]
 
   # Create port connections
-  connect_bd_net -net ADC_and_DAC_clk_clk250 [get_bd_pins ADC/clk250] [get_bd_pins DAC/clk250]
-  connect_bd_net -net ADC_and_DAC_clk_clk_out1 [get_bd_pins ADC/clk125] [get_bd_pins DAC/clk125] [get_bd_pins DSP_core/clk125] [get_bd_pins PS_ZYNQ/M01_ACLK] [get_bd_pins convertType_14_32_ADC1/clk] [get_bd_pins convertType_14_32_ADC2/clk] [get_bd_pins convertType_32_14_DAC1/clk] [get_bd_pins convertType_32_14_DAC2/clk] [get_bd_pins sync_digitalIn/clk125]
+  connect_bd_net -net ADC_and_DAC_clk_clk250 [get_bd_pins ADC/dac_clk] [get_bd_pins DAC/dac_clk]
+  connect_bd_net -net ADC_and_DAC_clk_clk_out1 [get_bd_pins ADC/clk] [get_bd_pins DAC/clk] [get_bd_pins DSP_core/clk] [get_bd_pins PS_ZYNQ/M01_ACLK] [get_bd_pins convertType_14_32_ADC1/clk] [get_bd_pins convertType_14_32_ADC2/clk] [get_bd_pins convertType_32_14_DAC1/clk] [get_bd_pins convertType_32_14_DAC2/clk] [get_bd_pins sync_digitalIn/clk125]
   connect_bd_net -net ADC_clk_adc_cdcs_o [get_bd_ports adc_cdcs_o] [get_bd_pins ADC/adc_cdcs_o]
   connect_bd_net -net NET2FPGA_base_DAC_dac_clk_o [get_bd_ports dac_clk_o] [get_bd_pins DAC/dac_clk_o]
   connect_bd_net -net NET2FPGA_base_DAC_dac_dat_o [get_bd_ports dac_data_o] [get_bd_pins DAC/dac_dat_o]

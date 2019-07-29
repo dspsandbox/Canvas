@@ -18,8 +18,8 @@ preplace portBus adc_cdcs_o -pg 1 -y 210 -defaultsOSRD
 preplace portBus adc_data2_i -pg 1 -y 515 -defaultsOSRD
 preplace portBus dac_wrt_o -pg 1 -y 320 -defaultsOSRD
 preplace inst DAC -pg 1 -lvl 6 -y 320 -defaultsOSRD
-preplace inst convertType_32_14_DAC1 -pg 1 -lvl 5 -y 330 -defaultsOSRD -resize 325 93
 preplace inst sync_digitalIn -pg 1 -lvl 2 -y 630 -defaultsOSRD -resize 318 93
+preplace inst convertType_32_14_DAC1 -pg 1 -lvl 5 -y 330 -defaultsOSRD -resize 325 93
 preplace inst DSP_core -pg 1 -lvl 4 -y 468 -defaultsOSRD
 preplace inst convertType_32_14_DAC2 -pg 1 -lvl 5 -y 450 -defaultsOSRD -resize 336 95
 preplace inst PS_ZYNQ -pg 1 -lvl 3 -y 110 -defaultsOSRD
