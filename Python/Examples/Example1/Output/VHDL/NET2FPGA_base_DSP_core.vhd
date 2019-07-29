@@ -55,11 +55,7 @@ signal led_reg : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
 ---------------------------------------------------------------------------------------------------
 --NET2FPGA SIGNALS START
 signal N000 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
-signal N001 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
-signal N002 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
-signal N003 : STD_LOGIC := '0';
-signal N004 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
-signal N005 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
+signal N001 : STD_LOGIC := '0';
 --NET2FPGA SIGNALS END
 ---------------------------------------------------------------------------------------------------
 
@@ -84,9 +80,6 @@ begin
 					constantRegister1Bit(regAddr_var)<=regVal1Bit_var;
 				end if;	
 			end if;
-		
-		
-		end if;	
 		-- IN/OUR REGISTERS	
 		adc1_reg<=adc1;
 		adc2_reg<=adc2;
@@ -95,6 +88,7 @@ begin
 		digitalIn_reg<=digitalIn;
 		digitalOut<=digitalOut_reg;
 		led<=led_reg;
+		end if;	
 	end process;
 
 
@@ -103,29 +97,17 @@ begin
 --X_NET2FPGA_32Bit_DAC1_0:
 dac1_reg<=N000;
 
-X_NET2FPGA_32Bit_switch_0 : entity xil_defaultlib.NET2FPGA_32Bit_switch
-port map(clk=>clk,dataInSwitch=>N003,dataInA=>N001,dataInB=>N002,dataOut=>N000);
-
 --X_NET2FPGA_32Bit_ADC1_0:
-N001<=adc1_reg;
-
---X_NET2FPGA_32Bit_const_0:
-N002<=constantRegister32Bit(0);
-
---X_NET2FPGA_1Bit_in0_0:
-N003<=digitalIn_reg(0);
+N000<=adc1_reg;
 
 --X_NET2FPGA_32Bit_DAC2_0:
-dac2_reg<=N004;
-
-X_NET2FPGA_32Bit_switch_1 : entity xil_defaultlib.NET2FPGA_32Bit_switch
-port map(clk=>clk,dataInSwitch=>N003,dataInA=>N001,dataInB=>N005,dataOut=>N004);
-
---X_NET2FPGA_32Bit_const_1:
-N005<=constantRegister32Bit(1);
+dac2_reg<=N000;
 
 --X_NET2FPGA_1Bit_LED0_0:
-led_reg(0)<=N003;
+led_reg(0)<=N001;
+
+--X_NET2FPGA_1Bit_in0_0:
+N001<=digitalIn_reg(0);
 
 --NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS END
 ---------------------------------------------------------------------------------------------------
