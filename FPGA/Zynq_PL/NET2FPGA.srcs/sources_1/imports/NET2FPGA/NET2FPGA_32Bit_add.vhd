@@ -30,29 +30,15 @@ entity NET2FPGA_32Bit_add is
 end NET2FPGA_32Bit_add;
 
 architecture Behavioral of NET2FPGA_32Bit_add is
-
-COMPONENT c_add_0
-  PORT (
-    A : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    B : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    CLK : IN STD_LOGIC;
-    SCLR : IN STD_LOGIC;
-    S : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
-  );
-END COMPONENT;
-
-
-
 begin
---INSTANTIATION OF DSP ADDER	
-DSP_Add_core : c_add_0
-  PORT MAP (
-    A => dataInA,
-    B => dataInB,
-    CLK => CLK,
-    SCLR => reset,
-    S => dataOut
-  );
-
-
+	process(clk)
+	begin
+		if rising_edge(clk) then
+            if reset='1' then
+                dataOut<=(others=>'0');
+            else
+                dataOut<=STD_LOGIC_VECTOR(signed(dataInA)+signed(dataInB));
+            end if;
+        end if;
+    end process;
 end Behavioral;
