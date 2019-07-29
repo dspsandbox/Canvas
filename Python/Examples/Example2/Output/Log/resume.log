@@ -1,0 +1,25 @@
+2019-07-29T18:42:48.295000
+CREATE WORKSPACE                                OK
+--------------------------------------------------
+2019-07-29T18:42:48.330000
+SET NET INPUT                                   OK
+--------------------------------------------------
+2019-07-29T18:42:48.369000
+RUN NET PARSER                                  OK
+--------------------------------------------------
+2019-07-29T18:42:48.408000
+CHECK DATABASE                                  OK
+--------------------------------------------------
+2019-07-29T18:42:48.458000
+RUN NET2VHDL                                    OK
+--------------------------------------------------
+2019-07-29T18:43:16.476000
+SYNTHESIS/IMPLEMENTATION                     ERROR
+
+Traceback (most recent call last):
+  File "E:\NET2FPGA\Server_container\VivadoServer.py", line 135, in loop
+    copyfile(filePathSynthesisLog_vivado,filePathSynthesisLog)
+  File "C:\Users\pgomez\AppData\Local\Continuum\Anaconda2\lib\shutil.py", line 96, in copyfile
+    with open(src, 'rb') as fsrc:
+IOError: [Errno 2] No such file or directory: 'IMPLEMENTATION\\_LOCAL\\FPGA\\Zynq_PL\\NET2FPGA.runs\\synth_1\\runme.log'
+
