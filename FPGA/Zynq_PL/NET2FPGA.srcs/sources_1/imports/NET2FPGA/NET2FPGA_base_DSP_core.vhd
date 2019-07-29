@@ -76,20 +76,22 @@ begin
 					constantRegister32Bit(regAddr_var)<=regVal32Bit_var;
 				else
 					constantRegister1Bit(regAddr_var)<=regVal1Bit_var;
-				end if;
+				end if;	
 			end if;
-
-		end if;
+		
+		
+		end if;	
+		-- IN/OUR REGISTERS	
+		adc1_reg<=adc1;
+		adc2_reg<=adc2;
+		dac1<=dac1_reg;
+		dac2<=dac1_reg;
+		digitalIn_reg<=digitalIn;
+		digitalOut<=digitalOut_reg;
+		led<=led_reg;
 	end process;
 
---port <-> register assignements
-adc1_reg<=adc1;
-adc2_reg<=adc2;
-dac1<=dac1_reg;
-dac2<=dac1_reg;
-digitalIn_reg<=digitalIn;
-digitalOut<=digitalOut_reg;
-led<=led_reg;
+
 ---------------------------------------------------------------------------------------------------
 --NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS START
 --NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS END

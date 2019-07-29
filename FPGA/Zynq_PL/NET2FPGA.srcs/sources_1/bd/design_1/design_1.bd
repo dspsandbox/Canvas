@@ -43,9 +43,9 @@
       "convertType_14_32_ADC2": "",
       "convertType_32_14_DAC1": "",
       "convertType_32_14_DAC2": "",
-      "DSP_core": "",
       "sync_digitalIn": "",
-      "DAC": ""
+      "DAC": "",
+      "DSP_core": ""
     },
     "interface_ports": {
       "DDR": {
@@ -857,16 +857,16 @@
                   }
                 },
                 "interface_nets": {
-                  "m01_couplers_to_auto_cc": {
-                    "interface_ports": [
-                      "S_AXI",
-                      "auto_cc/S_AXI"
-                    ]
-                  },
                   "auto_cc_to_m01_couplers": {
                     "interface_ports": [
                       "M_AXI",
                       "auto_cc/M_AXI"
+                    ]
+                  },
+                  "m01_couplers_to_auto_cc": {
+                    "interface_ports": [
+                      "S_AXI",
+                      "auto_cc/S_AXI"
                     ]
                   }
                 },
@@ -949,16 +949,16 @@
                   }
                 },
                 "interface_nets": {
-                  "auto_cc_to_m02_couplers": {
-                    "interface_ports": [
-                      "M_AXI",
-                      "auto_cc/M_AXI"
-                    ]
-                  },
                   "m02_couplers_to_auto_cc": {
                     "interface_ports": [
                       "S_AXI",
                       "auto_cc/S_AXI"
+                    ]
+                  },
+                  "auto_cc_to_m02_couplers": {
+                    "interface_ports": [
+                      "M_AXI",
+                      "auto_cc/M_AXI"
                     ]
                   }
                 },
@@ -991,6 +991,12 @@
               }
             },
             "interface_nets": {
+              "xbar_to_m02_couplers": {
+                "interface_ports": [
+                  "xbar/M02_AXI",
+                  "m02_couplers/S_AXI"
+                ]
+              },
               "axi_interconnect_to_s00_couplers": {
                 "interface_ports": [
                   "S00_AXI",
@@ -1001,12 +1007,6 @@
                 "interface_ports": [
                   "s00_couplers/M_AXI",
                   "xbar/S00_AXI"
-                ]
-              },
-              "m00_couplers_to_axi_interconnect": {
-                "interface_ports": [
-                  "M00_AXI",
-                  "m00_couplers/M_AXI"
                 ]
               },
               "xbar_to_m01_couplers": {
@@ -1021,10 +1021,10 @@
                   "m02_couplers/M_AXI"
                 ]
               },
-              "xbar_to_m02_couplers": {
+              "m00_couplers_to_axi_interconnect": {
                 "interface_ports": [
-                  "xbar/M02_AXI",
-                  "m02_couplers/S_AXI"
+                  "M00_AXI",
+                  "m00_couplers/M_AXI"
                 ]
               },
               "m01_couplers_to_axi_interconnect": {
@@ -1113,10 +1113,10 @@
           }
         },
         "interface_nets": {
-          "axi_interconnect_0_M02_AXI": {
+          "processing_system7_0_M_AXI_GP0": {
             "interface_ports": [
-              "axi_interconnect/M02_AXI",
-              "axi_gpio_WrtEn/S_AXI"
+              "processing_system7/M_AXI_GP0",
+              "axi_interconnect/S00_AXI"
             ]
           },
           "axi_interconnect_0_M01_AXI": {
@@ -1125,16 +1125,16 @@
               "axi_gpio_regVal/S_AXI"
             ]
           },
-          "axi_interconnect_0_M00_AXI": {
+          "processing_system7_0_DDR": {
             "interface_ports": [
-              "axi_interconnect/M00_AXI",
-              "axi_gpio_regAddr/S_AXI"
+              "DDR",
+              "processing_system7/DDR"
             ]
           },
-          "processing_system7_0_M_AXI_GP0": {
+          "axi_interconnect_0_M02_AXI": {
             "interface_ports": [
-              "processing_system7/M_AXI_GP0",
-              "axi_interconnect/S00_AXI"
+              "axi_interconnect/M02_AXI",
+              "axi_gpio_WrtEn/S_AXI"
             ]
           },
           "processing_system7_0_FIXED_IO": {
@@ -1143,10 +1143,10 @@
               "processing_system7/FIXED_IO"
             ]
           },
-          "processing_system7_0_DDR": {
+          "axi_interconnect_0_M00_AXI": {
             "interface_ports": [
-              "DDR",
-              "processing_system7/DDR"
+              "axi_interconnect/M00_AXI",
+              "axi_gpio_regAddr/S_AXI"
             ]
           }
         },
@@ -1385,83 +1385,6 @@
           }
         }
       },
-      "DSP_core": {
-        "vlnv": "xilinx.com:module_ref:NET2FPGA_base_DSP_core:1.0",
-        "xci_name": "design_1_NET2FPGA_base_DSP_co_0_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "NET2FPGA_base_DSP_core",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "CLK_DOMAIN": {
-                "value": "/ADC/clk_wiz_clk_out1",
-                "value_src": "ip_prop"
-              },
-              "FREQ_HZ": {
-                "value": "125000000",
-                "value_src": "ip_prop"
-              },
-              "PHASE": {
-                "value": "0.0",
-                "value_src": "ip_prop"
-              }
-            }
-          },
-          "regAddr": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "regVal": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "regWrtEn": {
-            "direction": "I"
-          },
-          "adc1": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "adc2": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "digitalIn": {
-            "direction": "I",
-            "left": "7",
-            "right": "0"
-          },
-          "dac1": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "dac2": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "digitalOut": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "led": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          }
-        }
-      },
       "sync_digitalIn": {
         "vlnv": "xilinx.com:module_ref:NET2FPGA_base_sync:1.0",
         "xci_name": "design_1_NET2FPGA_base_sync_0_0",
@@ -1574,6 +1497,83 @@
             "direction": "O"
           }
         }
+      },
+      "DSP_core": {
+        "vlnv": "xilinx.com:module_ref:NET2FPGA_base_DSP_core:1.0",
+        "xci_name": "design_1_NET2FPGA_base_DSP_co_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "NET2FPGA_base_DSP_core",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "/ADC/clk_wiz_clk_out1",
+                "value_src": "ip_prop"
+              },
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "regAddr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "regVal": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "regWrtEn": {
+            "direction": "I"
+          },
+          "adc1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "adc2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "digitalIn": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "dac1": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "dac2": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "digitalOut": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "led": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -1629,9 +1629,9 @@
           "convertType_14_32_ADC2/clk",
           "convertType_32_14_DAC1/clk",
           "convertType_32_14_DAC2/clk",
-          "DSP_core/clk",
           "sync_digitalIn/clk",
-          "DAC/clk"
+          "DAC/clk",
+          "DSP_core/clk"
         ]
       },
       "adc_data2_i_1": {
