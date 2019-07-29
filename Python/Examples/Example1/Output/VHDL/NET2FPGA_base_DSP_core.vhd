@@ -58,9 +58,9 @@ signal N000 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',
 signal N001 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
 signal N002 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
 signal N003 : STD_LOGIC := '0';
-signal N004 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
 --NET2FPGA SIGNALS END
 ---------------------------------------------------------------------------------------------------
+
 
 begin
 	process(clk)
@@ -83,25 +83,26 @@ begin
 					constantRegister1Bit(regAddr_var)<=regVal1Bit_var;
 				end if;	
 			end if;
-		-- IN/OUR REGISTERS	
-		adc1_reg<=adc1;
-		adc2_reg<=adc2;
-		dac1<=dac1_reg;
-		dac2<=dac1_reg;
-		digitalIn_reg<=digitalIn;
-		digitalOut<=digitalOut_reg;
-		led<=led_reg;
+
 		end if;	
 	end process;
 
 
+    -- in/out signal assignements	
+    adc1_reg<=adc1;
+    adc2_reg<=adc2;
+    dac1<=dac1_reg;
+    dac2<=dac2_reg;
+    digitalIn_reg<=digitalIn;
+    digitalOut<=digitalOut_reg;
+    led<=led_reg;
 ---------------------------------------------------------------------------------------------------
 --NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS START
 --X_NET2FPGA_32Bit_DAC1_0:
 dac1_reg<=N000;
 
-X_NET2FPGA_32Bit_switch_0 : entity xil_defaultlib.NET2FPGA_32Bit_switch
-port map(clk=>clk,dataInSwitch=>N003,dataInA=>N001,dataInB=>N002,dataOut=>N000);
+X_NET2FPGA_32Bit_add_0 : entity xil_defaultlib.NET2FPGA_32Bit_add
+port map(clk=>clk,reset=>N003,dataInA=>N001,dataInB=>N002,dataOut=>N000);
 
 --X_NET2FPGA_32Bit_ADC1_0:
 N001<=adc1_reg;
@@ -111,12 +112,6 @@ N002<=adc2_reg;
 
 --X_NET2FPGA_1Bit_in0_0:
 N003<=digitalIn_reg(0);
-
---X_NET2FPGA_32Bit_DAC2_0:
-dac2_reg<=N004;
-
---X_NET2FPGA_32Bit_const_0:
-N004<=constantRegister32Bit(0);
 
 --X_NET2FPGA_1Bit_LED0_0:
 led_reg(0)<=N003;

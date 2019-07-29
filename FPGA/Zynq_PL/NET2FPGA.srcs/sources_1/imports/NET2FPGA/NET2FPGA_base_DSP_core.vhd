@@ -44,13 +44,13 @@ type constantRegister1BitType is array (((2**CONSTANT_REGISTER_DEPTH)-1) downto 
 
 signal constantRegister32Bit :  constantRegister32BitType:= (others=>(others=>'0'));
 signal constantRegister1Bit :  constantRegister1BitType:= (others=>'0');
-signal adc1_reg : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= ((PORT_WIDTH-1)=>'1',others=>'0');
-signal adc2_reg : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= ((PORT_WIDTH-1)=>'1',others=>'0');
-signal dac1_reg : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= ((PORT_WIDTH-1)=>'1',others=>'0');
-signal dac2_reg : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= ((PORT_WIDTH-1)=>'1',others=>'0');
-signal digitalIn_reg : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
-signal digitalOut_reg : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
-signal led_reg : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
+signal adc1_signal : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= (others=>'0');
+signal adc2_signal : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= (others=>'0');
+signal dac1_signal : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= (others=>'0');
+signal dac2_signal : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= (others=>'0');
+signal digitalIn_signal : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
+signal digitalOut_signal : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
+signal led_signal : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
 
 ---------------------------------------------------------------------------------------------------
 --NET2FPGA SIGNALS START
@@ -84,14 +84,14 @@ begin
 	end process;
 
 
-    -- in/out signal assignements	
-    adc1_reg<=adc1;
-    adc2_reg<=adc2;
-    dac1<=dac1_reg;
-    dac2<=dac2_reg;
-    digitalIn_reg<=digitalIn;
-    digitalOut<=digitalOut_reg;
-    led<=led_reg;
+    -- in/out port <-> signal assignements	
+    adc1_signal<=adc1;
+    adc2_signal<=adc2;
+    dac1<=dac1_signal;
+    dac2<=dac2_signal;
+    digitalIn_signal<=digitalIn;
+    digitalOut<=digitalOut_signal;
+    led<=led_signal;
 ---------------------------------------------------------------------------------------------------
 --NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS START
 --NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS END

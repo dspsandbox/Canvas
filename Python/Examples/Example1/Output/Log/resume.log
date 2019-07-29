@@ -1,23 +1,20 @@
-2019-07-29T15:10:48.497000
+2019-07-29T16:46:13.201000
 CREATE WORKSPACE                                OK
 --------------------------------------------------
-2019-07-29T15:10:48.908000
+2019-07-29T16:46:13.392000
 SET NET INPUT                                   OK
 --------------------------------------------------
-2019-07-29T15:10:51.243000
+2019-07-29T16:46:13.584000
 RUN NET PARSER                                  OK
 --------------------------------------------------
-2019-07-29T15:10:59.217000
+2019-07-29T16:46:13.808000
 CHECK DATABASE                                  OK
 --------------------------------------------------
-2019-07-29T15:11:00.179000
+2019-07-29T16:46:14.028000
 RUN NET2VHDL                                    OK
 --------------------------------------------------
-2019-07-29T15:13:38.613000
-SYNTHESIS/IMPLEMENTATION                     ERROR
-
-Traceback (most recent call last):
-  File "E:\NET2FPGA\Server_container\VivadoServer.py", line 131, in loop
-    os.system("cd "+pathVivadoProjectLocal+" & vivado -mode batch -source "+filePathTCL)
-KeyboardInterrupt
-
+2019-07-29T16:50:55.780000
+SYNTHESIS                                       OK
+--------------------------------------------------
+2019-07-29T16:50:55.783000
+IMPLEMENTATION                                  OK
