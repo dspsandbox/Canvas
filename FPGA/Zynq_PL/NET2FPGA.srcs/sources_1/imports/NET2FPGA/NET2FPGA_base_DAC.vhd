@@ -31,8 +31,19 @@ entity NET2FPGA_base_DAC is
 end NET2FPGA_base_DAC;
 
 architecture Behavioral of NET2FPGA_base_DAC is
-	begin
+	signal  dac_data1_reg :  STD_LOGIC_VECTOR (13 downto 0);
+    signal  dac_data2_reg :  STD_LOGIC_VECTOR (13 downto 0);
 	
+	begin
+		
+		process(clk)
+		begin
+			if rising_edge(clk) then
+				dac_data1_reg<=dac_data1;
+				dac_data2_reg<=dac_data2;
+			end if;
+		end process;
+
 	dac_rst_o<='0';
 	
 	ODDR_dac_clk : ODDR
@@ -90,8 +101,8 @@ architecture Behavioral of NET2FPGA_base_DAC is
 			Q => dac_dat_o(i), -- 1-bit DDR output
 			C => clk, -- 1-bit clock input
 			CE => '1', -- 1-bit clock enable input
-			D1 => dac_data1(i), -- 1-bit data input (positive edge)
-			D2 => dac_data2(i), -- 1-bit data input (negative edge)
+			D1 => dac_data1_reg(i), -- 1-bit data input (positive edge)
+			D2 => dac_data2_reg(i), -- 1-bit data input (negative edge)
 			R => '0', -- 1-bit reset input
 			S => '0' -- 1-bit set input
 			);	

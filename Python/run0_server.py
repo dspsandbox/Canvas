@@ -25,7 +25,7 @@ else:                                                                 #NO DATABA
     print("Waiting for synthesis/implementation.\nCoffee time...\n")  
     c.debug=False                                                     #Turn OFF print of messages 
     while(1): 
-        time.sleep(1)                                                 #Wait 1s
+        time.sleep(5)                                                 #Wait 5s
         activeProcess=c.getActiveProcess()                            #Get active process/status of the workspace on the server side
         if activeProcess=="OK/IDLE" or activeProcess=="ERROR":        #Waits for synthesis/implementation ready or an error flag
             break

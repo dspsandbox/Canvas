@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
---Date        : Mon Jul 29 10:28:11 2019
+--Date        : Mon Jul 29 11:07:50 2019
 --Host        : PC1091 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -2484,19 +2484,6 @@ architecture STRUCTURE of design_1 is
     dataOut : out STD_LOGIC_VECTOR ( 13 downto 0 )
   );
   end component design_1_NET2FPGA_base_convertType_32_14_DAC1_0;
-  component design_1_NET2FPGA_base_DAC_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    dac_clk : in STD_LOGIC;
-    dac_data1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    dac_data2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    dac_dat_o : out STD_LOGIC_VECTOR ( 13 downto 0 );
-    dac_clk_o : out STD_LOGIC;
-    dac_wrt_o : out STD_LOGIC;
-    dac_sel_o : out STD_LOGIC;
-    dac_rst_o : out STD_LOGIC
-  );
-  end component design_1_NET2FPGA_base_DAC_0_0;
   component design_1_NET2FPGA_base_DSP_co_0_0 is
   port (
     clk : in STD_LOGIC;
@@ -2519,6 +2506,19 @@ architecture STRUCTURE of design_1 is
     dataOut : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component design_1_NET2FPGA_base_sync_0_0;
+  component design_1_NET2FPGA_base_DAC_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    dac_clk : in STD_LOGIC;
+    dac_data1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_data2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_dat_o : out STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_clk_o : out STD_LOGIC;
+    dac_wrt_o : out STD_LOGIC;
+    dac_sel_o : out STD_LOGIC;
+    dac_rst_o : out STD_LOGIC
+  );
+  end component design_1_NET2FPGA_base_DAC_0_0;
   signal ADC_and_DAC_clk_clk250 : STD_LOGIC;
   signal ADC_and_DAC_clk_clk_out1 : STD_LOGIC;
   signal ADC_clk_adc_cdcs_o : STD_LOGIC_VECTOR ( 0 to 0 );
