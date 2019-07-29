@@ -56,8 +56,8 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out1___125.000______0.000______50.0______119.348_____96.948
-// clk_out2___250.000____-90.000______50.0______104.759_____96.948
+// clk_out1___125.000______0.000______50.0______128.871____112.379
+// clk_out2___250.000____-120.000______50.0______112.962____112.379
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -75,15 +75,17 @@ module design_1_clk_wiz_0_1_clk_wiz
   // Status and control signals
   input         reset,
   output        locked,
-  input         clk_in1
+  input         clk_in1_p,
+  input         clk_in1_n
  );
   // Input buffering
   //------------------------------------
 wire clk_in1_design_1_clk_wiz_0_1;
 wire clk_in2_design_1_clk_wiz_0_1;
-  IBUF clkin1_ibufg
-   (.O (clk_in1_design_1_clk_wiz_0_1),
-    .I (clk_in1));
+  IBUFDS clkin1_ibufgds
+   (.O  (clk_in1_design_1_clk_wiz_0_1),
+    .I  (clk_in1_p),
+    .IB (clk_in1_n));
 
 
 
@@ -124,20 +126,20 @@ wire clk_in2_design_1_clk_wiz_0_1;
   wire        reset_high;
 
   MMCME2_ADV
-  #(.BANDWIDTH            ("OPTIMIZED"),
+  #(.BANDWIDTH            ("HIGH"),
     .CLKOUT4_CASCADE      ("FALSE"),
     .COMPENSATION         ("ZHOLD"),
     .STARTUP_WAIT         ("FALSE"),
     .DIVCLK_DIVIDE        (1),
-    .CLKFBOUT_MULT_F      (8.000),
+    .CLKFBOUT_MULT_F      (6.000),
     .CLKFBOUT_PHASE       (0.000),
     .CLKFBOUT_USE_FINE_PS ("FALSE"),
-    .CLKOUT0_DIVIDE_F     (8.000),
+    .CLKOUT0_DIVIDE_F     (6.000),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKOUT1_DIVIDE       (4),
-    .CLKOUT1_PHASE        (-90.000),
+    .CLKOUT1_DIVIDE       (3),
+    .CLKOUT1_PHASE        (-120.000),
     .CLKOUT1_DUTY_CYCLE   (0.500),
     .CLKOUT1_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (8.000))

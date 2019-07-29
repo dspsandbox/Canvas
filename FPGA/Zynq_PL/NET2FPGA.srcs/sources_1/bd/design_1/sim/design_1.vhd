@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
---Date        : Mon Jul 29 12:55:36 2019
+--Date        : Mon Jul 29 14:28:57 2019
 --Host        : PC1091 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -23,12 +23,6 @@ entity ADC_imp_TF1HV4 is
 end ADC_imp_TF1HV4;
 
 architecture STRUCTURE of ADC_imp_TF1HV4 is
-  component design_1_util_ds_buf_0_1 is
-  port (
-    BUFG_I : in STD_LOGIC_VECTOR ( 0 to 0 );
-    BUFG_O : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component design_1_util_ds_buf_0_1;
   component design_1_xlconstant_0_1 is
   port (
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
@@ -36,28 +30,20 @@ architecture STRUCTURE of ADC_imp_TF1HV4 is
   end component design_1_xlconstant_0_1;
   component design_1_clk_wiz_0_1 is
   port (
+    clk_in1_p : in STD_LOGIC;
+    clk_in1_n : in STD_LOGIC;
     reset : in STD_LOGIC;
-    clk_in1 : in STD_LOGIC;
     clk_out1 : out STD_LOGIC;
     clk_out2 : out STD_LOGIC;
     locked : out STD_LOGIC
   );
   end component design_1_clk_wiz_0_1;
-  component design_1_util_ds_buf_0_0 is
-  port (
-    IBUF_DS_P : in STD_LOGIC_VECTOR ( 0 to 0 );
-    IBUF_DS_N : in STD_LOGIC_VECTOR ( 0 to 0 );
-    IBUF_OUT : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component design_1_util_ds_buf_0_0;
   signal ADC_and_DAC_clk_clk250 : STD_LOGIC;
   signal ADC_and_DAC_clk_clk_out1 : STD_LOGIC;
   signal ADC_clk_adc_cdcs_o : STD_LOGIC_VECTOR ( 0 to 0 );
   signal PS_ZYNQ_peripheral_reset : STD_LOGIC;
   signal adc_clk_n_i_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal adc_clk_p_i_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal util_ds_buf_0_IBUF_OUT : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal util_ds_buf_1_BUFG_O : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_clk_wiz_locked_UNCONNECTED : STD_LOGIC;
 begin
   PS_ZYNQ_peripheral_reset <= reset;
@@ -66,20 +52,10 @@ begin
   adc_clk_p_i_1(0) <= adc_clk_p_i(0);
   clk <= ADC_and_DAC_clk_clk_out1;
   dac_clk <= ADC_and_DAC_clk_clk250;
-BUFG: component design_1_util_ds_buf_0_1
-     port map (
-      BUFG_I(0) => util_ds_buf_0_IBUF_OUT(0),
-      BUFG_O(0) => util_ds_buf_1_BUFG_O(0)
-    );
-IBUF: component design_1_util_ds_buf_0_0
-     port map (
-      IBUF_DS_N(0) => adc_clk_n_i_1(0),
-      IBUF_DS_P(0) => adc_clk_p_i_1(0),
-      IBUF_OUT(0) => util_ds_buf_0_IBUF_OUT(0)
-    );
 clk_wiz: component design_1_clk_wiz_0_1
      port map (
-      clk_in1 => util_ds_buf_1_BUFG_O(0),
+      clk_in1_n => adc_clk_n_i_1(0),
+      clk_in1_p => adc_clk_p_i_1(0),
       clk_out1 => ADC_and_DAC_clk_clk_out1,
       clk_out2 => ADC_and_DAC_clk_clk250,
       locked => NLW_clk_wiz_locked_UNCONNECTED,
@@ -2450,7 +2426,7 @@ entity design_1 is
     led_o : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=30,numReposBlks=23,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_board_cnt=9,da_clkrst_cnt=12,da_ps7_cnt=1,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=28,numReposBlks=21,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_board_cnt=9,da_clkrst_cnt=12,da_ps7_cnt=1,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of design_1 : entity is "design_1.hwdef";
 end design_1;

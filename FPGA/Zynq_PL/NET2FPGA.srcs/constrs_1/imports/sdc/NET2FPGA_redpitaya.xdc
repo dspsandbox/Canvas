@@ -185,9 +185,9 @@ set_property PACKAGE_PIN M15 [get_ports {digital_o[7]}]
 # CLOCK
 #######################
 
-create_clock -period 8.000 -name adc_clk [get_ports adc_clk_p_i]
-set_input_delay -clock adc_clk 3.400 [get_ports adc_data1_i[*]]
-set_input_delay -clock adc_clk 3.400 [get_ports adc_data2_i[*]]
+#create_clock -period 8.000 -name adc_clk [get_ports adc_clk_p_i]
+set_input_delay -clock adc_clk_p_i 3.400 [get_ports adc_data1_i[*]]
+set_input_delay -clock adc_clk_p_i 3.400 [get_ports adc_data2_i[*]]
 #create_generated_clock -name dac_clk250  -divide_by 1 -source [get_pins design_1_i/DAC/U0/ODDR_dac_clk/C] [get_ports dac_clk_o]
 #set_output_delay -clock [get_clocks dac_clk250] -max 1 [get_ports dac_data_o[*]]
 #set_output_delay -clock [get_clocks dac_clk250] -min -1 [get_ports dac_data_o[*]]

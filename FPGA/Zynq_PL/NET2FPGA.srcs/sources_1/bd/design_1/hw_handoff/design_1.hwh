@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Jul 29 10:18:06 2019" VIVADOVERSION="2018.3">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Jul 29 14:28:59 2019" VIVADOVERSION="2018.3">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="design_1" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -31,12 +31,12 @@
     </PORT>
     <PORT CLKFREQUENCY="125000000" DIR="I" NAME="adc_clk_p_i" SIGIS="clk" SIGNAME="External_Ports_adc_clk_p_i">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="ADC_IBUF" PORT="IBUF_DS_P"/>
+        <CONNECTION INSTANCE="ADC_clk_wiz" PORT="clk_in1_p"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="125000000" DIR="I" NAME="adc_clk_n_i" SIGIS="clk" SIGNAME="External_Ports_adc_clk_n_i">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="ADC_IBUF" PORT="IBUF_DS_N"/>
+        <CONNECTION INSTANCE="ADC_clk_wiz" PORT="clk_in1_n"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" LEFT="7" NAME="led_o" RIGHT="0" SIGIS="undef" SIGNAME="DSP_core_led">
@@ -67,36 +67,6 @@
     <PORT DIR="O" NAME="dac_clk_o" SIGIS="undef" SIGNAME="DAC_dac_clk_o">
       <CONNECTIONS>
         <CONNECTION INSTANCE="DAC" PORT="dac_clk_o"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" LEFT="53" NAME="FIXED_IO_mio" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_MIO">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="MIO"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrn" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_DDR_VRN">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="DDR_VRN"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrp" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_DDR_VRP">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="DDR_VRP"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ps_srstb" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_PS_SRSTB">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="PS_SRSTB"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ps_clk" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_PS_CLK">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="PS_CLK"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" NAME="FIXED_IO_ps_porb" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_PS_PORB">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="PS_PORB"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" NAME="DDR_cas_n" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_DDR_CAS_n">
@@ -174,6 +144,36 @@
         <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="DDR_DQS"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="IO" LEFT="53" NAME="FIXED_IO_mio" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_MIO">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="MIO"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrn" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_DDR_VRN">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="DDR_VRN"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrp" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_DDR_VRP">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="DDR_VRP"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ps_srstb" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_PS_SRSTB">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="PS_SRSTB"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ps_clk" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_PS_CLK">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="PS_CLK"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" NAME="FIXED_IO_ps_porb" SIGIS="undef" SIGNAME="PS_ZYNQ_processing_system7_PS_PORB">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="PS_PORB"/>
+      </CONNECTIONS>
+    </PORT>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES>
@@ -224,70 +224,6 @@
   </EXTERNALINTERFACES>
 
   <MODULES>
-    <MODULE COREREVISION="12" FULLNAME="/ADC/BUFG" HWVERSION="2.1" INSTANCE="ADC_BUFG" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_ds_buf" VLNV="xilinx.com:ip:util_ds_buf:2.1">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="C_BUF_TYPE" VALUE="BUFG"/>
-        <PARAMETER NAME="C_SIZE" VALUE="1"/>
-        <PARAMETER NAME="C_BUFGCE_DIV" VALUE="1"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_util_ds_buf_0_1"/>
-        <PARAMETER NAME="USE_BOARD_FLOW" VALUE="false"/>
-        <PARAMETER NAME="DIFF_CLK_IN_BOARD_INTERFACE" VALUE="Custom"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="125000000" DIR="I" LEFT="0" NAME="BUFG_I" RIGHT="0" SIGIS="clk" SIGNAME="ADC_IBUF_IBUF_OUT">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ADC_IBUF" PORT="IBUF_OUT"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="125000000" DIR="O" LEFT="0" NAME="BUFG_O" RIGHT="0" SIGIS="clk" SIGNAME="ADC_BUFG_BUFG_O">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ADC_clk_wiz" PORT="clk_in1"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="12" FULLNAME="/ADC/IBUF" HWVERSION="2.1" INSTANCE="ADC_IBUF" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_ds_buf" VLNV="xilinx.com:ip:util_ds_buf:2.1">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="C_BUF_TYPE" VALUE="IBUFDS"/>
-        <PARAMETER NAME="C_SIZE" VALUE="1"/>
-        <PARAMETER NAME="C_BUFGCE_DIV" VALUE="1"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_util_ds_buf_0_0"/>
-        <PARAMETER NAME="USE_BOARD_FLOW" VALUE="false"/>
-        <PARAMETER NAME="DIFF_CLK_IN_BOARD_INTERFACE" VALUE="Custom"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="125000000" DIR="I" LEFT="0" NAME="IBUF_DS_P" RIGHT="0" SIGIS="clk" SIGNAME="External_Ports_adc_clk_p_i">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="adc_clk_p_i"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="125000000" DIR="I" LEFT="0" NAME="IBUF_DS_N" RIGHT="0" SIGIS="clk" SIGNAME="External_Ports_adc_clk_n_i">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="adc_clk_n_i"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="125000000" DIR="O" LEFT="0" NAME="IBUF_OUT" RIGHT="0" SIGIS="clk" SIGNAME="ADC_IBUF_IBUF_OUT">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ADC_BUFG" PORT="BUFG_I"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="__NOC__" NAME="CLK_IN_D" TYPE="TARGET" VLNV="xilinx.com:interface:diff_clock:1.0">
-          <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
-          <PARAMETER NAME="FREQ_HZ" VALUE="100000000"/>
-          <PORTMAPS>
-            <PORTMAP LOGICAL="CLK_P" PHYSICAL="IBUF_DS_P"/>
-            <PORTMAP LOGICAL="CLK_N" PHYSICAL="IBUF_DS_N"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
-      </BUSINTERFACES>
-    </MODULE>
     <MODULE COREREVISION="2" FULLNAME="/ADC/clk_wiz" HWVERSION="6.0" INSTANCE="ADC_clk_wiz" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="clk_wiz" VLNV="xilinx.com:ip:clk_wiz:6.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=clk_wiz;v=v6_0;d=pg065-clk-wiz.pdf"/>
@@ -323,9 +259,9 @@
         <PARAMETER NAME="C_USE_PHASE_ALIGNMENT" VALUE="1"/>
         <PARAMETER NAME="C_PRIM_IN_JITTER" VALUE="0.010"/>
         <PARAMETER NAME="C_SECONDARY_IN_JITTER" VALUE="0.010"/>
-        <PARAMETER NAME="C_JITTER_SEL" VALUE="No_Jitter"/>
+        <PARAMETER NAME="C_JITTER_SEL" VALUE="Min_O_Jitter"/>
         <PARAMETER NAME="C_USE_MIN_POWER" VALUE="0"/>
-        <PARAMETER NAME="C_USE_MIN_O_JITTER" VALUE="0"/>
+        <PARAMETER NAME="C_USE_MIN_O_JITTER" VALUE="1"/>
         <PARAMETER NAME="C_USE_MAX_I_JITTER" VALUE="0"/>
         <PARAMETER NAME="C_USE_DYN_PHASE_SHIFT" VALUE="0"/>
         <PARAMETER NAME="C_USE_INCLK_SWITCHOVER" VALUE="0"/>
@@ -340,7 +276,7 @@
         <PARAMETER NAME="C_SECONDARY_IN_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="C_SECONDARY_IN_TIMEPERIOD" VALUE="10.000"/>
         <PARAMETER NAME="C_FEEDBACK_SOURCE" VALUE="FDBK_AUTO"/>
-        <PARAMETER NAME="C_PRIM_SOURCE" VALUE="Single_ended_clock_capable_pin"/>
+        <PARAMETER NAME="C_PRIM_SOURCE" VALUE="Differential_clock_capable_pin"/>
         <PARAMETER NAME="C_PHASESHIFT_MODE" VALUE="WAVEFORM"/>
         <PARAMETER NAME="C_SECONDARY_SOURCE" VALUE="Single_ended_clock_capable_pin"/>
         <PARAMETER NAME="C_CLKFB_IN_SIGNALING" VALUE="SINGLE"/>
@@ -365,8 +301,8 @@
         <PARAMETER NAME="C_INCLK_SUM_ROW2" VALUE="no_secondary_input_clock"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW0A" VALUE="Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW0B" VALUE="Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)"/>
-        <PARAMETER NAME="C_OUTCLK_SUM_ROW1" VALUE="clk_out1___125.000______0.000______50.0______119.348_____96.948"/>
-        <PARAMETER NAME="C_OUTCLK_SUM_ROW2" VALUE="clk_out2___250.000____-90.000______50.0______104.759_____96.948"/>
+        <PARAMETER NAME="C_OUTCLK_SUM_ROW1" VALUE="clk_out1___125.000______0.000______50.0______128.871____112.379"/>
+        <PARAMETER NAME="C_OUTCLK_SUM_ROW2" VALUE="clk_out2___250.000____-120.000______50.0______112.962____112.379"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW3" VALUE="no_CLK_OUT3_output"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW4" VALUE="no_CLK_OUT4_output"/>
         <PARAMETER NAME="C_OUTCLK_SUM_ROW5" VALUE="no_CLK_OUT5_output"/>
@@ -380,7 +316,7 @@
         <PARAMETER NAME="C_CLKOUT6_REQUESTED_OUT_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="C_CLKOUT7_REQUESTED_OUT_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="C_CLKOUT1_REQUESTED_PHASE" VALUE="0"/>
-        <PARAMETER NAME="C_CLKOUT2_REQUESTED_PHASE" VALUE="-90"/>
+        <PARAMETER NAME="C_CLKOUT2_REQUESTED_PHASE" VALUE="-120"/>
         <PARAMETER NAME="C_CLKOUT3_REQUESTED_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="C_CLKOUT4_REQUESTED_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="C_CLKOUT5_REQUESTED_PHASE" VALUE="0.000"/>
@@ -401,7 +337,7 @@
         <PARAMETER NAME="C_CLKOUT6_OUT_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="C_CLKOUT7_OUT_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="C_CLKOUT1_PHASE" VALUE="0.000"/>
-        <PARAMETER NAME="C_CLKOUT2_PHASE" VALUE="-90.000"/>
+        <PARAMETER NAME="C_CLKOUT2_PHASE" VALUE="-120.000"/>
         <PARAMETER NAME="C_CLKOUT3_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="C_CLKOUT4_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="C_CLKOUT5_PHASE" VALUE="0.000"/>
@@ -424,10 +360,10 @@
         <PARAMETER NAME="C_CLKOUT6_SEQUENCE_NUMBER" VALUE="1"/>
         <PARAMETER NAME="C_CLKOUT7_SEQUENCE_NUMBER" VALUE="1"/>
         <PARAMETER NAME="C_MMCM_NOTES" VALUE="None"/>
-        <PARAMETER NAME="C_MMCM_BANDWIDTH" VALUE="OPTIMIZED"/>
-        <PARAMETER NAME="C_MMCM_CLKFBOUT_MULT_F" VALUE="8.000"/>
+        <PARAMETER NAME="C_MMCM_BANDWIDTH" VALUE="HIGH"/>
+        <PARAMETER NAME="C_MMCM_CLKFBOUT_MULT_F" VALUE="6.000"/>
         <PARAMETER NAME="C_MMCM_CLKIN1_PERIOD" VALUE="8.000"/>
-        <PARAMETER NAME="C_MMCM_CLKIN2_PERIOD" VALUE="10.000"/>
+        <PARAMETER NAME="C_MMCM_CLKIN2_PERIOD" VALUE="10.0"/>
         <PARAMETER NAME="C_MMCM_CLKOUT4_CASCADE" VALUE="FALSE"/>
         <PARAMETER NAME="C_MMCM_CLOCK_HOLD" VALUE="FALSE"/>
         <PARAMETER NAME="C_MMCM_COMPENSATION" VALUE="ZHOLD"/>
@@ -435,8 +371,8 @@
         <PARAMETER NAME="C_MMCM_REF_JITTER1" VALUE="0.010"/>
         <PARAMETER NAME="C_MMCM_REF_JITTER2" VALUE="0.010"/>
         <PARAMETER NAME="C_MMCM_STARTUP_WAIT" VALUE="FALSE"/>
-        <PARAMETER NAME="C_MMCM_CLKOUT0_DIVIDE_F" VALUE="8.000"/>
-        <PARAMETER NAME="C_MMCM_CLKOUT1_DIVIDE" VALUE="4"/>
+        <PARAMETER NAME="C_MMCM_CLKOUT0_DIVIDE_F" VALUE="6.000"/>
+        <PARAMETER NAME="C_MMCM_CLKOUT1_DIVIDE" VALUE="3"/>
         <PARAMETER NAME="C_MMCM_CLKOUT2_DIVIDE" VALUE="1"/>
         <PARAMETER NAME="C_MMCM_CLKOUT3_DIVIDE" VALUE="1"/>
         <PARAMETER NAME="C_MMCM_CLKOUT4_DIVIDE" VALUE="1"/>
@@ -451,7 +387,7 @@
         <PARAMETER NAME="C_MMCM_CLKOUT6_DUTY_CYCLE" VALUE="0.500"/>
         <PARAMETER NAME="C_MMCM_CLKFBOUT_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="C_MMCM_CLKOUT0_PHASE" VALUE="0.000"/>
-        <PARAMETER NAME="C_MMCM_CLKOUT1_PHASE" VALUE="-90.000"/>
+        <PARAMETER NAME="C_MMCM_CLKOUT1_PHASE" VALUE="-120.000"/>
         <PARAMETER NAME="C_MMCM_CLKOUT2_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="C_MMCM_CLKOUT3_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="C_MMCM_CLKOUT4_PHASE" VALUE="0.000"/>
@@ -623,7 +559,7 @@
         <PARAMETER NAME="USE_MIN_POWER" VALUE="false"/>
         <PARAMETER NAME="USE_DYN_PHASE_SHIFT" VALUE="false"/>
         <PARAMETER NAME="USE_DYN_RECONFIG" VALUE="false"/>
-        <PARAMETER NAME="JITTER_SEL" VALUE="No_Jitter"/>
+        <PARAMETER NAME="JITTER_SEL" VALUE="Min_O_Jitter"/>
         <PARAMETER NAME="PRIM_IN_FREQ" VALUE="125"/>
         <PARAMETER NAME="PRIM_IN_TIMEPERIOD" VALUE="10.000"/>
         <PARAMETER NAME="IN_FREQ_UNITS" VALUE="Units_MHz"/>
@@ -680,7 +616,7 @@
         <PARAMETER NAME="CLKOUT1_REQUESTED_PHASE" VALUE="0"/>
         <PARAMETER NAME="CLKOUT1_REQUESTED_DUTY_CYCLE" VALUE="50.000"/>
         <PARAMETER NAME="CLKOUT2_REQUESTED_OUT_FREQ" VALUE="250"/>
-        <PARAMETER NAME="CLKOUT2_REQUESTED_PHASE" VALUE="-90"/>
+        <PARAMETER NAME="CLKOUT2_REQUESTED_PHASE" VALUE="-120"/>
         <PARAMETER NAME="CLKOUT2_REQUESTED_DUTY_CYCLE" VALUE="50"/>
         <PARAMETER NAME="CLKOUT3_REQUESTED_OUT_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="CLKOUT3_REQUESTED_PHASE" VALUE="0.000"/>
@@ -706,7 +642,7 @@
         <PARAMETER NAME="CLKOUT5_MATCHED_ROUTING" VALUE="false"/>
         <PARAMETER NAME="CLKOUT6_MATCHED_ROUTING" VALUE="false"/>
         <PARAMETER NAME="CLKOUT7_MATCHED_ROUTING" VALUE="false"/>
-        <PARAMETER NAME="PRIM_SOURCE" VALUE="Single_ended_clock_capable_pin"/>
+        <PARAMETER NAME="PRIM_SOURCE" VALUE="Differential_clock_capable_pin"/>
         <PARAMETER NAME="CLKOUT1_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="CLKOUT2_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="CLKOUT3_DRIVES" VALUE="BUFG"/>
@@ -747,25 +683,25 @@
         <PARAMETER NAME="OVERRIDE_MMCM" VALUE="false"/>
         <PARAMETER NAME="MMCM_NOTES" VALUE="None"/>
         <PARAMETER NAME="MMCM_DIVCLK_DIVIDE" VALUE="1"/>
-        <PARAMETER NAME="MMCM_BANDWIDTH" VALUE="OPTIMIZED"/>
-        <PARAMETER NAME="MMCM_CLKFBOUT_MULT_F" VALUE="8.000"/>
+        <PARAMETER NAME="MMCM_BANDWIDTH" VALUE="HIGH"/>
+        <PARAMETER NAME="MMCM_CLKFBOUT_MULT_F" VALUE="6.000"/>
         <PARAMETER NAME="MMCM_CLKFBOUT_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="MMCM_CLKFBOUT_USE_FINE_PS" VALUE="false"/>
         <PARAMETER NAME="MMCM_CLKIN1_PERIOD" VALUE="8.000"/>
-        <PARAMETER NAME="MMCM_CLKIN2_PERIOD" VALUE="10.000"/>
+        <PARAMETER NAME="MMCM_CLKIN2_PERIOD" VALUE="10.0"/>
         <PARAMETER NAME="MMCM_CLKOUT4_CASCADE" VALUE="false"/>
         <PARAMETER NAME="MMCM_CLOCK_HOLD" VALUE="false"/>
         <PARAMETER NAME="MMCM_COMPENSATION" VALUE="ZHOLD"/>
         <PARAMETER NAME="MMCM_REF_JITTER1" VALUE="0.010"/>
         <PARAMETER NAME="MMCM_REF_JITTER2" VALUE="0.010"/>
         <PARAMETER NAME="MMCM_STARTUP_WAIT" VALUE="false"/>
-        <PARAMETER NAME="MMCM_CLKOUT0_DIVIDE_F" VALUE="8.000"/>
+        <PARAMETER NAME="MMCM_CLKOUT0_DIVIDE_F" VALUE="6.000"/>
         <PARAMETER NAME="MMCM_CLKOUT0_DUTY_CYCLE" VALUE="0.500"/>
         <PARAMETER NAME="MMCM_CLKOUT0_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="MMCM_CLKOUT0_USE_FINE_PS" VALUE="false"/>
-        <PARAMETER NAME="MMCM_CLKOUT1_DIVIDE" VALUE="4"/>
+        <PARAMETER NAME="MMCM_CLKOUT1_DIVIDE" VALUE="3"/>
         <PARAMETER NAME="MMCM_CLKOUT1_DUTY_CYCLE" VALUE="0.500"/>
-        <PARAMETER NAME="MMCM_CLKOUT1_PHASE" VALUE="-90.000"/>
+        <PARAMETER NAME="MMCM_CLKOUT1_PHASE" VALUE="-120.000"/>
         <PARAMETER NAME="MMCM_CLKOUT1_USE_FINE_PS" VALUE="false"/>
         <PARAMETER NAME="MMCM_CLKOUT2_DIVIDE" VALUE="1"/>
         <PARAMETER NAME="MMCM_CLKOUT2_DUTY_CYCLE" VALUE="0.500"/>
@@ -837,10 +773,10 @@
         <PARAMETER NAME="CDDCREQ_PORT" VALUE="cddcreq"/>
         <PARAMETER NAME="ENABLE_CLKOUTPHY" VALUE="false"/>
         <PARAMETER NAME="CLKOUTPHY_REQUESTED_FREQ" VALUE="600.000"/>
-        <PARAMETER NAME="CLKOUT1_JITTER" VALUE="119.348"/>
-        <PARAMETER NAME="CLKOUT1_PHASE_ERROR" VALUE="96.948"/>
-        <PARAMETER NAME="CLKOUT2_JITTER" VALUE="104.759"/>
-        <PARAMETER NAME="CLKOUT2_PHASE_ERROR" VALUE="96.948"/>
+        <PARAMETER NAME="CLKOUT1_JITTER" VALUE="128.871"/>
+        <PARAMETER NAME="CLKOUT1_PHASE_ERROR" VALUE="112.379"/>
+        <PARAMETER NAME="CLKOUT2_JITTER" VALUE="112.962"/>
+        <PARAMETER NAME="CLKOUT2_PHASE_ERROR" VALUE="112.379"/>
         <PARAMETER NAME="CLKOUT3_JITTER" VALUE="0.0"/>
         <PARAMETER NAME="CLKOUT3_PHASE_ERROR" VALUE="0.0"/>
         <PARAMETER NAME="CLKOUT4_JITTER" VALUE="0.0"/>
@@ -858,14 +794,19 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
+        <PORT DIR="I" NAME="clk_in1_p" SIGIS="clk" SIGNAME="External_Ports_adc_clk_p_i">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="adc_clk_p_i"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="clk_in1_n" SIGIS="clk" SIGNAME="External_Ports_adc_clk_n_i">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="adc_clk_n_i"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="PS_ZYNQ_proc_sys_reset_AXI_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="PS_ZYNQ_proc_sys_reset_AXI" PORT="peripheral_reset"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="125000000" DIR="I" NAME="clk_in1" SIGIS="clk" SIGNAME="ADC_BUFG_BUFG_O">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="ADC_BUFG" PORT="BUFG_O"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="125000000" DIR="O" NAME="clk_out1" SIGIS="clk" SIGNAME="ADC_clk_wiz_clk_out1">
@@ -879,9 +820,9 @@
             <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="convertType_14_32_ADC1" PORT="clk"/>
             <CONNECTION INSTANCE="convertType_14_32_ADC2" PORT="clk"/>
-            <CONNECTION INSTANCE="sync_digitalIn" PORT="clk125"/>
             <CONNECTION INSTANCE="convertType_32_14_DAC1" PORT="clk"/>
             <CONNECTION INSTANCE="convertType_32_14_DAC2" PORT="clk"/>
+            <CONNECTION INSTANCE="sync_digitalIn" PORT="clk"/>
             <CONNECTION INSTANCE="DAC" PORT="clk"/>
             <CONNECTION INSTANCE="DSP_core" PORT="clk"/>
           </CONNECTIONS>
@@ -893,7 +834,16 @@
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef"/>
       </PORTS>
-      <BUSINTERFACES/>
+      <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="CLK_IN1_D" TYPE="TARGET" VLNV="xilinx.com:interface:diff_clock:1.0">
+          <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
+          <PARAMETER NAME="FREQ_HZ" VALUE="125000000"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="CLK_N" PHYSICAL="clk_in1_n"/>
+            <PORTMAP LOGICAL="CLK_P" PHYSICAL="clk_in1_p"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+      </BUSINTERFACES>
     </MODULE>
     <MODULE COREREVISION="5" FULLNAME="/ADC/const_1" HWVERSION="1.1" INSTANCE="ADC_const_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
       <DOCUMENTS/>
@@ -2487,6 +2437,93 @@
             <CONNECTION INSTANCE="PS_ZYNQ_proc_sys_reset_125" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" LEFT="8" NAME="M00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M00_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M00_AXI_awvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M00_AXI_awready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="M00_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="M00_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M00_AXI_wvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M00_AXI_wready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M00_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M00_AXI_bvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M00_AXI_bready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_bready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="8" NAME="M00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_araddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_araddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M00_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M00_AXI_arvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_arvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_arvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M00_AXI_arready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_arready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_arready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="M00_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="M00_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_rresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_rresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M00_AXI_rvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_rvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_rvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="M00_AXI_rready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_rready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="11" NAME="S00_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_interconnect_S00_AXI_awid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="M_AXI_GP0_AWID"/>
@@ -2677,91 +2714,91 @@
             <CONNECTION INSTANCE="PS_ZYNQ_processing_system7" PORT="M_AXI_GP0_RREADY"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="8" NAME="M00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_awaddr">
+        <PORT DIR="O" LEFT="8" NAME="M01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_awaddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_awaddr"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M00_AXI_awvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_awvalid">
+        <PORT DIR="O" NAME="M01_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M01_AXI_awvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_awvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_awvalid"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_awready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_awready">
+        <PORT DIR="I" NAME="M01_AXI_awready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_awready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_awready"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M00_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_wdata">
+        <PORT DIR="O" LEFT="31" NAME="M01_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_wdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_wdata"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M00_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_wstrb">
+        <PORT DIR="O" LEFT="3" NAME="M01_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_wstrb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_wstrb"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_wvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_wvalid">
+        <PORT DIR="O" NAME="M01_AXI_wvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_wvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_wvalid"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_wready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_wready">
+        <PORT DIR="I" NAME="M01_AXI_wready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_wready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_wready"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M00_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_bresp">
+        <PORT DIR="I" LEFT="1" NAME="M01_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_bresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_bresp"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_bvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_bvalid">
+        <PORT DIR="I" NAME="M01_AXI_bvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_bvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_bvalid"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_bready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_bready">
+        <PORT DIR="O" NAME="M01_AXI_bready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_bready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_bready"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="8" NAME="M00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_araddr">
+        <PORT DIR="O" LEFT="8" NAME="M01_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_araddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_araddr"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_araddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M00_AXI_arvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_arvalid">
+        <PORT DIR="O" NAME="M01_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M01_AXI_arvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_arvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_arvalid"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_arready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_arready">
+        <PORT DIR="I" NAME="M01_AXI_arready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_arready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_arready"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_arready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M00_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_rdata">
+        <PORT DIR="I" LEFT="31" NAME="M01_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_rdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_rdata"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M00_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_rresp">
+        <PORT DIR="I" LEFT="1" NAME="M01_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_rresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_rresp"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_rresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_rvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_rvalid">
+        <PORT DIR="I" NAME="M01_AXI_rvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_rvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_rvalid"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_rready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regAddr_s_axi_rready">
+        <PORT DIR="O" NAME="M01_AXI_rready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_rready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regAddr" PORT="s_axi_rready"/>
+            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="8" NAME="M02_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_WrtEn_s_axi_awaddr">
@@ -2849,93 +2886,6 @@
         <PORT DIR="O" NAME="M02_AXI_rready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_WrtEn_s_axi_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_WrtEn" PORT="s_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="8" NAME="M01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M01_AXI_awvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_awready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M01_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M01_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_wvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_wready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M01_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_bvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_bready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_bready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="8" NAME="M01_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_araddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_araddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" NAME="M01_AXI_arvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_arvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_arvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_arready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_arready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_arready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M01_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M01_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_rresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_rresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M01_AXI_rvalid" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_rvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_rvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="M01_AXI_rready" SIGIS="undef" SIGNAME="PS_ZYNQ_axi_gpio_regVal_s_axi_rready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="PS_ZYNQ_axi_gpio_regVal" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4677,7 +4627,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="clk125" SIGIS="undef" SIGNAME="ADC_clk_wiz_clk_out1">
+        <PORT CLKFREQUENCY="125000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="ADC_clk_wiz_clk_out1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ADC_clk_wiz" PORT="clk_out1"/>
           </CONNECTIONS>

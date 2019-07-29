@@ -274,44 +274,45 @@ proc create_hier_cell_ADC { parentCell nameHier } {
   create_bd_pin -dir O -type clk dac_clk
   create_bd_pin -dir I -type rst reset
 
-  # Create instance: BUFG, and set properties
-  set BUFG [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 BUFG ]
-  set_property -dict [ list \
-   CONFIG.C_BUF_TYPE {BUFG} \
- ] $BUFG
-
-  # Create instance: IBUF, and set properties
-  set IBUF [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 IBUF ]
-  set_property -dict [ list \
-   CONFIG.C_SIZE {1} \
- ] $IBUF
-
   # Create instance: clk_wiz, and set properties
   set clk_wiz [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz ]
   set_property -dict [ list \
    CONFIG.CLKIN1_JITTER_PS {80.0} \
-   CONFIG.CLKOUT1_JITTER {119.348} \
-   CONFIG.CLKOUT1_PHASE_ERROR {96.948} \
+   CONFIG.CLKOUT1_DRIVES {BUFG} \
+   CONFIG.CLKOUT1_JITTER {128.871} \
+   CONFIG.CLKOUT1_PHASE_ERROR {112.379} \
    CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {125} \
    CONFIG.CLKOUT1_REQUESTED_PHASE {0} \
    CONFIG.CLKOUT1_USED {true} \
-   CONFIG.CLKOUT2_JITTER {104.759} \
-   CONFIG.CLKOUT2_PHASE_ERROR {96.948} \
+   CONFIG.CLKOUT2_DRIVES {BUFG} \
+   CONFIG.CLKOUT2_JITTER {112.962} \
+   CONFIG.CLKOUT2_PHASE_ERROR {112.379} \
    CONFIG.CLKOUT2_REQUESTED_DUTY_CYCLE {50} \
    CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {250} \
-   CONFIG.CLKOUT2_REQUESTED_PHASE {-90} \
+   CONFIG.CLKOUT2_REQUESTED_PHASE {-120} \
    CONFIG.CLKOUT2_USED {true} \
-   CONFIG.MMCM_CLKFBOUT_MULT_F {8.000} \
+   CONFIG.CLKOUT3_DRIVES {BUFG} \
+   CONFIG.CLKOUT4_DRIVES {BUFG} \
+   CONFIG.CLKOUT5_DRIVES {BUFG} \
+   CONFIG.CLKOUT6_DRIVES {BUFG} \
+   CONFIG.CLKOUT7_DRIVES {BUFG} \
+   CONFIG.FEEDBACK_SOURCE {FDBK_AUTO} \
+   CONFIG.JITTER_SEL {Min_O_Jitter} \
+   CONFIG.MMCM_BANDWIDTH {HIGH} \
+   CONFIG.MMCM_CLKFBOUT_MULT_F {6.000} \
    CONFIG.MMCM_CLKIN1_PERIOD {8.000} \
-   CONFIG.MMCM_CLKIN2_PERIOD {10.000} \
-   CONFIG.MMCM_CLKOUT0_DIVIDE_F {8.000} \
+   CONFIG.MMCM_CLKIN2_PERIOD {10.0} \
+   CONFIG.MMCM_CLKOUT0_DIVIDE_F {6.000} \
    CONFIG.MMCM_CLKOUT0_PHASE {0.000} \
-   CONFIG.MMCM_CLKOUT1_DIVIDE {4} \
+   CONFIG.MMCM_CLKOUT1_DIVIDE {3} \
    CONFIG.MMCM_CLKOUT1_DUTY_CYCLE {0.500} \
-   CONFIG.MMCM_CLKOUT1_PHASE {-90.000} \
+   CONFIG.MMCM_CLKOUT1_PHASE {-120.000} \
+   CONFIG.MMCM_COMPENSATION {ZHOLD} \
    CONFIG.MMCM_DIVCLK_DIVIDE {1} \
    CONFIG.NUM_OUT_CLKS {2} \
+   CONFIG.PRIMITIVE {MMCM} \
    CONFIG.PRIM_IN_FREQ {125} \
+   CONFIG.PRIM_SOURCE {Differential_clock_capable_pin} \
  ] $clk_wiz
 
   # Create instance: const_1, and set properties
@@ -322,10 +323,8 @@ proc create_hier_cell_ADC { parentCell nameHier } {
   connect_bd_net -net ADC_and_DAC_clk_clk_out1 [get_bd_pins clk] [get_bd_pins clk_wiz/clk_out1]
   connect_bd_net -net ADC_clk_adc_cdcs_o [get_bd_pins adc_cdcs_o] [get_bd_pins const_1/dout]
   connect_bd_net -net PS_ZYNQ_peripheral_reset [get_bd_pins reset] [get_bd_pins clk_wiz/reset]
-  connect_bd_net -net adc_clk_n_i_1 [get_bd_pins adc_clk_n_i] [get_bd_pins IBUF/IBUF_DS_N]
-  connect_bd_net -net adc_clk_p_i_1 [get_bd_pins adc_clk_p_i] [get_bd_pins IBUF/IBUF_DS_P]
-  connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins BUFG/BUFG_I] [get_bd_pins IBUF/IBUF_OUT]
-  connect_bd_net -net util_ds_buf_1_BUFG_O [get_bd_pins BUFG/BUFG_O] [get_bd_pins clk_wiz/clk_in1]
+  connect_bd_net -net adc_clk_n_i_1 [get_bd_pins adc_clk_n_i] [get_bd_pins clk_wiz/clk_in1_n]
+  connect_bd_net -net adc_clk_p_i_1 [get_bd_pins adc_clk_p_i] [get_bd_pins clk_wiz/clk_in1_p]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -478,7 +477,7 @@ proc create_root_design { parentCell } {
 
   # Create port connections
   connect_bd_net -net ADC_and_DAC_clk_clk250 [get_bd_pins ADC/dac_clk] [get_bd_pins DAC/dac_clk]
-  connect_bd_net -net ADC_and_DAC_clk_clk_out1 [get_bd_pins ADC/clk] [get_bd_pins DAC/clk] [get_bd_pins DSP_core/clk] [get_bd_pins PS_ZYNQ/M01_ACLK] [get_bd_pins convertType_14_32_ADC1/clk] [get_bd_pins convertType_14_32_ADC2/clk] [get_bd_pins convertType_32_14_DAC1/clk] [get_bd_pins convertType_32_14_DAC2/clk] [get_bd_pins sync_digitalIn/clk125]
+  connect_bd_net -net ADC_and_DAC_clk_clk_out1 [get_bd_pins ADC/clk] [get_bd_pins DAC/clk] [get_bd_pins DSP_core/clk] [get_bd_pins PS_ZYNQ/M01_ACLK] [get_bd_pins convertType_14_32_ADC1/clk] [get_bd_pins convertType_14_32_ADC2/clk] [get_bd_pins convertType_32_14_DAC1/clk] [get_bd_pins convertType_32_14_DAC2/clk] [get_bd_pins sync_digitalIn/clk]
   connect_bd_net -net ADC_clk_adc_cdcs_o [get_bd_ports adc_cdcs_o] [get_bd_pins ADC/adc_cdcs_o]
   connect_bd_net -net NET2FPGA_base_DAC_dac_clk_o [get_bd_ports dac_clk_o] [get_bd_pins DAC/dac_clk_o]
   connect_bd_net -net NET2FPGA_base_DAC_dac_dat_o [get_bd_ports dac_data_o] [get_bd_pins DAC/dac_dat_o]

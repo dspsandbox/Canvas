@@ -56,8 +56,8 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// clk_out1___125.000______0.000______50.0______119.348_____96.948
-// clk_out2___250.000____-90.000______50.0______104.759_____96.948
+// clk_out1___125.000______0.000______50.0______128.871____112.379
+// clk_out2___250.000____-120.000______50.0______112.962____112.379
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -66,7 +66,7 @@
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "design_1_clk_wiz_0_1,clk_wiz_v6_0_2_0_0,{component_name=design_1_clk_wiz_0_1,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=2,clkin1_period=8.000,clkin2_period=10.000,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "design_1_clk_wiz_0_1,clk_wiz_v6_0_2_0_0,{component_name=design_1_clk_wiz_0_1,use_phase_alignment=true,use_min_o_jitter=true,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=2,clkin1_period=8.000,clkin2_period=10.0,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
 module design_1_clk_wiz_0_1 
  (
@@ -77,7 +77,8 @@ module design_1_clk_wiz_0_1
   input         reset,
   output        locked,
  // Clock in ports
-  input         clk_in1
+  input         clk_in1_p,
+  input         clk_in1_n
  );
 
   design_1_clk_wiz_0_1_clk_wiz inst
@@ -89,7 +90,8 @@ module design_1_clk_wiz_0_1
   .reset(reset), 
   .locked(locked),
  // Clock in ports
-  .clk_in1(clk_in1)
+  .clk_in1_p(clk_in1_p),
+  .clk_in1_n(clk_in1_n)
   );
 
 endmodule

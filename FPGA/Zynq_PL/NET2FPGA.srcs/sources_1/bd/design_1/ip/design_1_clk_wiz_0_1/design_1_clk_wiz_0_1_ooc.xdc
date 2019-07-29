@@ -54,5 +54,6 @@
 ############################################################
 # Clock Period Constraints                                 #
 ############################################################
-#create_clock -period 8.000 [get_ports clk_in1]
+# Differential clock only needs one constraint
+#create_clock -period 8.000 [get_ports clk_in1_p]
 

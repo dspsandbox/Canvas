@@ -78,9 +78,6 @@ begin
 					constantRegister1Bit(regAddr_var)<=regVal1Bit_var;
 				end if;	
 			end if;
-		
-		
-		end if;	
 		-- IN/OUR REGISTERS	
 		adc1_reg<=adc1;
 		adc2_reg<=adc2;
@@ -89,6 +86,7 @@ begin
 		digitalIn_reg<=digitalIn;
 		digitalOut<=digitalOut_reg;
 		led<=led_reg;
+		end if;	
 	end process;
 
 
