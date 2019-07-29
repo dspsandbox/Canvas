@@ -57,6 +57,7 @@ signal led_reg : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
 --NET2FPGA SIGNALS END
 ---------------------------------------------------------------------------------------------------
 
+
 begin
 	process(clk)
 	variable regAddr_var : integer :=0;
@@ -78,18 +79,19 @@ begin
 					constantRegister1Bit(regAddr_var)<=regVal1Bit_var;
 				end if;	
 			end if;
-		-- IN/OUR REGISTERS	
-		adc1_reg<=adc1;
-		adc2_reg<=adc2;
-		dac1<=dac1_reg;
-		dac2<=dac1_reg;
-		digitalIn_reg<=digitalIn;
-		digitalOut<=digitalOut_reg;
-		led<=led_reg;
+
 		end if;	
 	end process;
 
 
+    -- in/out signal assignements	
+    adc1_reg<=adc1;
+    adc2_reg<=adc2;
+    dac1<=dac1_reg;
+    dac2<=dac2_reg;
+    digitalIn_reg<=digitalIn;
+    digitalOut<=digitalOut_reg;
+    led<=led_reg;
 ---------------------------------------------------------------------------------------------------
 --NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS START
 --NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS END
