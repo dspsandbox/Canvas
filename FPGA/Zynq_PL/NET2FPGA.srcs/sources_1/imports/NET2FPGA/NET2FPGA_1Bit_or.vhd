@@ -17,8 +17,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity NET2FPGA_1Bit_or is
     Port ( clk : in STD_LOGIC;
-           dataInA : in STD_LOGIC;
-           dataInB : in STD_LOGIC;
+           dataIn0 : in STD_LOGIC;
+           dataIn1 : in STD_LOGIC;
            dataOut : out STD_LOGIC
            );
 end NET2FPGA_1Bit_or;
@@ -31,7 +31,7 @@ begin
 	
 	begin
 		if rising_edge(clk) then
-			dataOut<= (dataInA or dataInB);
+			dataOut<= (dataIn0 or dataIn1);
 		end if;
 
 	end process;

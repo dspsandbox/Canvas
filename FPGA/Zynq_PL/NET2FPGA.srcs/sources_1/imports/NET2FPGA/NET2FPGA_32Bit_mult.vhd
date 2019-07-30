@@ -17,13 +17,13 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity NET2FPGA_32Bit_mult is
 	Generic(PORT_WIDTH : integer := 32;
-	 A_THRESHOLD : STD_LOGIC_VECTOR :="1000000000000000000000000";
-	 B_THRESHOLD : STD_LOGIC_VECTOR :="100000000000000000"
+	 THRESHOLD_0 : STD_LOGIC_VECTOR :="1000000000000000000000000";
+	 THRESHOLD_1 : STD_LOGIC_VECTOR :="100000000000000000"
 	);
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
-           dataInA : in STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0);
-           dataInB : in STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0);
+           dataIn0 : in STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0);
+           dataIn1 : in STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0);
            dataOut : out STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0)
            );
            
@@ -61,11 +61,11 @@ begin
 
 
 --Consistency check to avoid A=1000000000000000000000000 or B=100000000000000000
-	A <= "1000000000000000000000001" when (dataInA((PORT_WIDTH-1) downto (PORT_WIDTH-25))=A_THRESHOLD)  else
-	      dataInA((PORT_WIDTH-1) downto (PORT_WIDTH-25));
+	A <= "1000000000000000000000001" when (dataIn0((PORT_WIDTH-1) downto (PORT_WIDTH-25))=THRESHOLD_0)  else
+	      dataIn0((PORT_WIDTH-1) downto (PORT_WIDTH-25));
 	   
-	B <= "100000000000000001" when (dataInB((PORT_WIDTH-1) downto (PORT_WIDTH-18))=B_THRESHOLD) else
-	      dataInB((PORT_WIDTH-1) downto (PORT_WIDTH-18));
+	B <= "100000000000000001" when (dataIn1((PORT_WIDTH-1) downto (PORT_WIDTH-18))=THRESHOLD_1) else
+	      dataIn1((PORT_WIDTH-1) downto (PORT_WIDTH-18));
 	
 	dataOut(31)<=P(42);
 	dataOut(30 downto 0) <= P(40 downto 10);

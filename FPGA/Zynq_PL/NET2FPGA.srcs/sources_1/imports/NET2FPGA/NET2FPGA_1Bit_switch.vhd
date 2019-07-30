@@ -18,8 +18,8 @@ use IEEE.NUMERIC_STD.ALL;
 entity NET2FPGA_1Bit_switch is
     Port ( clk : in STD_LOGIC;
            dataInSwitch : in STD_LOGIC;
-           dataInA : in STD_LOGIC;
-           dataInB : in STD_LOGIC;
+           dataIn0 : in STD_LOGIC;
+           dataIn1 : in STD_LOGIC;
            dataOut : out STD_LOGIC
            );
 end NET2FPGA_1Bit_switch;
@@ -32,10 +32,10 @@ begin
 	
 	begin
 		if rising_edge(clk) then
-			if dataInSwitch='1' then
-				dataOut<= dataInA;
+			if dataInSwitch='0' then
+				dataOut<= dataIn0;
 			else
-				dataOut<= dataInB;
+				dataOut<= dataIn1;
 			end if;
 		end if;
 

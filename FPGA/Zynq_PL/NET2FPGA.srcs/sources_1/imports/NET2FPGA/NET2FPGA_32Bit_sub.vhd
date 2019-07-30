@@ -20,8 +20,8 @@ entity NET2FPGA_32Bit_sub is
 	);
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
-           dataInA : in STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0);
-           dataInB : in STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0);
+           dataIn0 : in STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0);
+           dataIn1 : in STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0);
            dataOut : out STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0)
            );
            
@@ -37,7 +37,7 @@ begin
             if reset='1' then
                 dataOut<=(others=>'0');
             else
-                dataOut<=STD_LOGIC_VECTOR(signed(dataInA)-signed(dataInB));
+                dataOut<=STD_LOGIC_VECTOR(signed(dataIn0)-signed(dataIn1));
             end if;
         end if;
     end process;

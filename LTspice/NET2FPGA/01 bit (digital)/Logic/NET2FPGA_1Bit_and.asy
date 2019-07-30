@@ -5,10 +5,10 @@ TEXT -11 -17 Center 2 &&
 SYMATTR SpiceModel NET2FPGA_1Bit_and
 SYMATTR Prefix X
 PIN -48 -48 LEFT 8
-PINATTR PinName inA[1]
+PINATTR PinName in0[1]
 PINATTR SpiceOrder 1
 PIN -48 16 LEFT 8
-PINATTR PinName inB[1]
+PINATTR PinName in1[1]
 PINATTR SpiceOrder 2
 PIN 112 -16 RIGHT 8
 PINATTR PinName out[1]

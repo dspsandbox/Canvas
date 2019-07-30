@@ -1,40 +1,43 @@
-#################################################################################
+######################################################################################
 # NET2FPGA settings file
 #
 # MIT License
 # Copyright (c) 2019 Pau Gomez Kabelka <paugomezkabelka@gmail.com>
-#################################################################################
+######################################################################################
+
 import os
 
+######################################################################################
+
 #NET2FPGA git location
-pathBase=".."                                                                   #Path to NET2FPGA git folder
+pathBase=".."                                                                        #Path to NET2FPGA git folder
 
 #NET2FPGA server settings 
-SERVER_TCP_IP = 'localhost'                                                     #Do NOT change  
-SERVER_TCP_PORT = 5000                                                          #Do NOT change
+SERVER_TCP_IP = 'localhost'                                                          #DO NOT CHANGE  
+SERVER_TCP_PORT = 5000                                                               #DO NOT CHANGE
 
-#################################################################################
+######################################################################################
 
 #FPGA SSH settings  
-FPGA_SSH_IP='10.9.1.150'                                                        #IP address of your Redpitaya 
-FPGA_SSH_USERNAME="root"                                                        #SSH username 
-FPGA_SSH_PASSWORD="root"                                                        #SSH password
+FPGA_SSH_IP='10.9.1.150'                                                             #IP address of your Redpitaya 
+FPGA_SSH_USERNAME="root"                                                             #SSH username 
+FPGA_SSH_PASSWORD="root"                                                             #SSH password
 
 #FPGA CONFIG
-filePathSetBitstream=os.path.join(pathBase,"FPGA","Zynq_PS","setBitstream.sh")  #DO NOT change
-filePathSetConstants=os.path.join(pathBase,"FPGA","Zynq_PS","setConstants.c")   #DO NOT change
-filePathRcLocal=os.path.join(pathBase,"FPGA","Zynq_PS","rc.local")              #DO NOT change
-filePathConst1Bit=os.path.join(pathBase,"FPGA","Zynq_PS","const1Bit.txt")       #DO NOT change
-filePathConst32Bit=os.path.join(pathBase,"FPGA","Zynq_PS","const32Bit.txt")     #DO NOT change
+filePathSetBitstream=os.path.join(pathBase,"FPGA","Zynq_PS","bitstreamLoader.sh")    #DO NOT CHANGE
+filePathSetConstants=os.path.join(pathBase,"FPGA","Zynq_PS","constantsLoader.c")     #DO NOT CHANGE
+filePathRcLocal=os.path.join(pathBase,"FPGA","Zynq_PS","rc.local")                   #DO NOT CHANGE
+filePathConst1Bit=os.path.join(pathBase,"FPGA","Zynq_PS","const1Bit.txt")            #DO NOT CHANGE
+filePathConst32Bit=os.path.join(pathBase,"FPGA","Zynq_PS","const32Bit.txt")          #DO NOT CHANGE
 
-autoBitstream=True                                                              #Flag for loading bitstream after reboot
-autoConstants=True                                                              #Flag for loading constants after reboot
+autoBitstream=True                                                                   #Flag for loading bitstream after reboot
+autoConstants=True                                                                   #Flag for loading constants after reboot
 
-#################################################################################
+######################################################################################
 
 #Folder paths for INPUT/OUTPUT/CONSTANTS 
-filePathNetInput="Examples/Example2/Input/mainCircuit.net"                      #Path to .net file to be implemented on FPGA
-pathOutput="Examples/Example2/Output"                                           #Path to place NET2FPGA output products
-filePathBitstream="Examples/Example2/Output/Bitstream/bitstream.bit"            #Path to bitstream.bit file.  
-filePathConstants="Examples/Example2/Constants/constants.py"                    #Path to constants.py file. If not present an empty file will be created. 
+filePathNetInput="../Examples/ledBlink/Input/input.net"                        #Path to .net file to be implemented on FPGA
+pathOutput="../Examples/ledBlink/Output"                                             #Path to place NET2FPGA output products
+filePathBitstream="../Examples/ledBlink/Output/Bitstream/bitstream.bit"              #Path to bitstream.bit file.  
+filePathConstants="../Examples/ledBlink/Constants/constants.py"                      #Path to constants.py file. If not present an empty file will be created. 
 
