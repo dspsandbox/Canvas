@@ -5,6 +5,10 @@ The NET2FPGA project is a visual FPGA programming tool, which starting from a LT
 
 The automated code generation, synthesis and implementation are performed on an external server. By outsourcing these processes, the final user does not require an installation of the Xilinx development software. To further reduce the computational load, the output products of each new server request are appended to an internal database and are directly retrieved for future requests of the same type.
 
+The project is currently devoted to the [Redpitaya platform](https://www.redpitaya.com/), which is a low cost development board arround a Zynq7010 FPGA, including two pairs of ADCs/DACs at 125 Msamples/s. As a result, simple electronic circuits such as a low/high pass filters, PID controllers, mixers, modulators, signal generators... are here easily achieved by visually combining the provided LTspice toolbox. 
+
+
+
 
 
 
