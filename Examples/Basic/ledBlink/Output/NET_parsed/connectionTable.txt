@@ -1,0 +1,9 @@
+INSTANCE NAME ORIGINAL           INSTANCE NAME PARSED
+─────────────────────────────────────────────────────
+XU3 ---------------------------> X_NET2FPGA_1Bit_LED0_0
+XU2 ---------------------------> X_NET2FPGA_32Bit_compareGreater_0
+XdutyCycle --------------------> X_NET2FPGA_32Bit_const_0
+XU1 ---------------------------> X_NET2FPGA_32Bit_add_0
+Xincrement --------------------> X_NET2FPGA_32Bit_const_1
+XU4 ---------------------------> X_NET2FPGA_32Bit_compareSmaller_0
+XPWM_period -------------------> X_NET2FPGA_32Bit_const_2

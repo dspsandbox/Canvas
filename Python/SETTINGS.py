@@ -36,8 +36,8 @@ autoConstants=True                                                              
 ######################################################################################
 
 #Folder paths for INPUT/OUTPUT/CONSTANTS 
-filePathNetInput="../Examples/ledBlink/Input/input.net"                        #Path to .net file to be implemented on FPGA
-pathOutput="../Examples/ledBlink/Output"                                             #Path to place NET2FPGA output products
-filePathBitstream="../Examples/ledBlink/Output/Bitstream/bitstream.bit"              #Path to bitstream.bit file.  
-filePathConstants="../Examples/ledBlink/Constants/constants.py"                      #Path to constants.py file. If not present an empty file will be created. 
+filePathNetInput="../Examples/Basic/ledBlink/Input/input.net"                        #Path to .net file to be implemented on FPGA
+pathOutput="../Examples/Basic/ledBlink/Output"                                       #Path to place NET2FPGA output products
+filePathBitstream="../Examples/Basic/ledBlink/Output/Bitstream/bitstream.bit"        #Path to bitstream.bit file.  
+filePathConstants="../Examples/Basic/ledBlink/Constants/constants.py"                #Path to constants.py file. If not present an empty file will be created. 
 

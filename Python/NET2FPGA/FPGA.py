@@ -27,7 +27,7 @@ class FPGA_CLASS:
         self.ssh.load_system_host_keys()
         self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         self.ssh.connect(self.settings.FPGA_SSH_IP, username=self.settings.FPGA_SSH_USERNAME,password=self.settings.FPGA_SSH_PASSWORD)      
-        self.sftp = ssh.open_sftp() 
+        self.sftp = self.ssh.open_sftp() 
         return
         
     def disconnect(self):
@@ -41,9 +41,9 @@ class FPGA_CLASS:
         if self.debug:
             stdoutContent=stdout.read()
             stderrContent=stderr.read()
-            if len(stdoutContent>0):
+            if len(stdoutContent)>0:
                 print(stdoutContent)
-            if len(stderrContent>0):
+            if len(stderrContent)>0:
                 print(stderrContent)
         return
     
@@ -65,7 +65,7 @@ class FPGA_CLASS:
     def initBitstreamLoader(self):
         if self.debug:
             print("INIT BITSTREAM LOADER")
-        sftp.put(self.settings.filePathSetBitstream,"/home/NET2FPGA/bitstreamLoader.sh") #Sends bitstreamLoader.sh
+        self.sftp.put(self.settings.filePathSetBitstream,"/home/NET2FPGA/bitstreamLoader.sh") #Sends bitstreamLoader.sh
         self.execCommand("sed -i -e 's/\r$//' /home/NET2FPGA/bitstreamLoader.sh") #Remove spurious CR characters
         self.execCommand("chmod +x /home/NET2FPGA/bitstreamLoader.sh") #Makes bitstreamLoader.sh executable
         return
@@ -74,24 +74,24 @@ class FPGA_CLASS:
         rcLocalContent=""
         rcLocalContent+="#!bin/sh -e\n"
         if self.settings.autoBitstream:
-            rcLocalContent+="/home/NET2FPGA/setBitstream.sh \n"
+            rcLocalContent+="/home/NET2FPGA/bitstreamLoader.sh \n"
         if self.settings.autoConstants:
-            rcLocalContent+="/home/NET2FPGA/setConstants \n"
+            rcLocalContent+="/home/NET2FPGA/constantsLoader \n"
         rcLocalContent+="exit 0\n"
 
-        f=open(self.settiings.filePathRcLocal,"wb+")
+        f=open(self.settings.filePathRcLocal,"wb+")
         f.write(rcLocalContent)
         f.close()
-        sftp.put(self.settings.filePathRcLocal,"/etc/rc.local")    
+        self.sftp.put(self.settings.filePathRcLocal,"/etc/rc.local")    
         return
         
     def transferBitstream(self):
-        sftp.put(self.settings.filePathBitstream,"/home/NET2FPGA/bitstream.bit") #Send bitstream.bit to FPGA (PS)
+        self.sftp.put(self.settings.filePathBitstream,"/home/NET2FPGA/bitstream.bit") #Send bitstream.bit to FPGA (PS)
         return
         
         
     def loadBitstream(self):
-        self.execCommand("/home/NET2FPGA/setBitstream.sh") #Execute PS -> PL bitstream loader
+        self.execCommand("/home/NET2FPGA/bitstreamLoader.sh") #Execute PS -> PL bitstream loader
         return
         
     def constructConstantsFiles(self,const1Bit,const32Bit):
@@ -106,12 +106,12 @@ class FPGA_CLASS:
         
     def transferConstants(self):
         self.sftp.put(self.settings.filePathConst1Bit,"/home/NET2FPGA/const1Bit.txt") #Send const1Bit.txt to FPGA (PS)
-        self.sftp.put(fself.settings.filePathConst32Bit,"/home/NET2FPGA/const32Bit.txt") #Send const32Bit.txt to FPGA (PS)
+        self.sftp.put(self.settings.filePathConst32Bit,"/home/NET2FPGA/const32Bit.txt") #Send const32Bit.txt to FPGA (PS)
         return
         
         
     def loadConstants(self):
-        self.execCommand("/home/NET2FPGA/setConstants") #Execute PS -> PL constants loader    
+        self.execCommand("/home/NET2FPGA/constantsLoader") #Execute PS -> PL constants loader    
         return
         
         

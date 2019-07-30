@@ -29,5 +29,5 @@ else:                                                                      #NO D
         time.sleep(5)                                                      #Wait 5s
     server.debug=True                                                      #Turn ON print of messages
     
-server.getWorkspaceContent(setings.pathOutput,settings.filePathConstants)  #Get workspace contents, save it locally and creates constants.py file (in case it does not exist)
+server.getWorkspaceContent(settings.pathOutput,settings.filePathConstants) #Get workspace contents, save it locally and creates constants.py file (in case it does not exist)
 server.eraseWorkspace()                                                    #Erase workspace on server side 
