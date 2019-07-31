@@ -13,7 +13,7 @@ import os
 pathBase=".."                                                                        #Path to NET2FPGA git folder
 
 #NET2FPGA server settings 
-SERVER_TCP_IP = 'localhost'                                                          #DO NOT CHANGE  
+SERVER_TCP_IP = '82.223.15.170'                                                      #DO NOT CHANGE  
 SERVER_TCP_PORT = 5000                                                               #DO NOT CHANGE
 
 ######################################################################################
