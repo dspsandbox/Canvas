@@ -1,4 +1,4 @@
-#NET2FPGA
+# NET2FPGA
 ## Visual development tool for digital signal processing on FPGAs
 
 The NET2FPGA project is a free visual FPGA programming tool, which starting from a LTspice toolbox, automates code generation, synthesis and implementation on the target device. This software bundle drastically reduces the time required for generating custom digital signal processing (DSP) solutions and opens the field for users without prior knowledge on VHDL/Verilog and FPGA architecture. 
