@@ -17,7 +17,7 @@ The operation of the NET2FPGA tool is outline in the following:
  ### FPGA
  * The user selects a generated bitstream to upload onto the FPGA and defines values for 1 bit and 32 bit constants used in the digital circuit.
 * The NET2FPGA bundle uploads bitstream and constants onto the processing system (PS) of the Zynq device.
-* The NET2FPGA bundle transfers bitstream and constants to the programable logic (PL) of the Zynq device. Automatic PS → PL transfers after reboot can be set.
+* The NET2FPGA bundle transfers bitstream and constants to the programable logic (PL) of the Zynq device. Configurable automatic PS → PL transfers after boot.
  
 
 
