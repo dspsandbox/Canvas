@@ -87,7 +87,6 @@ class FPGA_CLASS:
         f.write(rcLocalContent)
         f.close()
         self.sftp.put(self.settings.filePathRcLocal,"/etc/rc.local")    
-        self.sftp.put(self.settings.filePathDebianConf,"/lib/systemd/system/rc-local.service.d/debian.conf") 
         return
         
     def transferBitstream(self):
