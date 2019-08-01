@@ -82,11 +82,12 @@ class FPGA_CLASS:
         if self.settings.autoConstants:
             rcLocalContent+="/home/NET2FPGA/constantsLoader \n"
         rcLocalContent+="exit 0\n"
-
+        
         f=open(self.settings.filePathRcLocal,"wb+")
         f.write(rcLocalContent)
         f.close()
         self.sftp.put(self.settings.filePathRcLocal,"/etc/rc.local")    
+        self.sftp.put(self.settings.filePathDebianConf,"/lib/systemd/system/rc-local.service.d/debian.conf") 
         return
         
     def transferBitstream(self):

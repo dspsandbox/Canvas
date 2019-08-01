@@ -27,6 +27,7 @@ FPGA_SSH_PASSWORD="root"                                                        
 filePathSetBitstream=os.path.join(pathBase,"FPGA","Zynq_PS","bitstreamLoader.sh")    #DO NOT CHANGE
 filePathSetConstants=os.path.join(pathBase,"FPGA","Zynq_PS","constantsLoader.c")     #DO NOT CHANGE
 filePathRcLocal=os.path.join(pathBase,"FPGA","Zynq_PS","rc.local")                   #DO NOT CHANGE
+filePathDebianConf=os.path.join(pathBase,"FPGA","Zynq_PS","debian.conf")             #DO NOT CHANGE
 filePathConst1Bit=os.path.join(pathBase,"FPGA","Zynq_PS","const1Bit.txt")            #DO NOT CHANGE
 filePathConst32Bit=os.path.join(pathBase,"FPGA","Zynq_PS","const32Bit.txt")          #DO NOT CHANGE
 
