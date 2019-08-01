@@ -1,6 +1,6 @@
 {
    "ExpandedHierarchyInLayout":"",
-   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS-threadsafe
 #  -string -flagsOSRD
 preplace port DDR -pg 1 -y 60 -defaultsOSRD
 preplace port adc_clk_p_i -pg 1 -y 230 -defaultsOSRD
@@ -29,32 +29,32 @@ preplace inst convertType_14_32_ADC2 -pg 1 -lvl 2 -y 510 -defaultsOSRD -resize 3
 preplace netloc processing_system7_0_DDR 1 3 4 N 60 NJ 60 N 60 N
 preplace netloc NET2FPGA_base_DSP_co_0_led_o 1 4 3 1280J 540 N 540 N
 preplace netloc NET2FPGA_base_DSP_co_0_dac_data1_o 1 5 1 N
-preplace netloc PS_ZYNQ_peripheral_reset 1 0 4 20 300 NJ 300 N 300 950
+preplace netloc PS_ZYNQ_peripheral_reset 1 0 4 20 150 NJ 150 670 210 960
 preplace netloc ADC_and_DAC_clk_clk250 1 1 5 NJ 250 N 250 N 250 N 250 1690
-preplace netloc NET2FPGA_base_conver_0_dataOut 1 2 2 N 388 950
+preplace netloc NET2FPGA_base_conver_0_dataOut 1 2 2 N 388 960
 preplace netloc NET2FPGA_base_DSP_co_0_dac_data2_o 1 5 1 1680
 preplace netloc NET2FPGA_base_DAC_dac_sel_o 1 6 1 N
 preplace netloc NET2FPGA_base_DSP_co_0_digital_o 1 4 3 1290J 520 N 520 N
 preplace netloc NET2FPGA_base_convertType_14_32_ADC2_dataOut 1 2 2 670 508 N
-preplace netloc PS_ZYNQ_gpio_io_o 1 3 1 990
+preplace netloc PS_ZYNQ_gpio_io_o 1 3 1 1000
 preplace netloc adc_data2_i_1 1 0 2 NJ 515 300J
-preplace netloc PS_ZYNQ_Dout 1 3 1 970
+preplace netloc PS_ZYNQ_Dout 1 3 1 980
 preplace netloc adc_clk_n_i_1 1 0 1 NJ
 preplace netloc NET2FPGA_base_DSP_core_dac1 1 4 1 1280
-preplace netloc ADC_and_DAC_clk_clk_out1 1 1 5 310 240 670 240 980 260 1290 260 1680
+preplace netloc ADC_and_DAC_clk_clk_out1 1 1 5 310 230 680 230 990 260 1290 260 1680
 preplace netloc NET2FPGA_base_DSP_core_dac2 1 4 1 N
 preplace netloc processing_system7_0_FIXED_IO 1 3 4 N 80 NJ 80 N 80 N
 preplace netloc NET2FPGA_base_DAC_dac_dat_o 1 6 1 N
-preplace netloc ADC_clk_adc_cdcs_o 1 1 6 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 NJ
+preplace netloc ADC_clk_adc_cdcs_o 1 1 6 310J 220 NJ 220 NJ 220 NJ 220 NJ 220 1990J
 preplace netloc NET2FPGA_base_DAC_dac_rst_o 1 6 1 N
 preplace netloc NET2FPGA_base_DAC_dac_wrt_o 1 6 1 N
-preplace netloc PS_ZYNQ_gpio_io_o1 1 3 1 960
+preplace netloc PS_ZYNQ_gpio_io_o1 1 3 1 970
 preplace netloc digital_i_1 1 0 2 NJ 635 300J
 preplace netloc adc_data1_i_1 1 0 2 NJ 395 NJ
 preplace netloc NET2FPGA_base_DAC_dac_clk_o 1 6 1 N
-preplace netloc NET2FPGA_base_sync_0_dataOut 1 2 2 N 630 970
+preplace netloc NET2FPGA_base_sync_0_dataOut 1 2 2 N 630 980
 preplace netloc adc_clk_p_i_1 1 0 1 NJ
-levelinfo -pg 1 0 160 490 810 1140 1490 1850 2030 -top 0 -bot 690
+levelinfo -pg 1 0 160 490 820 1140 1490 1850 2030 -top -200 -bot 690
 "
 }
 {

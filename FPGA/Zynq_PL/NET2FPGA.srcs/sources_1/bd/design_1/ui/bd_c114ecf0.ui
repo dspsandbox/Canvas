@@ -1,6 +1,6 @@
 {
    "ExpandedHierarchyInLayout":"",
-   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS
+   "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS-threadsafe
 #  -string -flagsOSRD
 preplace port dac_clk -pg 1 -y 90 -defaultsOSRD
 preplace port clk -pg 1 -y 70 -defaultsOSRD
