@@ -1,8 +1,11 @@
 *.pyc
-*.log
 *.jou
-Vivado/.Xil/*
-Vivado/NET2FPGA.cache/*
-Vivado/NET2FPGA.hw/*
-Vivado/NET2FPGA.runs/*
-Vivado/NET2FPGA.sim/*
+*backup.log
+*vivado.log
+FPGA/Zynq_PL/.Xil/*
+FPGA/Zynq_PL/NET2FPGA.cache/*
+FPGA/Zynq_PL/NET2FPGA.hw/*
+FPGA/Zynq_PL/NET2FPGA.runs/*
+FPGA/Zynq_PL/NET2FPGA.sim/*
+Python/settings.py
+Python/SETTINGS.py
