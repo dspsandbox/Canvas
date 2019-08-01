@@ -42,8 +42,10 @@ class FPGA_CLASS:
             stdoutContent=stdout.read()
             stderrContent=stderr.read()
             if len(stdoutContent)>0:
+                print("SSH stdout:")
                 print(stdoutContent)
             if len(stderrContent)>0:
+                print("SSH stderr:")
                 print(stderrContent)
         return
     
@@ -71,6 +73,8 @@ class FPGA_CLASS:
         return
         
     def configBoot(self):
+        if self.debug:
+            print("Config boot")
         rcLocalContent=""
         rcLocalContent+="#!bin/sh -e\n"
         if self.settings.autoBitstream:
@@ -86,15 +90,21 @@ class FPGA_CLASS:
         return
         
     def transferBitstream(self):
+        if self.debug:
+            print("Transfer bitstream")
         self.sftp.put(self.settings.filePathBitstream,"/home/NET2FPGA/bitstream.bit") #Send bitstream.bit to FPGA (PS)
         return
         
         
     def loadBitstream(self):
+        if self.debug:
+            print("Load bitstream")
         self.execCommand("/home/NET2FPGA/bitstreamLoader.sh") #Execute PS -> PL bitstream loader
         return
         
     def constructConstantsFiles(self,const1Bit,const32Bit):
+        if self.debug:
+            print("Construct constants files")
         f1Bit=open(self.settings.filePathConst1Bit,"wb+")                                                  
         f32Bit=open(self.settings.filePathConst32Bit,"wb+")
         for i in range(0,256):
@@ -105,12 +115,16 @@ class FPGA_CLASS:
             
         
     def transferConstants(self):
+        if self.debug:
+            print("Transfer constants")
         self.sftp.put(self.settings.filePathConst1Bit,"/home/NET2FPGA/const1Bit.txt") #Send const1Bit.txt to FPGA (PS)
         self.sftp.put(self.settings.filePathConst32Bit,"/home/NET2FPGA/const32Bit.txt") #Send const32Bit.txt to FPGA (PS)
         return
         
         
     def loadConstants(self):
+        if self.debug:
+            print("Load constants")
         self.execCommand("/home/NET2FPGA/constantsLoader") #Execute PS -> PL constants loader    
         return
         
