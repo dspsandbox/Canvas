@@ -22,7 +22,7 @@ class FPGA_CLASS:
     
     def connect(self):
         if self.debug:
-            print("CONNECT TO FPGA")
+            print("Connect to FPGA")
         self.ssh = paramiko.SSHClient()
         self.ssh.load_system_host_keys()
         self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -32,7 +32,7 @@ class FPGA_CLASS:
         
     def disconnect(self):
         if self.debug:
-            print("DISCONNECT FROM FPGA")
+            print("Disconnect from FPGA\n")
         self.ssh.close()
         return
     
@@ -49,14 +49,14 @@ class FPGA_CLASS:
     
     def initFileStructure(self):
         if self.debug:
-            print("INIT FPGA FILE STRUCTURE")
+            print("Init FPGA file structure")
         self.execCommand("rm -r /home/NET2FPGA") #Remove existing NET2FPGA folder
         self.execCommand("mkdir /home/NET2FPGA") #Creates new NET2FPGA folder   
         return
     
     def initConstantsLoader(self):
         if self.debug:
-            print("INIT CONSTANTS LOADER")
+            print("Init constants loader")
         self.sftp.put(self.settings.filePathSetConstants,"/home/NET2FPGA/constantsLoader.c") #Sends constantsLoader.c
         self.execCommand("gcc /home/NET2FPGA/constantsLoader.c -o /home/NET2FPGA/constantsLoader") #Compiles constantsLoader.c
         self.execCommand("chmod +x /home/NET2FPGA/constantsLoader") #Makes constantsLoader executable
@@ -64,7 +64,7 @@ class FPGA_CLASS:
         
     def initBitstreamLoader(self):
         if self.debug:
-            print("INIT BITSTREAM LOADER")
+            print("Init bitstream loader")
         self.sftp.put(self.settings.filePathSetBitstream,"/home/NET2FPGA/bitstreamLoader.sh") #Sends bitstreamLoader.sh
         self.execCommand("sed -i -e 's/\r$//' /home/NET2FPGA/bitstreamLoader.sh") #Remove spurious CR characters
         self.execCommand("chmod +x /home/NET2FPGA/bitstreamLoader.sh") #Makes bitstreamLoader.sh executable
