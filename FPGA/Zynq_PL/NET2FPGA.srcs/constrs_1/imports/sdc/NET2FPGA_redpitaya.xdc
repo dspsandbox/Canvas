@@ -111,7 +111,7 @@ set_property PACKAGE_PIN N15 [get_ports dac_rst_o]
 set_property IOB        TRUE     [get_ports {dac_wrt_o}]
 set_property IOB        TRUE     [get_ports {dac_sel_o}]
 set_property IOB        TRUE     [get_ports {dac_clk_o}]
-set_property IOB        TRUE     [get_ports {dac_rst_o}]
+#set_property IOB        TRUE     [get_ports {dac_rst_o}]
 
 
 #######################
