@@ -63,10 +63,12 @@ int main () {
         *regVal_=regVal;
         *regWrtEn_=1;
         *regWrtEn_=0;
-        printf("1Bit -> Addr: %d   Val: %d\r\n",regAddr,regVal);
+        if (regVal!=0){
+            printf("1Bit -> Addr: %d   Val: %d\r\n",regAddr,regVal);
+        }
     }
+    printf("1Bit -> Addr: others   Val: 0 \r\n");
     fclose(f);
-        
     printf("------------------------------------\r\n");
     
     // 32Bit
@@ -82,8 +84,11 @@ int main () {
         *regVal_=regVal;
         *regWrtEn_=1;
         *regWrtEn_=0;
-        printf("32Bit -> Addr: %d   Val: %d\r\n",regAddr&(~(1<<31)),regVal);
+        if (regVal!=0){
+            printf("32Bit -> Addr: %d   Val: %d\r\n",regAddr&(~(1<<31)),regVal);
+        }
     }
+    printf("32Bit -> Addr: others   Val: 0 \r\n");
     fclose(f);   
                 
     return 0;
