@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
---Date        : Thu Aug  1 17:12:39 2019
+--Date        : Thu Aug  1 17:59:55 2019
 --Host        : PC1091 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -64,6 +64,85 @@ clk_wiz: component design_1_clk_wiz_0_1
 const_1: component design_1_xlconstant_0_1
      port map (
       dout(0) => ADC_clk_adc_cdcs_o(0)
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity DAC_imp_1YBUH12 is
+  port (
+    clk : in STD_LOGIC;
+    dac_clk : in STD_LOGIC;
+    dac_clk_o : out STD_LOGIC;
+    dac_data1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_data2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_data_o : out STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_rst_o : out STD_LOGIC;
+    dac_sel_o : out STD_LOGIC;
+    dac_wrt_o : out STD_LOGIC
+  );
+end DAC_imp_1YBUH12;
+
+architecture STRUCTURE of DAC_imp_1YBUH12 is
+  component design_1_NET2FPGA_base_DAC_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    dac_clk : in STD_LOGIC;
+    dac_data1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_data2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_dat_o : out STD_LOGIC_VECTOR ( 13 downto 0 );
+    dac_clk_o : out STD_LOGIC;
+    dac_wrt_o : out STD_LOGIC;
+    dac_sel_o : out STD_LOGIC;
+    dac_rst_o : out STD_LOGIC
+  );
+  end component design_1_NET2FPGA_base_DAC_0_0;
+  component design_1_clk_wiz_0_0 is
+  port (
+    reset : in STD_LOGIC;
+    clk_in1 : in STD_LOGIC;
+    clk_out1 : out STD_LOGIC;
+    locked : out STD_LOGIC
+  );
+  end component design_1_clk_wiz_0_0;
+  signal ADC_and_DAC_clk_clk_out1 : STD_LOGIC;
+  signal NET2FPGA_base_DAC_dac_clk_o : STD_LOGIC;
+  signal NET2FPGA_base_DAC_dac_dat_o : STD_LOGIC_VECTOR ( 13 downto 0 );
+  signal NET2FPGA_base_DAC_dac_rst_o : STD_LOGIC;
+  signal NET2FPGA_base_DAC_dac_sel_o : STD_LOGIC;
+  signal NET2FPGA_base_DAC_dac_wrt_o : STD_LOGIC;
+  signal NET2FPGA_base_DSP_co_0_dac_data1_o : STD_LOGIC_VECTOR ( 13 downto 0 );
+  signal NET2FPGA_base_DSP_co_0_dac_data2_o : STD_LOGIC_VECTOR ( 13 downto 0 );
+  signal clk_wiz_0_clk_out1 : STD_LOGIC;
+  signal NLW_clk_wiz_0_locked_UNCONNECTED : STD_LOGIC;
+begin
+  ADC_and_DAC_clk_clk_out1 <= clk;
+  NET2FPGA_base_DSP_co_0_dac_data1_o(13 downto 0) <= dac_data1(13 downto 0);
+  NET2FPGA_base_DSP_co_0_dac_data2_o(13 downto 0) <= dac_data2(13 downto 0);
+  dac_clk_o <= NET2FPGA_base_DAC_dac_clk_o;
+  dac_data_o(13 downto 0) <= NET2FPGA_base_DAC_dac_dat_o(13 downto 0);
+  dac_rst_o <= NET2FPGA_base_DAC_dac_rst_o;
+  dac_sel_o <= NET2FPGA_base_DAC_dac_sel_o;
+  dac_wrt_o <= NET2FPGA_base_DAC_dac_wrt_o;
+DAC_RTL: component design_1_NET2FPGA_base_DAC_0_0
+     port map (
+      clk => ADC_and_DAC_clk_clk_out1,
+      dac_clk => clk_wiz_0_clk_out1,
+      dac_clk_o => NET2FPGA_base_DAC_dac_clk_o,
+      dac_dat_o(13 downto 0) => NET2FPGA_base_DAC_dac_dat_o(13 downto 0),
+      dac_data1(13 downto 0) => NET2FPGA_base_DSP_co_0_dac_data1_o(13 downto 0),
+      dac_data2(13 downto 0) => NET2FPGA_base_DSP_co_0_dac_data2_o(13 downto 0),
+      dac_rst_o => NET2FPGA_base_DAC_dac_rst_o,
+      dac_sel_o => NET2FPGA_base_DAC_dac_sel_o,
+      dac_wrt_o => NET2FPGA_base_DAC_dac_wrt_o
+    );
+clk_wiz_0: component design_1_clk_wiz_0_0
+     port map (
+      clk_in1 => ADC_and_DAC_clk_clk_out1,
+      clk_out1 => clk_wiz_0_clk_out1,
+      locked => NLW_clk_wiz_0_locked_UNCONNECTED,
+      reset => '0'
     );
 end STRUCTURE;
 library IEEE;
@@ -2426,7 +2505,7 @@ entity design_1 is
     led_o : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   attribute core_generation_info : string;
-  attribute core_generation_info of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=28,numReposBlks=21,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_board_cnt=9,da_clkrst_cnt=12,da_ps7_cnt=1,synth_mode=Global}";
+  attribute core_generation_info of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=30,numReposBlks=22,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_board_cnt=9,da_clkrst_cnt=12,da_ps7_cnt=1,synth_mode=Global}";
   attribute hw_handoff : string;
   attribute hw_handoff of design_1 : entity is "design_1.hwdef";
 end design_1;
@@ -2467,19 +2546,6 @@ architecture STRUCTURE of design_1 is
     dataOut : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component design_1_NET2FPGA_base_sync_0_0;
-  component design_1_NET2FPGA_base_DAC_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    dac_clk : in STD_LOGIC;
-    dac_data1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    dac_data2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
-    dac_dat_o : out STD_LOGIC_VECTOR ( 13 downto 0 );
-    dac_clk_o : out STD_LOGIC;
-    dac_wrt_o : out STD_LOGIC;
-    dac_sel_o : out STD_LOGIC;
-    dac_rst_o : out STD_LOGIC
-  );
-  end component design_1_NET2FPGA_base_DAC_0_0;
   component design_1_NET2FPGA_base_DSP_co_0_0 is
   port (
     clk : in STD_LOGIC;
@@ -2594,14 +2660,14 @@ ADC: entity work.ADC_imp_TF1HV4
       dac_clk => ADC_and_DAC_clk_clk250,
       reset => PS_ZYNQ_peripheral_reset(0)
     );
-DAC: component design_1_NET2FPGA_base_DAC_0_0
+DAC: entity work.DAC_imp_1YBUH12
      port map (
       clk => ADC_and_DAC_clk_clk_out1,
       dac_clk => ADC_and_DAC_clk_clk250,
       dac_clk_o => NET2FPGA_base_DAC_dac_clk_o,
-      dac_dat_o(13 downto 0) => NET2FPGA_base_DAC_dac_dat_o(13 downto 0),
       dac_data1(13 downto 0) => NET2FPGA_base_DSP_co_0_dac_data1_o(13 downto 0),
       dac_data2(13 downto 0) => NET2FPGA_base_DSP_co_0_dac_data2_o(13 downto 0),
+      dac_data_o(13 downto 0) => NET2FPGA_base_DAC_dac_dat_o(13 downto 0),
       dac_rst_o => NET2FPGA_base_DAC_dac_rst_o,
       dac_sel_o => NET2FPGA_base_DAC_dac_sel_o,
       dac_wrt_o => NET2FPGA_base_DAC_dac_wrt_o

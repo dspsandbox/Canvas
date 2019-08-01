@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# NET2FPGA_base_DAC, NET2FPGA_base_DSP_core, NET2FPGA_base_convertType_14_32, NET2FPGA_base_convertType_14_32, NET2FPGA_base_convertType_32_14, NET2FPGA_base_convertType_32_14, NET2FPGA_base_sync
+# NET2FPGA_base_DSP_core, NET2FPGA_base_convertType_14_32, NET2FPGA_base_convertType_14_32, NET2FPGA_base_convertType_32_14, NET2FPGA_base_convertType_32_14, NET2FPGA_base_sync, NET2FPGA_base_DAC
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -230,6 +230,96 @@ proc create_hier_cell_PS_ZYNQ { parentCell nameHier } {
   current_bd_instance $oldCurInst
 }
 
+# Hierarchical cell: DAC
+proc create_hier_cell_DAC { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_msg_id "BD_TCL-102" "ERROR" "create_hier_cell_DAC() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_msg_id "BD_TCL-100" "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_msg_id "BD_TCL-101" "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+
+  # Create pins
+  create_bd_pin -dir I -type clk clk
+  create_bd_pin -dir I -type clk dac_clk
+  create_bd_pin -dir O dac_clk_o
+  create_bd_pin -dir I -from 13 -to 0 dac_data1
+  create_bd_pin -dir I -from 13 -to 0 dac_data2
+  create_bd_pin -dir O -from 13 -to 0 dac_data_o
+  create_bd_pin -dir O dac_rst_o
+  create_bd_pin -dir O dac_sel_o
+  create_bd_pin -dir O dac_wrt_o
+
+  # Create instance: DAC_RTL, and set properties
+  set block_name NET2FPGA_base_DAC
+  set block_cell_name DAC_RTL
+  if { [catch {set DAC_RTL [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $DAC_RTL eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: clk_wiz_0, and set properties
+  set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
+  set_property -dict [ list \
+   CONFIG.CLKIN1_JITTER_PS {80.0} \
+   CONFIG.CLKOUT1_JITTER {112.962} \
+   CONFIG.CLKOUT1_PHASE_ERROR {112.379} \
+   CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {250} \
+   CONFIG.CLKOUT1_REQUESTED_PHASE {-165} \
+   CONFIG.MMCM_CLKFBOUT_MULT_F {6.000} \
+   CONFIG.MMCM_CLKIN1_PERIOD {8.000} \
+   CONFIG.MMCM_CLKIN2_PERIOD {10.0} \
+   CONFIG.MMCM_CLKOUT0_DIVIDE_F {3.000} \
+   CONFIG.MMCM_CLKOUT0_PHASE {-165.000} \
+   CONFIG.MMCM_DIVCLK_DIVIDE {1} \
+   CONFIG.PRIM_IN_FREQ {125} \
+ ] $clk_wiz_0
+
+  # Create port connections
+  connect_bd_net -net ADC_and_DAC_clk_clk_out1 [get_bd_pins clk] [get_bd_pins DAC_RTL/clk] [get_bd_pins clk_wiz_0/clk_in1]
+  connect_bd_net -net NET2FPGA_base_DAC_dac_clk_o [get_bd_pins dac_clk_o] [get_bd_pins DAC_RTL/dac_clk_o]
+  connect_bd_net -net NET2FPGA_base_DAC_dac_dat_o [get_bd_pins dac_data_o] [get_bd_pins DAC_RTL/dac_dat_o]
+  connect_bd_net -net NET2FPGA_base_DAC_dac_rst_o [get_bd_pins dac_rst_o] [get_bd_pins DAC_RTL/dac_rst_o]
+  connect_bd_net -net NET2FPGA_base_DAC_dac_sel_o [get_bd_pins dac_sel_o] [get_bd_pins DAC_RTL/dac_sel_o]
+  connect_bd_net -net NET2FPGA_base_DAC_dac_wrt_o [get_bd_pins dac_wrt_o] [get_bd_pins DAC_RTL/dac_wrt_o]
+  connect_bd_net -net NET2FPGA_base_DSP_co_0_dac_data1_o [get_bd_pins dac_data1] [get_bd_pins DAC_RTL/dac_data1]
+  connect_bd_net -net NET2FPGA_base_DSP_co_0_dac_data2_o [get_bd_pins dac_data2] [get_bd_pins DAC_RTL/dac_data2]
+  connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins DAC_RTL/dac_clk] [get_bd_pins clk_wiz_0/clk_out1]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
 # Hierarchical cell: ADC
 proc create_hier_cell_ADC { parentCell nameHier } {
 
@@ -391,17 +481,9 @@ proc create_root_design { parentCell } {
   # Create instance: ADC
   create_hier_cell_ADC [current_bd_instance .] ADC
 
-  # Create instance: DAC, and set properties
-  set block_name NET2FPGA_base_DAC
-  set block_cell_name DAC
-  if { [catch {set DAC [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $DAC eq "" } {
-     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
+  # Create instance: DAC
+  create_hier_cell_DAC [current_bd_instance .] DAC
+
   # Create instance: DSP_core, and set properties
   set block_name NET2FPGA_base_DSP_core
   set block_cell_name DSP_core
@@ -480,7 +562,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ADC_and_DAC_clk_clk_out1 [get_bd_pins ADC/clk] [get_bd_pins DAC/clk] [get_bd_pins DSP_core/clk] [get_bd_pins PS_ZYNQ/M01_ACLK] [get_bd_pins convertType_14_32_ADC1/clk] [get_bd_pins convertType_14_32_ADC2/clk] [get_bd_pins convertType_32_14_DAC1/clk] [get_bd_pins convertType_32_14_DAC2/clk] [get_bd_pins sync_digitalIn/clk]
   connect_bd_net -net ADC_clk_adc_cdcs_o [get_bd_ports adc_cdcs_o] [get_bd_pins ADC/adc_cdcs_o]
   connect_bd_net -net NET2FPGA_base_DAC_dac_clk_o [get_bd_ports dac_clk_o] [get_bd_pins DAC/dac_clk_o]
-  connect_bd_net -net NET2FPGA_base_DAC_dac_dat_o [get_bd_ports dac_data_o] [get_bd_pins DAC/dac_dat_o]
+  connect_bd_net -net NET2FPGA_base_DAC_dac_dat_o [get_bd_ports dac_data_o] [get_bd_pins DAC/dac_data_o]
   connect_bd_net -net NET2FPGA_base_DAC_dac_rst_o [get_bd_ports dac_rst_o] [get_bd_pins DAC/dac_rst_o]
   connect_bd_net -net NET2FPGA_base_DAC_dac_sel_o [get_bd_ports dac_sel_o] [get_bd_pins DAC/dac_sel_o]
   connect_bd_net -net NET2FPGA_base_DAC_dac_wrt_o [get_bd_ports dac_wrt_o] [get_bd_pins DAC/dac_wrt_o]
