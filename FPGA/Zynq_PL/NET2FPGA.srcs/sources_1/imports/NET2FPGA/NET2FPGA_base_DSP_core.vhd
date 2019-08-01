@@ -79,9 +79,9 @@ begin
 					constantRegister1Bit(regAddr_var)<=regVal1Bit_var;
 				end if;	
 			end if;
-
 		end if;	
-		
+	end process;
+
 	-- in/out port <-> signal assignements	
     adc1_signal<=adc1;
     adc2_signal<=adc2;
@@ -90,10 +90,6 @@ begin
     digitalIn_signal<=digitalIn;
     digitalOut<=digitalOut_signal;
     led<=led_signal;	
-		
-	end process;
-
-
     
 ---------------------------------------------------------------------------------------------------
 --NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS START
