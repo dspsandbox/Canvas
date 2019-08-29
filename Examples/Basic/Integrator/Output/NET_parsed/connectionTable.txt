@@ -1,0 +1,20 @@
+INSTANCE NAME ORIGINAL           INSTANCE NAME PARSED
+─────────────────────────────────────────────────────
+XU7 ---------------------------> X_NET2FPGA_32Bit_DAC1_0
+XU4 ---------------------------> X_NET2FPGA_32Bit_add_0
+XU5 ---------------------------> X_NET2FPGA_32Bit_switch_0
+Xzero -------------------------> X_NET2FPGA_32Bit_const_0
+XU3 ---------------------------> X_NET2FPGA_32Bit_shiftR_0
+XU1 ---------------------------> X_NET2FPGA_32Bit_ADC1_0
+XshiftR -----------------------> X_NET2FPGA_32Bit_const_1
+Xgate -------------------------> X_NET2FPGA_1Bit_digitalIn1_0
+XU9 ---------------------------> X_NET2FPGA_1Bit_not_0
+Xreset ------------------------> X_NET2FPGA_1Bit_digitalIn0_0
+XU8 ---------------------------> X_NET2FPGA_32Bit_DAC2_0
+XU11 --------------------------> X_NET2FPGA_32Bit_sub_0
+XU6 ---------------------------> X_NET2FPGA_32Bit_sampleHold_0
+XU2 ---------------------------> X_NET2FPGA_32Bit_ADC2_0
+XSHB --------------------------> X_NET2FPGA_1Bit_digitalIn3_0
+XU10 --------------------------> X_NET2FPGA_32Bit_sampleHold_1
+XSHA --------------------------> X_NET2FPGA_1Bit_digitalIn2_0
+XU12 --------------------------> X_NET2FPGA_1Bit_const_0

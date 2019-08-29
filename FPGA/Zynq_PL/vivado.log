@@ -1,0 +1,51 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri Aug  2 11:16:04 2019
+# Process ID: 9840
+# Current directory: C:/Users/pgomez/Desktop/NET2FPGA/FPGA/Zynq_PL
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13712 C:\Users\pgomez\Desktop\NET2FPGA\FPGA\Zynq_PL\NET2FPGA.xpr
+# Log file: C:/Users/pgomez/Desktop/NET2FPGA/FPGA/Zynq_PL/vivado.log
+# Journal file: C:/Users/pgomez/Desktop/NET2FPGA/FPGA/Zynq_PL\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/pgomez/Desktop/NET2FPGA/FPGA/Zynq_PL/NET2FPGA.xpr
+INFO: [Project 1-313] Project file moved from 'E:/NET2FPGA/Github_container/FPGA/Zynq_PL' since last save.
+Scanning sources...
+Finished scanning sources
+WARNING: [Project 1-509] GeneratedRun file for 'synth_1' not found
+INFO: [filemgmt 56-1] IP Repository Path: Directory not found as 'C:/Users/pgomez/Redpitaya/ip_repo/configIP_1.0'; using path 'E:/Redpitaya/ip_repo/configIP_1.0' instead.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'e:/Redpitaya/ip_repo/configIP_1.0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Vivado/2018.3/data/ip'.
+open_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:18 . Memory (MB): peak = 752.551 ; gain = 184.391
+update_compile_order -fileset sources_1
+open_bd_design {C:/Users/pgomez/Desktop/NET2FPGA/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/design_1.bd}
+Adding cell -- xilinx.com:ip:xlconstant:1.1 - const_1
+Adding cell -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_ADC
+Adding cell -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_regAddr
+Adding cell -- xilinx.com:ip:xlslice:1.0 - xlslice
+Adding cell -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_WrtEn
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_AXI
+Adding cell -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_125
+Adding cell -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_regVal
+Adding cell -- xilinx.com:ip:processing_system7:5.5 - processing_system7
+Adding cell -- xilinx.com:ip:axi_interconnect:2.1 - axi_interconnect
+Adding cell -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding cell -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:ip:axi_clock_converter:2.1 - auto_cc
+Adding cell -- xilinx.com:module_ref:NET2FPGA_base_convertType_14_32:1.0 - convertType_14_32_ADC1
+Adding cell -- xilinx.com:module_ref:NET2FPGA_base_convertType_14_32:1.0 - convertType_14_32_ADC2
+Adding cell -- xilinx.com:module_ref:NET2FPGA_base_convertType_32_14:1.0 - convertType_32_14_DAC1
+Adding cell -- xilinx.com:module_ref:NET2FPGA_base_convertType_32_14:1.0 - convertType_32_14_DAC2
+Adding cell -- xilinx.com:module_ref:NET2FPGA_base_sync:1.0 - sync_digitalIn
+Adding cell -- xilinx.com:module_ref:NET2FPGA_base_DSP_core:1.0 - DSP_core
+Adding cell -- xilinx.com:module_ref:NET2FPGA_base_DAC:1.0 - DAC_RTL
+Adding cell -- xilinx.com:ip:clk_wiz:6.0 - clk_wiz_DAC
+Successfully read diagram <design_1> from BD file <C:/Users/pgomez/Desktop/NET2FPGA/FPGA/Zynq_PL/NET2FPGA.srcs/sources_1/bd/design_1/design_1.bd>
+open_bd_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 852.215 ; gain = 80.898
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Aug  2 12:18:32 2019...

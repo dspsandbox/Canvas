@@ -1,0 +1,8 @@
+INSTANCE NAME ORIGINAL           INSTANCE NAME PARSED
+─────────────────────────────────────────────────────
+XU5 ---------------------------> X_NET2FPGA_32Bit_DAC1_0
+XU6 ---------------------------> X_NET2FPGA_32Bit_DAC2_0
+XU1 ---------------------------> X_NET2FPGA_32Bit_DDS_0
+XpInc -------------------------> X_NET2FPGA_32Bit_const_0
+XpOff -------------------------> X_NET2FPGA_32Bit_const_1
+Xresync -----------------------> X_NET2FPGA_1Bit_const_0
