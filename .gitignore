@@ -3,7 +3,7 @@
 *backup.log
 *vivado.log
 FPGA/Zynq_PL/.Xil/*
-FPGA/Zynq_PL/NET2FPGA.cache/*
-FPGA/Zynq_PL/NET2FPGA.hw/*
-FPGA/Zynq_PL/NET2FPGA.runs/*
-FPGA/Zynq_PL/NET2FPGA.sim/*
+FPGA/Zynq_PL/Canvas.cache/*
+FPGA/Zynq_PL/Canvas.hw/*
+FPGA/Zynq_PL/Canvas.runs/*
+FPGA/Zynq_PL/Canvas.sim/*
