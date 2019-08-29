@@ -1,8 +1,8 @@
 /*********************************************************************
- NET2FPGA constantsLoader.c
+ Canvas constantsLoader.c
 
  MIT License
- Copyright (c) 2019 Pau Gomez Kabelka <paugomezkabelka@gmail.com>
+ Copyright (c) 2019 DSPsandbox (Pau Gomez pau.gomez@dspsandbox.org)
 **********************************************************************/
 
 #include <stdio.h>
@@ -20,8 +20,8 @@
 #define GPIO_ADDR_regVal   0x41220000
 #define GPIO_ADDR_regWrtEn 0x41210000
 
-#define FILE_NAME_CONST_32BIT "/home/NET2FPGA/const32Bit.txt"
-#define FILE_NAME_CONST_1BIT "/home/NET2FPGA/const1Bit.txt"
+#define FILE_NAME_CONST_32BIT "/home/Canvas/const32Bit.txt"
+#define FILE_NAME_CONST_1BIT "/home/Canvas/const1Bit.txt"
 
 char *name = "/dev/mem";
 int fd;

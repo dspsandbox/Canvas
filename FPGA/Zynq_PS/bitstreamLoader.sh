@@ -1,2 +1,2 @@
 #!/bin/bash
-cat /home/NET2FPGA/bitstream.bit > /dev/xdevcfg
+cat /home/Canvas/bitstream.bit > /dev/xdevcfg

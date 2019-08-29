@@ -1,4 +1,0 @@
-vhdl xil_defaultlib  \
-"../../../../NET2FPGA.srcs/sources_1/ip/dds_compiler/sim/dds_compiler.vhd" \
-
-nosort

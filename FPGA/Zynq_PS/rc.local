@@ -1,4 +1,4 @@
 #!bin/sh -e
-/home/NET2FPGA/bitstreamLoader.sh 
-/home/NET2FPGA/constantsLoader 
+/home/Canvas/bitstreamLoader.sh 
+/home/Canvas/constantsLoader 
 exit 0
