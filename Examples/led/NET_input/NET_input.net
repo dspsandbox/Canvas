@@ -1,0 +1,16 @@
+* C:\Users\pgomez\Desktop\CANVAS\CanvasServer\LTspiceTmp\mainCircuit.asc
+Xled0 N001 x1_const
+Xled1 N002 x1_const
+Xled2 N003 x1_const
+Xled3 N004 x1_const
+XU1 N001 x1_led0
+XU2 N002 x1_led1
+XU3 N003 x1_led2
+XU4 N004 x1_led3
+XU5 N005 x1_led4
+XU6 N005 x1_led5
+XU7 N005 x1_led6
+XU8 N005 x1_led7
+Xled4567 N005 x1_const
+.backanno
+.end

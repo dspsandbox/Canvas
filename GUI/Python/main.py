@@ -580,8 +580,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
                 if len(line)==0:
                     break
                 instanceNameList=re.findall("\S+(?=\s-+>)",line)
-                x1ConstIndexList=re.findall(r"(?<=>\sNET2FPGA_1Bit_const_)\d+",line)
-                x32ConstIndexList=re.findall(r"(?<=>\sNET2FPGA_32Bit_const_)\d+",line)
+                x1ConstIndexList=re.findall(r"(?<=>\sx1_const_)\d+",line)
+                x32ConstIndexList=re.findall(r"(?<=>\sx32_const_)\d+",line)
                 
                 if len(instanceNameList)>0 and len(x1ConstIndexList):
                     self.x1ConstDict[instanceNameList[0]]= x1ConstIndexList[0]   

@@ -63,7 +63,7 @@
           <enum>QTabWidget::Rounded</enum>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <property name="elideMode">
           <enum>Qt::ElideMiddle</enum>
@@ -140,7 +140,7 @@
                  <item>
                   <widget class="QLineEdit" name="lineEdit_serverIP">
                    <property name="text">
-                    <string>localhost</string>
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -154,7 +154,7 @@
                  <item>
                   <widget class="QLineEdit" name="lineEdit_serverPort">
                    <property name="text">
-                    <string>5000</string>
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -199,7 +199,7 @@
                  <item>
                   <widget class="QLineEdit" name="lineEdit_workspaceId">
                    <property name="text">
-                    <string>0</string>
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -213,7 +213,7 @@
                  <item>
                   <widget class="QLineEdit" name="lineEdit_workspaceKey">
                    <property name="text">
-                    <string>0</string>
+                    <string/>
                    </property>
                    <property name="echoMode">
                     <enum>QLineEdit::Password</enum>
@@ -676,7 +676,7 @@
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="text">
-                    <string>10.9.1.150</string>
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -690,7 +690,7 @@
                  <item>
                   <widget class="QLineEdit" name="lineEdit_fpgaPort">
                    <property name="text">
-                    <string>22</string>
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -744,7 +744,7 @@
                     </size>
                    </property>
                    <property name="text">
-                    <string>root</string>
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -764,7 +764,7 @@
                     </size>
                    </property>
                    <property name="text">
-                    <string>root</string>
+                    <string/>
                    </property>
                    <property name="echoMode">
                     <enum>QLineEdit::Password</enum>
