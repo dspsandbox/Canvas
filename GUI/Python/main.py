@@ -246,7 +246,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             netInputDirPath_=os.path.join(projectDirPath_,"NET_input")
             netParsedDirPath_=os.path.join(projectDirPath_,"NET_parsed")
             vhdlDirPath_=os.path.join(projectDirPath_,"VHDL")
-            bitstreamDirPath_=os.path.join(projectDirPath_,"Bitstream")
+            zynqDirPath_=os.path.join(projectDirPath_,"Zynq_7010")
             
             #FileDialog
             fileDialog=QtWidgets.QFileDialog(self)
@@ -267,7 +267,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
                 netInputDirPath=os.path.join(self.projectDirPath,"NET_input")
                 netParsedDirPath=os.path.join(self.projectDirPath,"NET_parsed")
                 vhdlDirPath=os.path.join(self.projectDirPath,"VHDL")
-                bitstreamDirPath=os.path.join(self.projectDirPath,"Bitstream")
+                zynqDirPath=os.path.join(self.projectDirPath,"Zynq_7010")
                                
                 if os.path.isdir(inputDirPath): rmtree(inputDirPath)
                 if os.path.isdir(inputDirPath_): copytree(inputDirPath_,inputDirPath)
@@ -281,8 +281,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
                 if os.path.isdir(vhdlDirPath): rmtree(vhdlDirPath)
                 if os.path.isdir(vhdlDirPath_): copytree(vhdlDirPath_,vhdlDirPath)
 
-                if os.path.isdir(bitstreamDirPath): rmtree(bitstreamDirPath)
-                if os.path.isdir(bitstreamDirPath_): copytree(bitstreamDirPath_,bitstreamDirPath)
+                if os.path.isdir(zynqDirPath): rmtree(zynqDirPath)
+                if os.path.isdir(zynqDirPath_): copytree(zynqDirPath_,zynqDirPath)
                 
                 #Save .prj file
                 self.saveCallback()
