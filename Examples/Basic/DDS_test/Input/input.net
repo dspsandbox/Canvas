@@ -1,9 +1,0 @@
-* C:\Users\pgomez\Desktop\NET2FPGA\Examples\Basic\DDS_test\Input\mainCircuit.asc
-XU1 N001 N003 N005 N002 N004 NET2FPGA_32Bit_DDS
-XpInc N001 NET2FPGA_32Bit_const
-XpOff N003 NET2FPGA_32Bit_const
-Xresync N005 NET2FPGA_1Bit_const
-XU5 N002 NET2FPGA_32Bit_DAC1
-XU6 N004 NET2FPGA_32Bit_DAC2
-.backanno
-.end
