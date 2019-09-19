@@ -39,11 +39,11 @@ end DSP_core;
 
 architecture Behavioral of DSP_core is
 
-type constantRegister32BitType is array (((2**CONSTANT_REGISTER_DEPTH)-1) downto 0) of STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0);
-type constantRegister1BitType is array (((2**CONSTANT_REGISTER_DEPTH)-1) downto 0) of STD_LOGIC;
+type x32ConstRegType is array (((2**CONSTANT_REGISTER_DEPTH)-1) downto 0) of STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0);
+type x1ConstRegType is array (((2**CONSTANT_REGISTER_DEPTH)-1) downto 0) of STD_LOGIC;
 
-signal constantRegister32Bit :  constantRegister32BitType:= (others=>(others=>'0'));
-signal constantRegister1Bit :  constantRegister1BitType:= (others=>'0');
+signal x32ConstReg :  x32ConstRegType:= (others=>(others=>'0'));
+signal x1ConstReg :  x1ConstRegType:= (others=>'0');
 signal adc1_signal : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= (others=>'0');
 signal adc2_signal : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= (others=>'0');
 signal dac1_signal : STD_LOGIC_VECTOR (PORT_WIDTH-1 downto 0):= (others=>'0');
@@ -53,16 +53,16 @@ signal digitalOut_signal : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
 signal led_signal : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
 
 ---------------------------------------------------------------------------------------------------
---NET2FPGA SIGNALS START
---NET2FPGA SIGNALS END
+--AUTO GENERATED SIGNALS START
+--AUTO GENERATED SIGNALS END
 ---------------------------------------------------------------------------------------------------
 
 
 begin
 	process(clk)
 	variable regAddr_var : integer :=0;
-	variable regVal32Bit_var : STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0):= (others=>'0');
-	variable regVal1Bit_var : STD_LOGIC:='0';
+	variable x32RegVal_var : STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0):= (others=>'0');
+	variable x1RegVal_var : STD_LOGIC:='0';
 	variable regType: STD_LOGIC := '0';  --   regType=1 -> 32bit   regType=0 -> 1 bit
 	begin
 		if rising_edge(clk) then
@@ -70,13 +70,13 @@ begin
 			if regWrtEn='1' then
 				regType:= regAddr(31);
 				regAddr_var:=to_integer(unsigned(regAddr((CONSTANT_REGISTER_DEPTH-1) downto 0)));
-				regVal32Bit_var:= regVal;
-				regVal1Bit_var:= regVal(0);
+				x32RegVal_var:= regVal;
+				x1RegVal_var:= regVal(0);
 
 				if regType='1' then
-					constantRegister32Bit(regAddr_var)<=regVal32Bit_var;
+					x32ConstReg(regAddr_var)<=x32RegVal_var;
 				else
-					constantRegister1Bit(regAddr_var)<=regVal1Bit_var;
+					x1ConstReg(regAddr_var)<=x1RegVal_var;
 				end if;	
 			end if;
 		end if;	
@@ -92,8 +92,8 @@ begin
     led<=led_signal;	
     
 ---------------------------------------------------------------------------------------------------
---NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS START
---NET2FPGA INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS END
+--AUTO GENERATED INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS START
+--AUTO GENERATED INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS END
 ---------------------------------------------------------------------------------------------------
 
 end Behavioral;

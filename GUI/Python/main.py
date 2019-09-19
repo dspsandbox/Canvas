@@ -1,3 +1,11 @@
+#######################################################################
+# Canvas main.py (GUI interface)
+#
+# MIT License
+# Copyright (c) 2019 DSPsandbox (Pau Gomez pau.gomez@dspsandbox.org)
+#######################################################################
+
+
 import sys
 from PyQt5 import uic, QtWidgets , QtGui , QtCore
 import socket

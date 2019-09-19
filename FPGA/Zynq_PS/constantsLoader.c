@@ -1,8 +1,8 @@
 /*********************************************************************
- NET2FPGA constantsLoader.c
+ Canvas constantsLoader.c
 
  MIT License
- Copyright (c) 2019 Pau Gomez Kabelka <paugomezkabelka@gmail.com>
+ Copyright (c) 2019 DSPsandbox (Pau Gomez pau.gomez@dspsandbox.org)
 **********************************************************************/
 
 #include <stdio.h>
