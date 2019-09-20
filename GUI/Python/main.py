@@ -18,6 +18,8 @@ import ctypes
 import numpy as np
 import ast
 import paramiko
+from datetime import datetime
+
 
 pathResoures="Resources"
 myappid = 'canvas.gui' 
@@ -48,9 +50,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         self.projectName=""
         self.projectDirPath=""
         self.projectFilePath=""
-        self.setWindowIcon(QtGui.QIcon(os.path.join(pathResoures,"GUI","icon.png")))   
-        #init tmp file struct
-        self.initTmp()
+        self.setWindowIcon(QtGui.QIcon(os.path.join(pathResoures,"GUI","linux","256.png")))   
         #Timer
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.timerCallback)
@@ -60,6 +60,28 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         #constants dict
         self.x1ConstDict={}
         self.x32ConstDict={}
+        #init tmp file struct
+        self.initTmp()
+        return
+###############################################################################
+    def closeEvent(self, event):
+        msgBox = QtWidgets.QMessageBox()
+        msgBox.setWindowTitle("Save")
+        msgBox.setWindowFlags(QtCore.Qt.CustomizeWindowHint | QtCore.Qt.WindowTitleHint) #Remove logo
+
+    	msgBox.setIcon(QtWidgets.QMessageBox.Question)
+    	msgBox.setText("Save project ?")
+    	msgBox.setInformativeText(self.projectDirPath)
+    	msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes| QtWidgets.QMessageBox.No| QtWidgets.QMessageBox.Cancel  )
+    	msgBox.setDefaultButton(QtWidgets.QMessageBox.Yes)
+        reply = msgBox.exec_()
+
+        if reply == QtWidgets.QMessageBox.Yes:
+            self.saveCallback()
+        elif reply==reply == QtWidgets.QMessageBox.Cancel:
+            event.ignore()    
+        else:
+            pass
         return
 ###############################################################################        
     def connectCallbacks(self):
@@ -69,6 +91,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         self.actionSave_as.triggered.connect(self.saveAsCallback)
         self.actionSave.triggered.connect(self.saveCallback)
         self.actionQuit.triggered.connect(self.close)
+        self.actionInspectProjectDirectory.triggered.connect(self.inspectProjectDirectoryCallback)
         #SERVER
         self.pushButton_serverVerify.clicked.connect(self.verifyServerCallback)
         self.pushButton_requestNetVhdl.clicked.connect(self.requestNetVhdlCallback)
@@ -107,6 +130,10 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         #Update window title
         self.setWindowTitle("Canvas - "+(self.projectDirPath))
         return
+###############################################################################
+    def inspectProjectDirectoryCallback(self):
+        os.startfile(self.projectDirPath)
+        return
 ###############################################################################        
     def newCallback(self):
         try:
@@ -133,7 +160,11 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
                 os.mkdir(inputDirPath)
                 f=open(inputFilePath,"wb+")
                 f.close()
-                
+                #Create .prj
+                root=ET.Element("Canvas")
+                f=open(self.projectFilePath,"w+")
+                f.write(ET.tostring(root))
+                f.close()
                 #Update window title
                 self.setWindowTitle("Canvas - "+(self.projectDirPath))
                 self.appendLogMessage("New project",messageType="OK")
@@ -149,7 +180,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             #FileDialog
             fileDialog=QtWidgets.QFileDialog(self)
             fileDialog.setFixedSize(320,240)
-            projectFilePath = fileDialog.getOpenFileName(self, 'Open project', '*.prj')[0]
+            projectFilePath = fileDialog.getOpenFileName(self, 'Open project', os.path.join(self.projectDirPath,'*.prj'))[0]
             #parsing response
             if len(projectFilePath)>0:
                 self.projectFilePath=os.path.abspath(projectFilePath)
@@ -161,33 +192,38 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             
                 tree = ET.parse(self.projectFilePath)
                 root = tree.getroot()
-                serverTag=root.findall("SERVER")[0]
-                self.lineEdit_serverIP.setText(serverTag.findall("IP")[0].text)
-                self.lineEdit_serverPort.setText(serverTag.findall("Port")[0].text)
-                self.lineEdit_workspaceId.setText(serverTag.findall("Id")[0].text)
-                self.lineEdit_workspaceKey.setText(serverTag.findall("Key")[0].text)
-                self.checkBox_requestNetVhdl.setChecked(ast.literal_eval(serverTag.findall("checkBox_requestNetVhdl")[0].text))
-                self.checkBox_requestSynthImpl.setChecked(ast.literal_eval(serverTag.findall("checkBox_requestSynthImpl")[0].text))
-                fpgaTag=root.findall("FPGA")[0]
-                self.lineEdit_fpgaIP.setText(fpgaTag.findall("IP")[0].text)
-                self.lineEdit_fpgaUser.setText(fpgaTag.findall("User")[0].text)
-                self.lineEdit_fpgaPwd.setText(fpgaTag.findall("Pwd")[0].text)
-                self.radioButton_autoBitstreamOff.setChecked(ast.literal_eval(fpgaTag.findall("radioButton_autoBitstreamOff")[0].text))
-                self.radioButton_autoBitstreamOn.setChecked(ast.literal_eval(fpgaTag.findall("radioButton_autoBitstreamOn")[0].text))
-                self.radioButton_autoConstantsOff.setChecked(ast.literal_eval(fpgaTag.findall("radioButton_autoConstantsOff")[0].text))
-                self.radioButton_autoConstantsOn.setChecked(ast.literal_eval(fpgaTag.findall("radioButton_autoConstantsOn")[0].text))
-                x1ConstList=ast.literal_eval(fpgaTag.findall("x1ConstList")[0].text)
-                x32ConstList=ast.literal_eval(fpgaTag.findall("x32ConstList")[0].text)
-                self.x1ConstDict=ast.literal_eval(fpgaTag.findall("x1ConstDict")[0].text)
-                self.x32ConstDict=ast.literal_eval(fpgaTag.findall("x32ConstDict")[0].text)
-                self.generateTab()
-                for row in range(len(x1ConstList)):
-                    self.tableWidget_x1_const.item(row, 0).setText(x1ConstList[row]) 
-                for row in range(len(x32ConstList)):
-                    self.tableWidget_x32_const.item(row, 0).setText(x32ConstList[row]) 
-                self.checkBox_sshConfigFpga.setChecked(ast.literal_eval(fpgaTag.findall("checkBox_sshConfigFpga")[0].text))
-                self.checkBox_sshLoadBitstream.setChecked(ast.literal_eval(fpgaTag.findall("checkBox_sshLoadBitstream")[0].text))
-                self.checkBox_sshLoadConstants.setChecked(ast.literal_eval(fpgaTag.findall("checkBox_sshLoadConstants")[0].text))
+                if len(root.findall("SERVER"))>0:
+                    serverTag=root.findall("SERVER")[0]
+                    if len(serverTag.findall("IP"))>0 : self.lineEdit_serverIP.setText(serverTag.findall("IP")[0].text)
+                    if len(serverTag.findall("Port"))>0 : self.lineEdit_serverPort.setText(serverTag.findall("Port")[0].text)
+                    if len(serverTag.findall("Id"))>0 : self.lineEdit_workspaceId.setText(serverTag.findall("Id")[0].text)
+                    if len(serverTag.findall("Key"))>0 : self.lineEdit_workspaceKey.setText(serverTag.findall("Key")[0].text)
+                    if len(serverTag.findall("checkBox_requestNetVhdl"))>0 : self.checkBox_requestNetVhdl.setChecked(ast.literal_eval(serverTag.findall("checkBox_requestNetVhdl")[0].text))
+                    if len(serverTag.findall("checkBox_requestSynthImpl"))>0 : self.checkBox_requestSynthImpl.setChecked(ast.literal_eval(serverTag.findall("checkBox_requestSynthImpl")[0].text))
+                if len(root.findall("FPGA"))>0:
+                    fpgaTag=root.findall("FPGA")[0]
+                    if len(fpgaTag.findall("IP"))>0 : self.lineEdit_fpgaIP.setText(fpgaTag.findall("IP")[0].text)
+                    if len(fpgaTag.findall("Port"))>0 : self.lineEdit_fpgaPort.setText(fpgaTag.findall("Port")[0].text)
+                    if len(fpgaTag.findall("User"))>0 : self.lineEdit_fpgaUser.setText(fpgaTag.findall("User")[0].text)
+                    if len(fpgaTag.findall("Pwd"))>0 : self.lineEdit_fpgaPwd.setText(fpgaTag.findall("Pwd")[0].text)
+                    if len(fpgaTag.findall("radioButton_autoBitstreamConstantsOff"))>0 : self.radioButton_autoBitstreamConstantsOff.setChecked(ast.literal_eval(fpgaTag.findall("radioButton_autoBitstreamConstantsOff")[0].text))
+                    if len(fpgaTag.findall("radioButton_autoBitstreamConstantsOn"))>0 : self.radioButton_autoBitstreamConstantsOn.setChecked(ast.literal_eval(fpgaTag.findall("radioButton_autoBitstreamConstantsOn")[0].text))
+                    x1ConstList=[]
+                    x32ConstList=[]
+                    self.x1ConstDict={}
+                    self.x32ConstDict={}
+                    if len(fpgaTag.findall("x1ConstList"))>0 : x1ConstList=ast.literal_eval(fpgaTag.findall("x1ConstList")[0].text)
+                    if len(fpgaTag.findall("x32ConstList"))>0 : x32ConstList=ast.literal_eval(fpgaTag.findall("x32ConstList")[0].text)
+                    if len(fpgaTag.findall("x1ConstDict"))>0 : self.x1ConstDict=ast.literal_eval(fpgaTag.findall("x1ConstDict")[0].text)
+                    if len(fpgaTag.findall("x32ConstDict"))>0 : self.x32ConstDict=ast.literal_eval(fpgaTag.findall("x32ConstDict")[0].text)
+                    self.generateTab()
+                    for row in range(len(x1ConstList)):
+                        self.tableWidget_x1_const.item(row, 0).setText(x1ConstList[row]) 
+                    for row in range(len(x32ConstList)):
+                        self.tableWidget_x32_const.item(row, 0).setText(x32ConstList[row]) 
+                    if len(fpgaTag.findall("checkBox_sshConfigFpga"))>0 : self.checkBox_sshConfigFpga.setChecked(ast.literal_eval(fpgaTag.findall("checkBox_sshConfigFpga")[0].text))
+                    if len(fpgaTag.findall("checkBox_sshLoadBitstream"))>0 : self.checkBox_sshLoadBitstream.setChecked(ast.literal_eval(fpgaTag.findall("checkBox_sshLoadBitstream")[0].text))
+                    if len(fpgaTag.findall("checkBox_sshLoadConstants"))>0 : self.checkBox_sshLoadConstants.setChecked(ast.literal_eval(fpgaTag.findall("checkBox_sshLoadConstants")[0].text))
             
             else:
                 self.appendLogMessage("Open project",messageType="WARNING",message="Empty project name.")
@@ -209,12 +245,11 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             
             fpgaTag=ET.SubElement(root,"FPGA")
             ET.SubElement(fpgaTag,"IP").text=self.lineEdit_fpgaIP.text()
+            ET.SubElement(fpgaTag,"Port").text=self.lineEdit_fpgaPort.text()
             ET.SubElement(fpgaTag,"User").text=self.lineEdit_fpgaUser.text()
             ET.SubElement(fpgaTag,"Pwd").text=self.lineEdit_fpgaPwd.text()
-            ET.SubElement(fpgaTag,"radioButton_autoBitstreamOff").text=str(self.radioButton_autoBitstreamOff.isChecked())
-            ET.SubElement(fpgaTag,"radioButton_autoBitstreamOn").text=str(self.radioButton_autoBitstreamOn.isChecked())
-            ET.SubElement(fpgaTag,"radioButton_autoConstantsOff").text=str(self.radioButton_autoConstantsOff.isChecked())
-            ET.SubElement(fpgaTag,"radioButton_autoConstantsOn").text=str(self.radioButton_autoConstantsOn.isChecked())
+            ET.SubElement(fpgaTag,"radioButton_autoBitstreamConstantsOff").text=str(self.radioButton_autoBitstreamConstantsOff.isChecked())
+            ET.SubElement(fpgaTag,"radioButton_autoBitstreamConstantsOn").text=str(self.radioButton_autoBitstreamConstantsOn.isChecked())
             x1ConstList=[]
             for row in range(self.tableWidget_x1_const.model().rowCount()):
                x1ConstList+=[self.tableWidget_x1_const.item(row, 0).text()]
@@ -230,7 +265,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             ET.SubElement(fpgaTag,"checkBox_sshLoadBitstream").text=str(self.checkBox_sshLoadBitstream.isChecked())
             ET.SubElement(fpgaTag,"checkBox_sshLoadConstants").text=str(self.checkBox_sshLoadConstants.isChecked())
             
-            f=open(self.projectFilePath,"w+")
+            f=open(self.projectFilePath,"wb+")
             f.write(ET.tostring(root))
             f.close()
             self.appendLogMessage("Save project",messageType="OK")
@@ -251,7 +286,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             #FileDialog
             fileDialog=QtWidgets.QFileDialog(self)
             fileDialog.setFixedSize(320,240)
-            projectFilePath = fileDialog.getSaveFileName(self, 'Save project as', '*.prj')[0]
+            projectFilePath = fileDialog.getSaveFileName(self, 'Save project as', os.path.join(self.projectDirPath,'*.prj'))[0]
             #parsing response
             projectName=re.sub("\.\w*", "", os.path.basename(projectFilePath)) #removing any termination
             if len(projectName)>0:
@@ -334,6 +369,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
                 ET.SubElement(fileTag,"path").text=fileRelPath
                 ET.SubElement(fileTag,"content").text=fileContent
         self.TCP_transmit()
+        if len(self.xmlRecv.findall("license"))>0 : self.label_license.setText(self.xmlRecv.findall("license")[0].text)
+        if len(self.xmlRecv.findall("usage"))>0 : self.label_usage.setText(self.xmlRecv.findall("usage")[0].text)
         self.logReceivedStatus()
         self.updateFiles()
         try:
@@ -352,6 +389,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         ET.SubElement(self.xmlSend,"workspace").text=self.lineEdit_workspaceId.text()
         ET.SubElement(self.xmlSend,"key").text=self.lineEdit_workspaceKey.text()
         self.TCP_transmit()
+        if len(self.xmlRecv.findall("license"))>0 : self.label_license.setText(self.xmlRecv.findall("license")[0].text)
+        if len(self.xmlRecv.findall("usage"))>0 : self.label_usage.setText(self.xmlRecv.findall("usage")[0].text)
         self.logReceivedStatus()
         if "No match found in database." in np.array(self.lastLogMessageList)[:,2]:
             self.timer.start(5000)
@@ -390,6 +429,12 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         return
 ###############################################################################        
     def appendLogMessage(self,process,messageType="",message= ""):
+        if ("|___" not in process):
+            if len(self.logList)>0:
+                self.logList=self.logList+[["","",""]]
+                if messageType=="" and message=="": 
+                    process+=datetime.now().strftime(" (%d-%b-%Y %H:%M:%S)")
+                
         self.logList=self.logList+[[process,messageType,message]]
         logText='<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><style type="text/css">p, li { white-space: pre-wrap; }</style></head>'
         for logElement in self.logList:
@@ -412,6 +457,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             
         logText+='</body></html>'  
         self.textBrowser_log.setText(logText)
+        vsb=self.textBrowser_log.verticalScrollBar()
+        vsb.setValue(vsb.maximum())
         QtWidgets.qApp.processEvents()
         return
 ###############################################################################   
@@ -699,9 +746,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             self.appendLogMessage("|___Config. boot")
             rcLocalContent=""
             rcLocalContent+="#!bin/sh -e\n"
-            if self.radioButton_autoBitstreamOn.isChecked():
+            if self.radioButton_autoBitstreamConstantsOn.isChecked():
                 rcLocalContent+="/home/Canvas/bitstreamLoader.sh \n"
-            if self.radioButton_autoConstantsOn.isChecked():
                 rcLocalContent+="/home/Canvas/constantsLoader \n"
             rcLocalContent+="exit 0\n"
             f=open(os.path.join(pathResoures,"Zynq_PS","rc.local"),"wb+")

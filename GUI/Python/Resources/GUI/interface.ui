@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>875</width>
+    <width>733</width>
     <height>775</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Canvas — C:\Documents\project</string>
+   <string/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -43,7 +43,7 @@
         <widget class="QTabWidget" name="tabWidget">
          <property name="minimumSize">
           <size>
-           <width>300</width>
+           <width>350</width>
            <height>0</height>
           </size>
          </property>
@@ -731,7 +731,7 @@
                  <item>
                   <widget class="QLabel" name="label_2">
                    <property name="text">
-                    <string>User:</string>
+                    <string>U:</string>
                    </property>
                   </widget>
                  </item>
@@ -751,7 +751,7 @@
                  <item>
                   <widget class="QLabel" name="label_3">
                    <property name="text">
-                    <string>Pwd:</string>
+                    <string>P:</string>
                    </property>
                   </widget>
                  </item>
@@ -819,7 +819,7 @@
                  <item>
                   <widget class="QLabel" name="label_9">
                    <property name="text">
-                    <string>Auto load bitstream after boot</string>
+                    <string>Auto load bitstream/constants after boot</string>
                    </property>
                   </widget>
                  </item>
@@ -837,7 +837,7 @@
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QRadioButton" name="radioButton_autoBitstreamOff">
+                  <widget class="QRadioButton" name="radioButton_autoBitstreamConstantsOff">
                    <property name="text">
                     <string>OFF</string>
                    </property>
@@ -847,71 +847,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QRadioButton" name="radioButton_autoBitstreamOn">
-                   <property name="text">
-                    <string>ON</string>
-                   </property>
-                   <property name="checked">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QFrame" name="frame_12">
-                <property name="frameShape">
-                 <enum>QFrame::NoFrame</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_4">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_13">
-                   <property name="text">
-                    <string>Auto load constants after boot</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer_4">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <widget class="QRadioButton" name="radioButton_autoConstantsOff">
-                   <property name="text">
-                    <string>OFF</string>
-                   </property>
-                   <property name="checked">
-                    <bool>false</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QRadioButton" name="radioButton_autoConstantsOn">
+                  <widget class="QRadioButton" name="radioButton_autoBitstreamConstantsOn">
                    <property name="text">
                     <string>ON</string>
                    </property>
@@ -1574,7 +1510,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>875</width>
+     <width>733</width>
      <height>21</height>
     </rect>
    </property>
@@ -1595,6 +1531,8 @@ p, li { white-space: pre-wrap; }
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_as"/>
+    <addaction name="separator"/>
+    <addaction name="actionInspectProjectDirectory"/>
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
    </widget>
@@ -1640,6 +1578,11 @@ p, li { white-space: pre-wrap; }
   <action name="actionSave_as">
    <property name="text">
     <string>Save as...</string>
+   </property>
+  </action>
+  <action name="actionInspectProjectDirectory">
+   <property name="text">
+    <string>Inspect project directory</string>
    </property>
   </action>
  </widget>
