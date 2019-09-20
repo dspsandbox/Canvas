@@ -1,6 +1,0 @@
-{
-    "app_name": "Canvas",
-    "author": "Pau Gomez (pau.gomez@dspsandbox.org)",
-    "main_module": "src/main/python/main.py",
-    "version": "0.0.0"
-}
