@@ -35,7 +35,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         QtWidgets.QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
-       #TCP communication
+        #TCP communication
         self.frameTag="communicationContainer"
         self.BUFFER_SIZE=1024
         self.xmlSend=None
@@ -43,45 +43,50 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         self.lastLogMessageList=[]
         #Bistream (escape decoding)
         self.bitstream=""
-        #callbacks
-        self.connectCallbacks()
         #init log an file strucures
         self.logList=[]
         self.projectName=""
         self.projectDirPath=""
         self.projectFilePath=""
-        self.setWindowIcon(QtGui.QIcon(os.path.join(pathResoures,"GUI","linux","256.png")))   
+        self.setWindowIcon(QtGui.QIcon(os.path.join(pathResoures,"Icon","linux","256.png")))   
         #Timer
-        self.timer = QtCore.QTimer()
-        self.timer.timeout.connect(self.timerCallback)
+        self.timerSynthImpl = QtCore.QTimer()
         #SSH objects
         self.ssh=None
         self.sftp=None
         #constants dict
         self.x1ConstDict={}
         self.x32ConstDict={}
-        #init tmp file struct
-        self.initTmp()
+        #init message
+        self.forceClose=False
+        self.timerInit = QtCore.QTimer()
+        #callbacks
+        self.connectCallbacks() 
+        #start init timer (welcome message)        
+        self.timerInit.start(100)
         return
+        
 ###############################################################################
     def closeEvent(self, event):
-        msgBox = QtWidgets.QMessageBox()
-        msgBox.setWindowTitle("Save")
-        msgBox.setWindowFlags(QtCore.Qt.CustomizeWindowHint | QtCore.Qt.WindowTitleHint) #Remove logo
+        if not self.forceClose:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Save")
+            msgBox.setWindowFlags(QtCore.Qt.CustomizeWindowHint | QtCore.Qt.WindowTitleHint) #Remove logo
 
-        msgBox.setIcon(QtWidgets.QMessageBox.Question)
-        msgBox.setText("Save project ?")
-        msgBox.setInformativeText(self.projectDirPath)
-        msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes| QtWidgets.QMessageBox.No| QtWidgets.QMessageBox.Cancel  )
-        msgBox.setDefaultButton(QtWidgets.QMessageBox.Yes)
-        reply = msgBox.exec_()
+            msgBox.setIcon(QtWidgets.QMessageBox.Question)
+            msgBox.setText("Save project ?")
+            msgBox.setInformativeText(self.projectDirPath)
+            msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes| QtWidgets.QMessageBox.No| QtWidgets.QMessageBox.Cancel  )
+            msgBox.setDefaultButton(QtWidgets.QMessageBox.Yes)
+            reply = msgBox.exec_()
 
-        if reply == QtWidgets.QMessageBox.Yes:
-            self.saveCallback()
-        elif reply==reply == QtWidgets.QMessageBox.Cancel:
-            event.ignore()    
-        else:
-            pass
+            if reply == QtWidgets.QMessageBox.Yes:
+                self.saveCallback()
+            elif reply== QtWidgets.QMessageBox.Cancel:
+                event.ignore()    
+            else:
+                pass
+         
         return
 ###############################################################################        
     def connectCallbacks(self):
@@ -107,28 +112,30 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_sshLoadBitstream.clicked.connect(self.sshLoadBitstreamCallback)
         self.pushButton_sshLoadConstants.clicked.connect(self.sshLoadConstantsCallback)
         self.pushButton_fpgaRunSelected.clicked.connect(self.fpgaRunSelectedCallback)
+        #TIMER
+        self.timerSynthImpl.timeout.connect(self.timerSynthImplCallback)
+        self.timerInit.timeout.connect(self.timerInitCallback)
         return
 ###############################################################################        
-    def initTmp(self):
-        self.projectName="tmp"
-        self.projectDirPath=os.path.abspath(os.path.join(pathResoures,"tmp"))
-        self.projectFilePath=os.path.join(self.projectDirPath, "tmp.prj")
-        #Init temp folder
-        if os.path.isdir(self.projectDirPath): rmtree(self.projectDirPath)
-        os.mkdir(self.projectDirPath)
-        #Init input folder
-        inputDirPath=os.path.join(self.projectDirPath,"Input")        
-        inputFilePath=os.path.join(inputDirPath,"mainCircuit.asc")
-        if os.path.isdir(inputDirPath): os.remtree(inputDirPath)
-        os.mkdir(inputDirPath)
-        f=open(inputFilePath,"wb+")
-        f.close()
-        #Saves .prj file
-        self.saveCallback() 
-        #Saves clean log
-        self.clearLogMessage()
-        #Update window title
-        self.setWindowTitle("Canvas - "+(self.projectDirPath))
+    def timerInitCallback(self):
+        self.timerInit.stop()
+        msgBox = QtWidgets.QMessageBox()
+        msgBox.setWindowFlags(QtCore.Qt.CustomizeWindowHint | QtCore.Qt.WindowTitleHint) #Remove logo
+        msgBox.setWindowTitle("Welcome to Canvas")
+        msgBox.setIcon(QtWidgets.QMessageBox.Question)
+        msgBox.setText("OPEN or NEW project?")
+        pButtonOpen = msgBox.addButton("Open",QtWidgets.QMessageBox.YesRole);
+        pButtonNew = msgBox.addButton("New",QtWidgets.QMessageBox.YesRole);
+        pButtonCancel = msgBox.addButton("Cancel",QtWidgets.QMessageBox.YesRole);
+        msgBox.setDefaultButton(pButtonOpen)
+        reply = msgBox.exec_()
+        if reply == 0:
+            self.openCallback()
+        elif reply==1:
+            self.newCallback()
+        if self.projectDirPath=="":
+            self.forceClose=True
+            self.close()
         return
 ###############################################################################
     def inspectProjectDirectoryCallback(self):
@@ -390,14 +397,14 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         if len(self.xmlRecv.findall("usage"))>0 : self.label_usage.setText(self.xmlRecv.findall("usage")[0].text)
         self.logReceivedStatus()
         if "No match found in database." in np.array(self.lastLogMessageList)[:,2]:
-            self.timer.start(5000)
-            self.timerCallback()
+            self.timerSynthImpl.start(5000)
+            self.timerSynthImplCallback()
         else:
             self.updateFiles()
         return
     
 ###############################################################################
-    def timerCallback(self):
+    def timerSynthImplCallback(self):
         self.initXmlSend()
         ET.SubElement(self.xmlSend,"processRequest").text="Request status SYNTH/IMPL"
         ET.SubElement(self.xmlSend,"workspace").text=self.lineEdit_workspaceId.text()
@@ -405,7 +412,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         self.TCP_transmit()
         self.updateStatusLogMessage()
         if (self.logList[-1][0]=="|___Status SYNTH/IMPL" and  self.logList[-1][1]=="OK") or self.logList[-1][1]=="ERROR":
-            self.timer.stop()   
+            self.timerSynthImpl.stop()   
             self.updateFiles()
         return        
 ###############################################################################        
@@ -417,7 +424,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 ###############################################################################        
     def abortCallback(self):
         self.clearLogMessage()
-        self.timer.stop()
+        self.timerSynthImpl.stop()
         return
 ###############################################################################        
     def clearLogMessage(self):
@@ -541,7 +548,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
                     f.write(fileContent.encode())
                     f.close()
             if len(self.xmlRecv.findall("bitstream")):
-                filePath=os.path.join(self.projectDirPath,"Zynq_7010","bitstream.bit")
+                filePath=os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PL","bitstream.bit")
                 fileContent=self.bitstream
                 dirName=os.path.dirname(filePath)
                 if len(dirName)>0:
@@ -703,12 +710,10 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         self.appendLogMessage("Config. FPGA")
 ########Zynq_PS        
         try:
-            self.appendLogMessage("|___Init. local Zynq_PS directory","OK")   
             if not os.path.isdir(os.path.join(self.projectDirPath,"Zynq_7010")): os.mkdir(os.path.join(self.projectDirPath,"Zynq_7010"))
-            if os.path.isdir(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS")): rmtree(os.path.isdir(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS")))
-            os.mkdir(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS"))
-            copytree(os.path.join(pathResoures,Zynq_PS),os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS"))
-            
+            if os.path.isdir(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS")): rmtree(os.path.join(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS")))
+            copytree(os.path.join(pathResoures,"Zynq_PS"),os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS"))
+            self.appendLogMessage("|___Init. local Zynq_PS directory","OK") 
         except Exception:
             errorMessage=str(traceback.format_exc())
             self.appendLogMessage("|___Init. local Zynq_PS directory",messageType="ERROR", message=errorMessage)        
