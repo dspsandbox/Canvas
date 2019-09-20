@@ -69,11 +69,11 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         msgBox.setWindowTitle("Save")
         msgBox.setWindowFlags(QtCore.Qt.CustomizeWindowHint | QtCore.Qt.WindowTitleHint) #Remove logo
 
-    	msgBox.setIcon(QtWidgets.QMessageBox.Question)
-    	msgBox.setText("Save project ?")
-    	msgBox.setInformativeText(self.projectDirPath)
-    	msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes| QtWidgets.QMessageBox.No| QtWidgets.QMessageBox.Cancel  )
-    	msgBox.setDefaultButton(QtWidgets.QMessageBox.Yes)
+        msgBox.setIcon(QtWidgets.QMessageBox.Question)
+        msgBox.setText("Save project ?")
+        msgBox.setInformativeText(self.projectDirPath)
+        msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes| QtWidgets.QMessageBox.No| QtWidgets.QMessageBox.Cancel  )
+        msgBox.setDefaultButton(QtWidgets.QMessageBox.Yes)
         reply = msgBox.exec_()
 
         if reply == QtWidgets.QMessageBox.Yes:
@@ -139,7 +139,6 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         try:
             #FileDialog
             fileDialog=QtWidgets.QFileDialog(self)
-            fileDialog.setFixedSize(320,240)
             projectFilePath = fileDialog.getSaveFileName(self, 'New project', '*.prj')[0]
             #parsing response
             projectName=re.sub("\.\w*", "", os.path.basename(projectFilePath)) #removing any termination
@@ -162,7 +161,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
                 f.close()
                 #Create .prj
                 root=ET.Element("Canvas")
-                f=open(self.projectFilePath,"w+")
+                f=open(self.projectFilePath,"wb+")
                 f.write(ET.tostring(root))
                 f.close()
                 #Update window title
@@ -179,7 +178,6 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         try:    
             #FileDialog
             fileDialog=QtWidgets.QFileDialog(self)
-            fileDialog.setFixedSize(320,240)
             projectFilePath = fileDialog.getOpenFileName(self, 'Open project', os.path.join(self.projectDirPath,'*.prj'))[0]
             #parsing response
             if len(projectFilePath)>0:
@@ -285,7 +283,6 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             
             #FileDialog
             fileDialog=QtWidgets.QFileDialog(self)
-            fileDialog.setFixedSize(320,240)
             projectFilePath = fileDialog.getSaveFileName(self, 'Save project as', os.path.join(self.projectDirPath,'*.prj'))[0]
             #parsing response
             projectName=re.sub("\.\w*", "", os.path.basename(projectFilePath)) #removing any termination
@@ -360,7 +357,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 
         for dirName, subdirList, fileList in os.walk(inputDirPath):
             for fname in fileList:
-                f=open(os.path.join(dirName,fname),"rb")
+                f=open(os.path.join(dirName,fname),"r")
                 fileContent=f.read()
                 f.close()
                 fileRelPath= (os.path.relpath(os.path.join(dirName,fname),inputDirPath))
@@ -496,8 +493,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 ###############################################################################
     def extractBitstream(self,recvData):
         self.bitstream=""
-        startTag="<bitstream>"
-        endTag="</bitstream>"
+        startTag=b"<bitstream>"
+        endTag=b"</bitstream>"
         indexStartTag=recvData.find(startTag)
         indexEndTag=recvData.find(endTag)
         if (indexStartTag!=-1) and (indexEndTag!=-1):
@@ -514,8 +511,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             sendData=ET.tostring(self.xmlSend)
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((IP, PORT))
-            s.sendall(sendData.encode())
-            recvData=""
+            s.sendall(sendData)
+            recvData=b""
             while(1):
                 recv = s.recv(self.BUFFER_SIZE)
                 recvData+=recv
@@ -541,7 +538,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
                     if len(dirName)>0:
                         if not(os.path.isdir(dirName)): os.makedirs(dirName)
                     f=open(filePath,"wb+")
-                    f.write(fileContent)
+                    f.write(fileContent.encode())
                     f.close()
             if len(self.xmlRecv.findall("bitstream")):
                 filePath=os.path.join(self.projectDirPath,"Zynq_7010","bitstream.bit")
@@ -704,6 +701,19 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 ###############################################################################
     def sshConfigFpgaCallback(self):
         self.appendLogMessage("Config. FPGA")
+########Zynq_PS        
+        try:
+            self.appendLogMessage("|___Init. local Zynq_PS directory","OK")   
+            if not os.path.isdir(os.path.join(self.projectDirPath,"Zynq_7010")): os.mkdir(os.path.join(self.projectDirPath,"Zynq_7010"))
+            if os.path.isdir(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS")): rmtree(os.path.isdir(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS")))
+            os.mkdir(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS"))
+            copytree(os.path.join(pathResoures,Zynq_PS),os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS"))
+            
+        except Exception:
+            errorMessage=str(traceback.format_exc())
+            self.appendLogMessage("|___Init. local Zynq_PS directory",messageType="ERROR", message=errorMessage)        
+
+
 ########Connect
         self.sshConnect()
 ########Init file structure        
@@ -720,7 +730,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 ########Init bitstream loader                
         try:
             self.appendLogMessage("|___Init. bitstream loader") 
-            self.sftp.put(os.path.join(pathResoures,"Zynq_PS","bitstreamLoader.sh"),"/home/Canvas/bitstreamLoader.sh") #Sends bitstreamLoader.sh
+            self.sftp.put(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS","bitstreamLoader.sh"),"/home/Canvas/bitstreamLoader.sh") #Sends bitstreamLoader.sh
             self.sshExecCommand("sed -i -e 's/\r$//' /home/Canvas/bitstreamLoader.sh") #Remove spurious CR characters
             self.sshExecCommand("chmod +x /home/Canvas/bitstreamLoader.sh") #Makes bitstreamLoader.sh executable
             if self.logList[-1][0]=="|___Init. bitstream loader":
@@ -732,7 +742,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 ########Init constants loader        
         try:
             self.appendLogMessage("|___Init. constants loader")
-            self.sftp.put(os.path.join(pathResoures,"Zynq_PS","constantsLoader.c"),"/home/Canvas/constantsLoader.c") #Sends constantsLoader.c
+            self.sftp.put(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS","constantsLoader.c"),"/home/Canvas/constantsLoader.c") #Sends constantsLoader.c
             self.sshExecCommand("gcc /home/Canvas/constantsLoader.c -o /home/Canvas/constantsLoader") #Compiles constantsLoader.c
             self.sshExecCommand("chmod +x /home/Canvas/constantsLoader") #Makes constantsLoader executable
             if self.logList[-1][0]=="|___Init. constants loader":
@@ -750,10 +760,10 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
                 rcLocalContent+="/home/Canvas/bitstreamLoader.sh \n"
                 rcLocalContent+="/home/Canvas/constantsLoader \n"
             rcLocalContent+="exit 0\n"
-            f=open(os.path.join(pathResoures,"Zynq_PS","rc.local"),"wb+")
-            f.write(rcLocalContent)
+            f=open(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS","rc.local"),"wb+")
+            f.write(rcLocalContent.encode())
             f.close()
-            self.sftp.put(os.path.join(pathResoures,"Zynq_PS","rc.local"),"/etc/rc.local")
+            self.sftp.put(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS","rc.local"),"/etc/rc.local")
             if self.logList[-1][0]=="|___Config. boot":
                 self.logList=self.logList[:-1]    
                 self.appendLogMessage("|___Config. boot",messageType="OK")
@@ -771,7 +781,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 ########Transfer bitstream       
         try:
             self.appendLogMessage("|___Transfer bitstream")
-            self.sftp.put(os.path.join(self.projectDirPath,"Zynq_7010","bitstream.bit"),"/home/Canvas/bitstream.bit") #Send bitstream.bit to FPGA (PS)
+            self.sftp.put(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PL","bitstream.bit"),"/home/Canvas/bitstream.bit") #Send bitstream.bit to FPGA (PS)
             if self.logList[-1][0]=="|___Transfer bitstream":
                 self.logList=self.logList[:-1]    
                 self.appendLogMessage("|___Transfer bitstream",messageType="OK")
@@ -814,11 +824,11 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             self.appendLogMessage("|___Parse constants table",messageType="ERROR", message=errorMessage)
 ########Construct constants files       
         try:
-            x1ConstFile=open(os.path.join(pathResoures,"Zynq_PS","x1Const.txt"),"wb+")                                                  
-            x32ConstFile=open(os.path.join(pathResoures,"Zynq_PS","x32Const.txt"),"wb+")
+            x1ConstFile=open(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS","x1Const.txt"),"wb+")                                                  
+            x32ConstFile=open(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS","x32Const.txt"),"wb+")
             for i in range(0,256):
-                x1ConstFile.write("%d   %d\r\n"%(i,x1ConstArray[i]))
-                x32ConstFile.write("%d   %d\r\n"%(i,x32ConstArray[i]))
+                x1ConstFile.write(("%d   %d\r\n"%(i,x1ConstArray[i])).encode())
+                x32ConstFile.write(("%d   %d\r\n"%(i,x32ConstArray[i])).encode())
             x1ConstFile.close()
             x32ConstFile.close()
             self.appendLogMessage("|___Construct constants files ",messageType="OK")
@@ -828,8 +838,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 ########Transfer constants       
         try:
             self.appendLogMessage("|___Transfer constants")
-            self.sftp.put(os.path.join(pathResoures,"Zynq_PS","x1Const.txt"),"/home/Canvas/x1Const.txt") #Send const1Bit.txt to FPGA (PS)
-            self.sftp.put(os.path.join(pathResoures,"Zynq_PS","x32Const.txt"),"/home/Canvas/x32Const.txt") #Send const32Bit.txt to FPGA (PS)
+            self.sftp.put(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS","x1Const.txt"),"/home/Canvas/x1Const.txt") #Send const1Bit.txt to FPGA (PS)
+            self.sftp.put(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS","x32Const.txt"),"/home/Canvas/x32Const.txt") #Send const32Bit.txt to FPGA (PS)
             if self.logList[-1][0]=="|___Transfer constants":
                 self.logList=self.logList[:-1]    
                 self.appendLogMessage("|___Transfer constants",messageType="OK")
