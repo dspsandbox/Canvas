@@ -7,3 +7,4 @@ FPGA/Zynq_PL/Canvas.cache/*
 FPGA/Zynq_PL/Canvas.hw/*
 FPGA/Zynq_PL/Canvas.runs/*
 FPGA/Zynq_PL/Canvas.sim/*
+*.DS_Store
