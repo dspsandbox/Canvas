@@ -199,7 +199,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         try:
             #FileDialog
             fileDialog=QtWidgets.QFileDialog(self)
-            projectFilePath = fileDialog.getSaveFileName(self, 'New project', '*.prj')[0]
+            projectFilePath = fileDialog.getSaveFileName(self, 'New project', os.path.join(self.projectDirPath,'*.prj'))[0]
             #parsing response
             projectName=re.sub("\.\w*", "", os.path.basename(projectFilePath)) #removing any termination
             if len(projectName)>0:
@@ -224,6 +224,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
                 f=open(self.projectFilePath,"wb+")
                 f.write(ET.tostring(root))
                 f.close()
+                #Update window title
+                self.setWindowTitle("Canvas - "+(self.projectDirPath))
 
                 self.appendLogMessage("New project",messageType="OK")
             else:
@@ -245,7 +247,6 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.projectName=re.sub("\.\w*", "", os.path.basename(projectFilePath))
                 #Update window title
                 self.setWindowTitle("Canvas - "+(self.projectDirPath))
-                self.appendLogMessage("Open project",messageType="OK")
 
                 tree = ET.parse(self.projectFilePath)
                 root = tree.getroot()
@@ -281,7 +282,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
                     if len(fpgaTag.findall("checkBox_sshConfigFpga"))>0 : self.checkBox_sshConfigFpga.setChecked(ast.literal_eval(fpgaTag.findall("checkBox_sshConfigFpga")[0].text))
                     if len(fpgaTag.findall("checkBox_sshLoadBitstream"))>0 : self.checkBox_sshLoadBitstream.setChecked(ast.literal_eval(fpgaTag.findall("checkBox_sshLoadBitstream")[0].text))
                     if len(fpgaTag.findall("checkBox_sshLoadConstants"))>0 : self.checkBox_sshLoadConstants.setChecked(ast.literal_eval(fpgaTag.findall("checkBox_sshLoadConstants")[0].text))
-
+                self.appendLogMessage("Open project",messageType="OK")
             else:
                 self.appendLogMessage("Open project",messageType="WARNING",message="Empty project name.")
         except Exception:
