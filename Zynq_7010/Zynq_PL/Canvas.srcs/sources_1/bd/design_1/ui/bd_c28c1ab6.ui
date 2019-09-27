@@ -2,26 +2,28 @@
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 6.8.11  2018-08-07 bk=1.4403 VDI=40 GEI=35 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
-preplace port dac_rst_o -pg 1 -y 210 -defaultsOSRD
-preplace port dac_clk_o -pg 1 -y 150 -defaultsOSRD
-preplace port dac_sel_o -pg 1 -y 190 -defaultsOSRD
-preplace port clk -pg 1 -y 80 -defaultsOSRD
-preplace port dac_wrt_o -pg 1 -y 170 -defaultsOSRD
-preplace portBus dac_data_o -pg 1 -y 130 -defaultsOSRD
+preplace port clk_dac -pg 1 -y 20 -defaultsOSRD
+preplace port dac_rst_o -pg 1 -y 200 -defaultsOSRD
+preplace port clk_dac_m45 -pg 1 -y 40 -defaultsOSRD
+preplace port dac_clk_o -pg 1 -y 140 -defaultsOSRD
+preplace port dac_sel_o -pg 1 -y 180 -defaultsOSRD
+preplace port clk -pg 1 -y 100 -defaultsOSRD
+preplace port dac_wrt_o -pg 1 -y 160 -defaultsOSRD
+preplace portBus dac_data_o -pg 1 -y 120 -defaultsOSRD
 preplace portBus dac_data1 -pg 1 -y 180 -defaultsOSRD
 preplace portBus dac_data2 -pg 1 -y 200 -defaultsOSRD
-preplace inst DAC_RTL -pg 1 -lvl 2 -y 170 -defaultsOSRD
-preplace inst clk_wiz_DAC -pg 1 -lvl 1 -y 70 -defaultsOSRD
-preplace netloc NET2FPGA_base_DSP_co_0_dac_data1_o 1 0 2 NJ 180 N
-preplace netloc NET2FPGA_base_DSP_co_0_dac_data2_o 1 0 2 NJ 200 N
-preplace netloc NET2FPGA_base_DAC_dac_sel_o 1 2 1 NJ
-preplace netloc ADC_and_DAC_clk_clk_out1 1 0 2 10J 140 N
-preplace netloc clk_wiz_0_clk_out1 1 1 1 200
-preplace netloc NET2FPGA_base_DAC_dac_dat_o 1 2 1 NJ
-preplace netloc NET2FPGA_base_DAC_dac_rst_o 1 2 1 NJ
-preplace netloc NET2FPGA_base_DAC_dac_wrt_o 1 2 1 NJ
-preplace netloc NET2FPGA_base_DAC_dac_clk_o 1 2 1 NJ
-levelinfo -pg 1 -10 110 360 530 -top 0 -bot 270
+preplace inst DAC_core -pg 1 -lvl 2 -y 160 -defaultsOSRD
+preplace netloc clk_dac_m45_1 1 0 2 NJ 40 130
+preplace netloc dac_data2_1 1 0 2 NJ 200 NJ
+preplace netloc DAC_core_dac_clk_o 1 2 1 NJ
+preplace netloc DAC_core_dac_wrt_o 1 2 1 NJ
+preplace netloc DAC_core_dac_rst_o 1 2 1 NJ
+preplace netloc clk_1 1 0 2 NJ 100 140
+preplace netloc DAC_core_dac_sel_o 1 2 1 NJ
+preplace netloc DAC_core_dac_dat_o 1 2 1 NJ
+preplace netloc clk_dac_1 1 0 2 NJ 20 150
+preplace netloc dac_data1_1 1 0 2 NJ 180 NJ
+levelinfo -pg 1 0 110 370 540 -top 0 -bot 260
 "
 }
 0

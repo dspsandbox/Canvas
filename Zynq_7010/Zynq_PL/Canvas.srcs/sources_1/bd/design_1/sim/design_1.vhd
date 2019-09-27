@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
---Date        : Thu Aug 29 19:11:44 2019
+--Date        : Fri Sep 27 17:18:57 2019
 --Host        : PC1091 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -11,17 +11,19 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity ADC_imp_TF1HV4 is
+entity CLK_imp_16U7QN1 is
   port (
     adc_cdcs_o : out STD_LOGIC_VECTOR ( 0 to 0 );
     adc_clk_n_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     adc_clk_p_i : in STD_LOGIC_VECTOR ( 0 to 0 );
-    clk : out STD_LOGIC;
+    clk_125 : out STD_LOGIC;
+    clk_250_m120deg : out STD_LOGIC;
+    clk_250_m165deg : out STD_LOGIC;
     reset : in STD_LOGIC
   );
-end ADC_imp_TF1HV4;
+end CLK_imp_16U7QN1;
 
-architecture STRUCTURE of ADC_imp_TF1HV4 is
+architecture STRUCTURE of CLK_imp_16U7QN1 is
   component design_1_xlconstant_0_1 is
   port (
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32,27 +34,35 @@ architecture STRUCTURE of ADC_imp_TF1HV4 is
     clk_in1_p : in STD_LOGIC;
     clk_in1_n : in STD_LOGIC;
     reset : in STD_LOGIC;
-    clk_out1 : out STD_LOGIC;
-    locked : out STD_LOGIC
+    locked : out STD_LOGIC;
+    clk_125_0deg : out STD_LOGIC;
+    clk_250_0deg : out STD_LOGIC;
+    clk_250_m45deg : out STD_LOGIC
   );
   end component design_1_clk_wiz_0_1;
-  signal ADC_and_DAC_clk_clk_out1 : STD_LOGIC;
   signal ADC_clk_adc_cdcs_o : STD_LOGIC_VECTOR ( 0 to 0 );
   signal PS_ZYNQ_peripheral_reset : STD_LOGIC;
   signal adc_clk_n_i_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal adc_clk_p_i_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal clk_wiz_ADC_clk_125_0deg : STD_LOGIC;
+  signal clk_wiz_ADC_clk_250_0deg : STD_LOGIC;
+  signal clk_wiz_ADC_clk_250_m45deg : STD_LOGIC;
   signal NLW_clk_wiz_ADC_locked_UNCONNECTED : STD_LOGIC;
 begin
   PS_ZYNQ_peripheral_reset <= reset;
   adc_cdcs_o(0) <= ADC_clk_adc_cdcs_o(0);
   adc_clk_n_i_1(0) <= adc_clk_n_i(0);
   adc_clk_p_i_1(0) <= adc_clk_p_i(0);
-  clk <= ADC_and_DAC_clk_clk_out1;
+  clk_125 <= clk_wiz_ADC_clk_125_0deg;
+  clk_250_m120deg <= clk_wiz_ADC_clk_250_0deg;
+  clk_250_m165deg <= clk_wiz_ADC_clk_250_m45deg;
 clk_wiz_ADC: component design_1_clk_wiz_0_1
      port map (
+      clk_125_0deg => clk_wiz_ADC_clk_125_0deg,
+      clk_250_0deg => clk_wiz_ADC_clk_250_0deg,
+      clk_250_m45deg => clk_wiz_ADC_clk_250_m45deg,
       clk_in1_n => adc_clk_n_i_1(0),
       clk_in1_p => adc_clk_p_i_1(0),
-      clk_out1 => ADC_and_DAC_clk_clk_out1,
       locked => NLW_clk_wiz_ADC_locked_UNCONNECTED,
       reset => PS_ZYNQ_peripheral_reset
     );
@@ -68,6 +78,8 @@ use UNISIM.VCOMPONENTS.ALL;
 entity DAC_imp_1YBUH12 is
   port (
     clk : in STD_LOGIC;
+    clk_dac : in STD_LOGIC;
+    clk_dac_m45 : in STD_LOGIC;
     dac_clk_o : out STD_LOGIC;
     dac_data1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dac_data2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -82,7 +94,8 @@ architecture STRUCTURE of DAC_imp_1YBUH12 is
   component design_1_DAC_core_0_0 is
   port (
     clk : in STD_LOGIC;
-    dac_clk : in STD_LOGIC;
+    clk_dac : in STD_LOGIC;
+    clk_dac_m45 : in STD_LOGIC;
     dac_data1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dac_data2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dac_dat_o : out STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -92,51 +105,39 @@ architecture STRUCTURE of DAC_imp_1YBUH12 is
     dac_rst_o : out STD_LOGIC
   );
   end component design_1_DAC_core_0_0;
-  component design_1_clk_wiz_0_0 is
-  port (
-    reset : in STD_LOGIC;
-    clk_in1 : in STD_LOGIC;
-    clk_out1 : out STD_LOGIC;
-    locked : out STD_LOGIC
-  );
-  end component design_1_clk_wiz_0_0;
-  signal ADC_and_DAC_clk_clk_out1 : STD_LOGIC;
-  signal DAC_core_0_dac_clk_o : STD_LOGIC;
-  signal DAC_core_0_dac_dat_o : STD_LOGIC_VECTOR ( 13 downto 0 );
-  signal DAC_core_0_dac_rst_o : STD_LOGIC;
-  signal DAC_core_0_dac_sel_o : STD_LOGIC;
-  signal DAC_core_0_dac_wrt_o : STD_LOGIC;
-  signal clk_wiz_DAC_clk_out1 : STD_LOGIC;
+  signal DAC_core_dac_clk_o : STD_LOGIC;
+  signal DAC_core_dac_dat_o : STD_LOGIC_VECTOR ( 13 downto 0 );
+  signal DAC_core_dac_rst_o : STD_LOGIC;
+  signal DAC_core_dac_sel_o : STD_LOGIC;
+  signal DAC_core_dac_wrt_o : STD_LOGIC;
+  signal clk_1 : STD_LOGIC;
+  signal clk_dac_1 : STD_LOGIC;
+  signal clk_dac_m45_1 : STD_LOGIC;
   signal dac_data1_1 : STD_LOGIC_VECTOR ( 13 downto 0 );
   signal dac_data2_1 : STD_LOGIC_VECTOR ( 13 downto 0 );
-  signal NLW_clk_wiz_DAC_locked_UNCONNECTED : STD_LOGIC;
 begin
-  ADC_and_DAC_clk_clk_out1 <= clk;
-  dac_clk_o <= DAC_core_0_dac_clk_o;
+  clk_1 <= clk;
+  clk_dac_1 <= clk_dac;
+  clk_dac_m45_1 <= clk_dac_m45;
+  dac_clk_o <= DAC_core_dac_clk_o;
   dac_data1_1(13 downto 0) <= dac_data1(13 downto 0);
   dac_data2_1(13 downto 0) <= dac_data2(13 downto 0);
-  dac_data_o(13 downto 0) <= DAC_core_0_dac_dat_o(13 downto 0);
-  dac_rst_o <= DAC_core_0_dac_rst_o;
-  dac_sel_o <= DAC_core_0_dac_sel_o;
-  dac_wrt_o <= DAC_core_0_dac_wrt_o;
+  dac_data_o(13 downto 0) <= DAC_core_dac_dat_o(13 downto 0);
+  dac_rst_o <= DAC_core_dac_rst_o;
+  dac_sel_o <= DAC_core_dac_sel_o;
+  dac_wrt_o <= DAC_core_dac_wrt_o;
 DAC_core: component design_1_DAC_core_0_0
      port map (
-      clk => ADC_and_DAC_clk_clk_out1,
-      dac_clk => clk_wiz_DAC_clk_out1,
-      dac_clk_o => DAC_core_0_dac_clk_o,
-      dac_dat_o(13 downto 0) => DAC_core_0_dac_dat_o(13 downto 0),
+      clk => clk_1,
+      clk_dac => clk_dac_1,
+      clk_dac_m45 => clk_dac_m45_1,
+      dac_clk_o => DAC_core_dac_clk_o,
+      dac_dat_o(13 downto 0) => DAC_core_dac_dat_o(13 downto 0),
       dac_data1(13 downto 0) => dac_data1_1(13 downto 0),
       dac_data2(13 downto 0) => dac_data2_1(13 downto 0),
-      dac_rst_o => DAC_core_0_dac_rst_o,
-      dac_sel_o => DAC_core_0_dac_sel_o,
-      dac_wrt_o => DAC_core_0_dac_wrt_o
-    );
-clk_wiz_DAC: component design_1_clk_wiz_0_0
-     port map (
-      clk_in1 => ADC_and_DAC_clk_clk_out1,
-      clk_out1 => clk_wiz_DAC_clk_out1,
-      locked => NLW_clk_wiz_DAC_locked_UNCONNECTED,
-      reset => '0'
+      dac_rst_o => DAC_core_dac_rst_o,
+      dac_sel_o => DAC_core_dac_sel_o,
+      dac_wrt_o => DAC_core_dac_wrt_o
     );
 end STRUCTURE;
 library IEEE;
@@ -2499,7 +2500,7 @@ entity design_1 is
     led_o : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=30,numReposBlks=22,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_board_cnt=9,da_clkrst_cnt=12,da_ps7_cnt=1,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=29,numReposBlks=21,numNonXlnxBlks=0,numHierBlks=8,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_board_cnt=9,da_clkrst_cnt=12,da_ps7_cnt=1,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of design_1 : entity is "design_1.hwdef";
 end design_1;
@@ -2512,21 +2513,6 @@ architecture STRUCTURE of design_1 is
     dataOut : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component design_1_sync_0_0;
-  component design_1_DSP_core_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    regAddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    regVal : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    regWrtEn : in STD_LOGIC;
-    adc1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    adc2 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    digitalIn : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    dac1 : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    dac2 : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    digitalOut : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    led : out STD_LOGIC_VECTOR ( 7 downto 0 )
-  );
-  end component design_1_DSP_core_0_0;
   component design_1_convertType_14_32_0_0 is
   port (
     clk : in STD_LOGIC;
@@ -2555,17 +2541,34 @@ architecture STRUCTURE of design_1 is
     dataOut : out STD_LOGIC_VECTOR ( 13 downto 0 )
   );
   end component design_1_convertType_32_14_0_1;
+  component design_1_DSP_core_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    regAddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    regVal : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    regWrtEn : in STD_LOGIC;
+    adc1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    adc2 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    digitalIn : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    dac1 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    dac2 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    digitalOut : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    led : out STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component design_1_DSP_core_0_0;
   signal ADC_and_DAC_clk_clk_out1 : STD_LOGIC;
   signal ADC_clk_adc_cdcs_o : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal CLK_clk_250_0deg : STD_LOGIC;
+  signal CLK_clk_250_m45deg : STD_LOGIC;
+  signal DAC_dac_clk_o : STD_LOGIC;
+  signal DAC_dac_data_o : STD_LOGIC_VECTOR ( 13 downto 0 );
+  signal DAC_dac_rst_o : STD_LOGIC;
+  signal DAC_dac_sel_o : STD_LOGIC;
+  signal DAC_dac_wrt_o : STD_LOGIC;
   signal DSP_core_0_dac1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal DSP_core_0_dac2 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal DSP_core_0_digitalOut : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal DSP_core_0_led : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal NET2FPGA_base_DAC_dac_clk_o : STD_LOGIC;
-  signal NET2FPGA_base_DAC_dac_dat_o : STD_LOGIC_VECTOR ( 13 downto 0 );
-  signal NET2FPGA_base_DAC_dac_rst_o : STD_LOGIC;
-  signal NET2FPGA_base_DAC_dac_sel_o : STD_LOGIC;
-  signal NET2FPGA_base_DAC_dac_wrt_o : STD_LOGIC;
   signal PS_ZYNQ_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal PS_ZYNQ_regAddr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal PS_ZYNQ_regVal : STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -2636,32 +2639,36 @@ begin
   adc_clk_p_i_1 <= adc_clk_p_i;
   adc_data1_i_1(13 downto 0) <= adc_data1_i(13 downto 0);
   adc_data2_i_1(13 downto 0) <= adc_data2_i(13 downto 0);
-  dac_clk_o <= NET2FPGA_base_DAC_dac_clk_o;
-  dac_data_o(13 downto 0) <= NET2FPGA_base_DAC_dac_dat_o(13 downto 0);
-  dac_rst_o(0) <= NET2FPGA_base_DAC_dac_rst_o;
-  dac_sel_o(0) <= NET2FPGA_base_DAC_dac_sel_o;
-  dac_wrt_o(0) <= NET2FPGA_base_DAC_dac_wrt_o;
+  dac_clk_o <= DAC_dac_clk_o;
+  dac_data_o(13 downto 0) <= DAC_dac_data_o(13 downto 0);
+  dac_rst_o(0) <= DAC_dac_rst_o;
+  dac_sel_o(0) <= DAC_dac_sel_o;
+  dac_wrt_o(0) <= DAC_dac_wrt_o;
   digital_i_1(7 downto 0) <= digital_i(7 downto 0);
   digital_o(7 downto 0) <= DSP_core_0_digitalOut(7 downto 0);
   led_o(7 downto 0) <= DSP_core_0_led(7 downto 0);
-ADC: entity work.ADC_imp_TF1HV4
+CLK: entity work.CLK_imp_16U7QN1
      port map (
       adc_cdcs_o(0) => ADC_clk_adc_cdcs_o(0),
       adc_clk_n_i(0) => adc_clk_n_i_1,
       adc_clk_p_i(0) => adc_clk_p_i_1,
-      clk => ADC_and_DAC_clk_clk_out1,
+      clk_125 => ADC_and_DAC_clk_clk_out1,
+      clk_250_m120deg => CLK_clk_250_0deg,
+      clk_250_m165deg => CLK_clk_250_m45deg,
       reset => PS_ZYNQ_peripheral_reset(0)
     );
 DAC: entity work.DAC_imp_1YBUH12
      port map (
       clk => ADC_and_DAC_clk_clk_out1,
-      dac_clk_o => NET2FPGA_base_DAC_dac_clk_o,
+      clk_dac => CLK_clk_250_0deg,
+      clk_dac_m45 => CLK_clk_250_m45deg,
+      dac_clk_o => DAC_dac_clk_o,
       dac_data1(13 downto 0) => convertType_32_14_DAC1_dataOut(13 downto 0),
       dac_data2(13 downto 0) => convertType_32_14_DAC2_dataOut(13 downto 0),
-      dac_data_o(13 downto 0) => NET2FPGA_base_DAC_dac_dat_o(13 downto 0),
-      dac_rst_o => NET2FPGA_base_DAC_dac_rst_o,
-      dac_sel_o => NET2FPGA_base_DAC_dac_sel_o,
-      dac_wrt_o => NET2FPGA_base_DAC_dac_wrt_o
+      dac_data_o(13 downto 0) => DAC_dac_data_o(13 downto 0),
+      dac_rst_o => DAC_dac_rst_o,
+      dac_sel_o => DAC_dac_sel_o,
+      dac_wrt_o => DAC_dac_wrt_o
     );
 DSP_core: component design_1_DSP_core_0_0
      port map (

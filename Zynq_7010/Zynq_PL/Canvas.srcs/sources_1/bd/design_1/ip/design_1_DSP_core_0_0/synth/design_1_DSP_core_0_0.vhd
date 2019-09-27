@@ -46,69 +46,80 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: xilinx.com:module_ref:DAC_core:1.0
+-- IP VLNV: xilinx.com:module_ref:DSP_core:1.0
 -- IP Revision: 1
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY design_1_DAC_core_0_0 IS
+ENTITY design_1_DSP_core_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
-    clk_dac : IN STD_LOGIC;
-    clk_dac_m45 : IN STD_LOGIC;
-    dac_data1 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
-    dac_data2 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
-    dac_dat_o : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
-    dac_clk_o : OUT STD_LOGIC;
-    dac_wrt_o : OUT STD_LOGIC;
-    dac_sel_o : OUT STD_LOGIC;
-    dac_rst_o : OUT STD_LOGIC
+    regAddr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    regVal : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    regWrtEn : IN STD_LOGIC;
+    adc1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    adc2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    digitalIn : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    dac1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    dac2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    digitalOut : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    led : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
-END design_1_DAC_core_0_0;
+END design_1_DSP_core_0_0;
 
-ARCHITECTURE design_1_DAC_core_0_0_arch OF design_1_DAC_core_0_0 IS
+ARCHITECTURE design_1_DSP_core_0_0_arch OF design_1_DSP_core_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF design_1_DAC_core_0_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT DAC_core IS
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF design_1_DSP_core_0_0_arch: ARCHITECTURE IS "yes";
+  COMPONENT DSP_core IS
+    GENERIC (
+      PORT_WIDTH : INTEGER;
+      CONSTANT_REGISTER_DEPTH : INTEGER
+    );
     PORT (
       clk : IN STD_LOGIC;
-      clk_dac : IN STD_LOGIC;
-      clk_dac_m45 : IN STD_LOGIC;
-      dac_data1 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
-      dac_data2 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
-      dac_dat_o : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
-      dac_clk_o : OUT STD_LOGIC;
-      dac_wrt_o : OUT STD_LOGIC;
-      dac_sel_o : OUT STD_LOGIC;
-      dac_rst_o : OUT STD_LOGIC
+      regAddr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      regVal : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      regWrtEn : IN STD_LOGIC;
+      adc1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      adc2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      digitalIn : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+      dac1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      dac2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      digitalOut : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+      led : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
-  END COMPONENT DAC_core;
+  END COMPONENT DSP_core;
   ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF design_1_DAC_core_0_0_arch: ARCHITECTURE IS "DAC_core,Vivado 2018.3";
+  ATTRIBUTE X_CORE_INFO OF design_1_DSP_core_0_0_arch: ARCHITECTURE IS "DSP_core,Vivado 2018.3";
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
-  ATTRIBUTE CHECK_LICENSE_TYPE OF design_1_DAC_core_0_0_arch : ARCHITECTURE IS "design_1_DAC_core_0_0,DAC_core,{}";
+  ATTRIBUTE CHECK_LICENSE_TYPE OF design_1_DSP_core_0_0_arch : ARCHITECTURE IS "design_1_DSP_core_0_0,DSP_core,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF design_1_DAC_core_0_0_arch: ARCHITECTURE IS "design_1_DAC_core_0_0,DAC_core,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=DAC_core,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF design_1_DSP_core_0_0_arch: ARCHITECTURE IS "design_1_DSP_core_0_0,DSP_core,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=DSP_core,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,PORT_WIDTH=32,CONSTANT_REGISTER_DEPTH=8}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
-  ATTRIBUTE IP_DEFINITION_SOURCE OF design_1_DAC_core_0_0_arch: ARCHITECTURE IS "module_ref";
+  ATTRIBUTE IP_DEFINITION_SOURCE OF design_1_DSP_core_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 125000000, PHASE 0.0, CLK_DOMAIN design_1_clk_wiz_0_1_clk_125_0deg, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 125000000, PHASE 0.0, CLK_DOMAIN /CLK/clk_wiz_ADC_clk_out1, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
 BEGIN
-  U0 : DAC_core
+  U0 : DSP_core
+    GENERIC MAP (
+      PORT_WIDTH => 32,
+      CONSTANT_REGISTER_DEPTH => 8
+    )
     PORT MAP (
       clk => clk,
-      clk_dac => clk_dac,
-      clk_dac_m45 => clk_dac_m45,
-      dac_data1 => dac_data1,
-      dac_data2 => dac_data2,
-      dac_dat_o => dac_dat_o,
-      dac_clk_o => dac_clk_o,
-      dac_wrt_o => dac_wrt_o,
-      dac_sel_o => dac_sel_o,
-      dac_rst_o => dac_rst_o
+      regAddr => regAddr,
+      regVal => regVal,
+      regWrtEn => regWrtEn,
+      adc1 => adc1,
+      adc2 => adc2,
+      digitalIn => digitalIn,
+      dac1 => dac1,
+      dac2 => dac2,
+      digitalOut => digitalOut,
+      led => led
     );
-END design_1_DAC_core_0_0_arch;
+END design_1_DSP_core_0_0_arch;

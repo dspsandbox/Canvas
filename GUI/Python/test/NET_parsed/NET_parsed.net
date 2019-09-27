@@ -1,9 +1,0 @@
-x32_dac1_0 N000 x32_dac1
-x32_add_0 N001 N002 N003 N000 x32_add
-x32_add_1 N004 N005 N006 N001 x32_add
-x32_adc1_0 N004 x32_adc1
-x32_adc2_0 N005 x32_adc2
-x1_const_0 N006 x1_const
-x32_const_0 N002 x32_const
-x1_const_1 N003 x1_const
-x32_dac2_0 N000 x32_dac2

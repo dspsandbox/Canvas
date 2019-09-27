@@ -20,7 +20,8 @@ use UNISIM.VComponents.all;
 
 entity DAC_core is
     Port ( clk : in STD_LOGIC;
-    	   dac_clk : in STD_LOGIC;
+    	   clk_dac : in STD_LOGIC;
+    	   clk_dac_m45 : in STD_LOGIC;
            dac_data1 : in STD_LOGIC_VECTOR (13 downto 0);
            dac_data2 : in STD_LOGIC_VECTOR (13 downto 0);
            dac_dat_o : out STD_LOGIC_VECTOR (13 downto 0);
@@ -53,7 +54,7 @@ architecture Behavioral of DAC_core is
 		SRTYPE => "SYNC") -- Reset Type ("ASYNC" or "SYNC")
 		port map (
 		Q => dac_clk_o, -- 1-bit DDR output
-		C => dac_clk, -- 1-bit clock input
+		C => clk_dac_m45, -- 1-bit clock input
 		CE => '1', -- 1-bit clock enable input
 		D1 => '1', -- 1-bit data input (positive edge)
 		D2 => '0', -- 1-bit data input (negative edge)
@@ -68,7 +69,7 @@ architecture Behavioral of DAC_core is
 		SRTYPE => "SYNC") -- Reset Type ("ASYNC" or "SYNC")
 		port map (
 		Q => dac_wrt_o, -- 1-bit DDR output
-		C => dac_clk, -- 1-bit clock input
+		C => clk_dac, -- 1-bit clock input
 		CE => '1', -- 1-bit clock enable input
 		D1 => '1', -- 1-bit data input (positive edge)
 		D2 => '0', -- 1-bit data input (negative edge)

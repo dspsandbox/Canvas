@@ -5,10 +5,11 @@
       "device": "xc7z010clg400-1",
       "name": "design_1",
       "synth_flow_mode": "None",
-      "tool_version": "2018.3"
+      "tool_version": "2018.3",
+      "validated": "true"
     },
     "design_tree": {
-      "ADC": {
+      "CLK": {
         "const_1": "",
         "clk_wiz_ADC": ""
       },
@@ -37,8 +38,7 @@
         }
       },
       "DAC": {
-        "DAC_core": "",
-        "clk_wiz_DAC": ""
+        "DAC_core": ""
       },
       "sync_digitalIn": "",
       "convertType_14_32_ADC1": "",
@@ -50,11 +50,67 @@
     "interface_ports": {
       "DDR": {
         "mode": "Master",
-        "vlnv": "xilinx.com:interface:ddrx_rtl:1.0"
+        "vlnv": "xilinx.com:interface:ddrx_rtl:1.0",
+        "parameters": {
+          "AXI_ARBITRATION_SCHEME": {
+            "value": "TDM",
+            "value_src": "default"
+          },
+          "BURST_LENGTH": {
+            "value": "8",
+            "value_src": "default"
+          },
+          "CAN_DEBUG": {
+            "value": "false",
+            "value_src": "default"
+          },
+          "CAS_LATENCY": {
+            "value": "11",
+            "value_src": "default"
+          },
+          "CAS_WRITE_LATENCY": {
+            "value": "11",
+            "value_src": "default"
+          },
+          "CS_ENABLED": {
+            "value": "true",
+            "value_src": "default"
+          },
+          "DATA_MASK_ENABLED": {
+            "value": "true",
+            "value_src": "default"
+          },
+          "DATA_WIDTH": {
+            "value": "8",
+            "value_src": "default"
+          },
+          "MEMORY_TYPE": {
+            "value": "COMPONENTS",
+            "value_src": "default"
+          },
+          "MEM_ADDR_MAP": {
+            "value": "ROW_COLUMN_BANK",
+            "value_src": "default"
+          },
+          "SLOT": {
+            "value": "Single",
+            "value_src": "default"
+          },
+          "TIMEPERIOD_PS": {
+            "value": "1250",
+            "value_src": "default"
+          }
+        }
       },
       "FIXED_IO": {
         "mode": "Master",
-        "vlnv": "xilinx.com:display_processing_system7:fixedio_rtl:1.0"
+        "vlnv": "xilinx.com:display_processing_system7:fixedio_rtl:1.0",
+        "parameters": {
+          "CAN_DEBUG": {
+            "value": "false",
+            "value_src": "default"
+          }
+        }
       }
     },
     "ports": {
@@ -87,8 +143,20 @@
         "type": "clk",
         "direction": "I",
         "parameters": {
+          "CLK_DOMAIN": {
+            "value": "design_1_adc_clk_p_i",
+            "value_src": "default"
+          },
           "FREQ_HZ": {
             "value": "125000000"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
           }
         }
       },
@@ -96,8 +164,20 @@
         "type": "clk",
         "direction": "I",
         "parameters": {
+          "CLK_DOMAIN": {
+            "value": "design_1_adc_clk_n_i",
+            "value_src": "default"
+          },
           "FREQ_HZ": {
             "value": "125000000"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
           }
         }
       },
@@ -131,7 +211,7 @@
       }
     },
     "components": {
-      "ADC": {
+      "CLK": {
         "ports": {
           "adc_cdcs_o": {
             "direction": "O",
@@ -142,7 +222,7 @@
             "type": "rst",
             "direction": "I"
           },
-          "clk": {
+          "clk_125": {
             "type": "clk",
             "direction": "O"
           },
@@ -157,6 +237,14 @@
             "direction": "I",
             "left": "0",
             "right": "0"
+          },
+          "clk_250_m120deg": {
+            "type": "clk",
+            "direction": "O"
+          },
+          "clk_250_m165deg": {
+            "type": "clk",
+            "direction": "O"
           }
         },
         "components": {
@@ -175,10 +263,10 @@
                 "value": "BUFG"
               },
               "CLKOUT1_JITTER": {
-                "value": "108.137"
+                "value": "128.871"
               },
               "CLKOUT1_PHASE_ERROR": {
-                "value": "86.070"
+                "value": "112.379"
               },
               "CLKOUT1_REQUESTED_OUT_FREQ": {
                 "value": "125"
@@ -193,10 +281,10 @@
                 "value": "BUFG"
               },
               "CLKOUT2_JITTER": {
-                "value": "124.615"
+                "value": "112.962"
               },
               "CLKOUT2_PHASE_ERROR": {
-                "value": "96.948"
+                "value": "112.379"
               },
               "CLKOUT2_REQUESTED_DUTY_CYCLE": {
                 "value": "50"
@@ -205,13 +293,28 @@
                 "value": "250"
               },
               "CLKOUT2_REQUESTED_PHASE": {
-                "value": "-150"
+                "value": "-120"
               },
               "CLKOUT2_USED": {
-                "value": "false"
+                "value": "true"
               },
               "CLKOUT3_DRIVES": {
                 "value": "BUFG"
+              },
+              "CLKOUT3_JITTER": {
+                "value": "112.962"
+              },
+              "CLKOUT3_PHASE_ERROR": {
+                "value": "112.379"
+              },
+              "CLKOUT3_REQUESTED_OUT_FREQ": {
+                "value": "250"
+              },
+              "CLKOUT3_REQUESTED_PHASE": {
+                "value": "-165"
+              },
+              "CLKOUT3_USED": {
+                "value": "true"
               },
               "CLKOUT4_DRIVES": {
                 "value": "BUFG"
@@ -225,38 +328,53 @@
               "CLKOUT7_DRIVES": {
                 "value": "BUFG"
               },
+              "CLK_OUT1_PORT": {
+                "value": "clk_125_0deg"
+              },
+              "CLK_OUT2_PORT": {
+                "value": "clk_250_0deg"
+              },
+              "CLK_OUT3_PORT": {
+                "value": "clk_250_m45deg"
+              },
               "FEEDBACK_SOURCE": {
                 "value": "FDBK_AUTO"
               },
               "JITTER_SEL": {
-                "value": "Min_O_Jitter"
+                "value": "No_Jitter"
               },
               "MMCM_BANDWIDTH": {
-                "value": "HIGH"
+                "value": "OPTIMIZED"
               },
               "MMCM_CLKFBOUT_MULT_F": {
-                "value": "9.500"
+                "value": "6.000"
               },
               "MMCM_CLKIN1_PERIOD": {
                 "value": "8.000"
               },
               "MMCM_CLKIN2_PERIOD": {
-                "value": "10.000"
+                "value": "10.0"
               },
               "MMCM_CLKOUT0_DIVIDE_F": {
-                "value": "9.500"
+                "value": "6.000"
               },
               "MMCM_CLKOUT0_PHASE": {
                 "value": "0.000"
               },
               "MMCM_CLKOUT1_DIVIDE": {
-                "value": "1"
+                "value": "3"
               },
               "MMCM_CLKOUT1_DUTY_CYCLE": {
                 "value": "0.500"
               },
               "MMCM_CLKOUT1_PHASE": {
-                "value": "-150.000"
+                "value": "-120.000"
+              },
+              "MMCM_CLKOUT2_DIVIDE": {
+                "value": "3"
+              },
+              "MMCM_CLKOUT2_PHASE": {
+                "value": "-165.000"
               },
               "MMCM_COMPENSATION": {
                 "value": "ZHOLD"
@@ -265,7 +383,7 @@
                 "value": "1"
               },
               "NUM_OUT_CLKS": {
-                "value": "1"
+                "value": "3"
               },
               "PRIMITIVE": {
                 "value": "MMCM"
@@ -292,10 +410,22 @@
               "clk_wiz_ADC/reset"
             ]
           },
-          "ADC_and_DAC_clk_clk_out1": {
+          "clk_wiz_ADC_clk_125_0deg": {
             "ports": [
-              "clk_wiz_ADC/clk_out1",
-              "clk"
+              "clk_wiz_ADC/clk_125_0deg",
+              "clk_125"
+            ]
+          },
+          "clk_wiz_ADC_clk_250_0deg": {
+            "ports": [
+              "clk_wiz_ADC/clk_250_0deg",
+              "clk_250_m120deg"
+            ]
+          },
+          "clk_wiz_ADC_clk_250_m45deg": {
+            "ports": [
+              "clk_wiz_ADC/clk_250_m45deg",
+              "clk_250_m165deg"
             ]
           },
           "adc_clk_p_i_1": {
@@ -737,16 +867,16 @@
                   }
                 },
                 "interface_nets": {
-                  "auto_cc_to_m01_couplers": {
-                    "interface_ports": [
-                      "M_AXI",
-                      "auto_cc/M_AXI"
-                    ]
-                  },
                   "m01_couplers_to_auto_cc": {
                     "interface_ports": [
                       "S_AXI",
                       "auto_cc/S_AXI"
+                    ]
+                  },
+                  "auto_cc_to_m01_couplers": {
+                    "interface_ports": [
+                      "M_AXI",
+                      "auto_cc/M_AXI"
                     ]
                   }
                 },
@@ -871,40 +1001,22 @@
               }
             },
             "interface_nets": {
-              "s00_couplers_to_xbar": {
-                "interface_ports": [
-                  "s00_couplers/M_AXI",
-                  "xbar/S00_AXI"
-                ]
-              },
-              "m02_couplers_to_axi_interconnect": {
-                "interface_ports": [
-                  "M02_AXI",
-                  "m02_couplers/M_AXI"
-                ]
-              },
-              "m01_couplers_to_axi_interconnect": {
-                "interface_ports": [
-                  "M01_AXI",
-                  "m01_couplers/M_AXI"
-                ]
-              },
-              "xbar_to_m00_couplers": {
-                "interface_ports": [
-                  "xbar/M00_AXI",
-                  "m00_couplers/S_AXI"
-                ]
-              },
               "xbar_to_m02_couplers": {
                 "interface_ports": [
                   "xbar/M02_AXI",
                   "m02_couplers/S_AXI"
                 ]
               },
-              "xbar_to_m01_couplers": {
+              "axi_interconnect_to_s00_couplers": {
                 "interface_ports": [
-                  "xbar/M01_AXI",
-                  "m01_couplers/S_AXI"
+                  "S00_AXI",
+                  "s00_couplers/S_AXI"
+                ]
+              },
+              "s00_couplers_to_xbar": {
+                "interface_ports": [
+                  "s00_couplers/M_AXI",
+                  "xbar/S00_AXI"
                 ]
               },
               "m00_couplers_to_axi_interconnect": {
@@ -913,10 +1025,28 @@
                   "m00_couplers/M_AXI"
                 ]
               },
-              "axi_interconnect_to_s00_couplers": {
+              "xbar_to_m00_couplers": {
                 "interface_ports": [
-                  "S00_AXI",
-                  "s00_couplers/S_AXI"
+                  "xbar/M00_AXI",
+                  "m00_couplers/S_AXI"
+                ]
+              },
+              "m01_couplers_to_axi_interconnect": {
+                "interface_ports": [
+                  "M01_AXI",
+                  "m01_couplers/M_AXI"
+                ]
+              },
+              "xbar_to_m01_couplers": {
+                "interface_ports": [
+                  "xbar/M01_AXI",
+                  "m01_couplers/S_AXI"
+                ]
+              },
+              "m02_couplers_to_axi_interconnect": {
+                "interface_ports": [
+                  "M02_AXI",
+                  "m02_couplers/M_AXI"
                 ]
               }
             },
@@ -993,10 +1123,28 @@
           }
         },
         "interface_nets": {
+          "processing_system7_0_FIXED_IO": {
+            "interface_ports": [
+              "FIXED_IO",
+              "processing_system7/FIXED_IO"
+            ]
+          },
+          "axi_interconnect_0_M02_AXI": {
+            "interface_ports": [
+              "axi_interconnect/M02_AXI",
+              "axi_gpio_WrtEn/S_AXI"
+            ]
+          },
           "processing_system7_0_M_AXI_GP0": {
             "interface_ports": [
               "processing_system7/M_AXI_GP0",
               "axi_interconnect/S00_AXI"
+            ]
+          },
+          "processing_system7_0_DDR": {
+            "interface_ports": [
+              "DDR",
+              "processing_system7/DDR"
             ]
           },
           "axi_interconnect_0_M00_AXI": {
@@ -1009,24 +1157,6 @@
             "interface_ports": [
               "axi_interconnect/M01_AXI",
               "axi_gpio_regVal/S_AXI"
-            ]
-          },
-          "axi_interconnect_0_M02_AXI": {
-            "interface_ports": [
-              "axi_interconnect/M02_AXI",
-              "axi_gpio_WrtEn/S_AXI"
-            ]
-          },
-          "processing_system7_0_DDR": {
-            "interface_ports": [
-              "DDR",
-              "processing_system7/DDR"
-            ]
-          },
-          "processing_system7_0_FIXED_IO": {
-            "interface_ports": [
-              "FIXED_IO",
-              "processing_system7/FIXED_IO"
             ]
           }
         },
@@ -1111,9 +1241,29 @@
       },
       "DAC": {
         "ports": {
+          "clk_dac": {
+            "direction": "I"
+          },
+          "clk_dac_m45": {
+            "direction": "I"
+          },
           "clk": {
             "type": "clk",
             "direction": "I"
+          },
+          "dac_rst_o": {
+            "direction": "O"
+          },
+          "dac_wrt_o": {
+            "direction": "O"
+          },
+          "dac_data_o": {
+            "direction": "O",
+            "left": "13",
+            "right": "0"
+          },
+          "dac_clk_o": {
+            "direction": "O"
           },
           "dac_data1": {
             "direction": "I",
@@ -1125,21 +1275,7 @@
             "left": "13",
             "right": "0"
           },
-          "dac_data_o": {
-            "direction": "O",
-            "left": "13",
-            "right": "0"
-          },
-          "dac_clk_o": {
-            "direction": "O"
-          },
-          "dac_wrt_o": {
-            "direction": "O"
-          },
           "dac_sel_o": {
-            "direction": "O"
-          },
-          "dac_rst_o": {
             "direction": "O"
           }
         },
@@ -1155,11 +1291,51 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I"
+                "direction": "I",
+                "parameters": {
+                  "FREQ_HZ": {
+                    "value": "125000000",
+                    "value_src": "ip_prop"
+                  },
+                  "PHASE": {
+                    "value": "0.0",
+                    "value_src": "ip_prop"
+                  }
+                }
               },
-              "dac_clk": {
-                "type": "clk",
-                "direction": "I"
+              "clk_dac": {
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "/CLK/clk_wiz_ADC_clk_out1",
+                    "value_src": "ip_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "250000000",
+                    "value_src": "ip_prop"
+                  },
+                  "PHASE": {
+                    "value": "-120.0",
+                    "value_src": "ip_prop"
+                  }
+                }
+              },
+              "clk_dac_m45": {
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "/CLK/clk_wiz_ADC_clk_out1",
+                    "value_src": "ip_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "250000000",
+                    "value_src": "ip_prop"
+                  },
+                  "PHASE": {
+                    "value": "-165.0",
+                    "value_src": "ip_prop"
+                  }
+                }
               },
               "dac_data1": {
                 "direction": "I",
@@ -1189,56 +1365,31 @@
                 "direction": "O"
               }
             }
-          },
-          "clk_wiz_DAC": {
-            "vlnv": "xilinx.com:ip:clk_wiz:6.0",
-            "xci_name": "design_1_clk_wiz_0_0",
-            "parameters": {
-              "CLKIN1_JITTER_PS": {
-                "value": "80.0"
-              },
-              "CLKOUT1_JITTER": {
-                "value": "112.962"
-              },
-              "CLKOUT1_PHASE_ERROR": {
-                "value": "112.379"
-              },
-              "CLKOUT1_REQUESTED_OUT_FREQ": {
-                "value": "250"
-              },
-              "CLKOUT1_REQUESTED_PHASE": {
-                "value": "-165"
-              },
-              "MMCM_CLKFBOUT_MULT_F": {
-                "value": "6.000"
-              },
-              "MMCM_CLKIN1_PERIOD": {
-                "value": "8.000"
-              },
-              "MMCM_CLKIN2_PERIOD": {
-                "value": "10.0"
-              },
-              "MMCM_CLKOUT0_DIVIDE_F": {
-                "value": "3.000"
-              },
-              "MMCM_CLKOUT0_PHASE": {
-                "value": "-165.000"
-              },
-              "MMCM_DIVCLK_DIVIDE": {
-                "value": "1"
-              },
-              "PRIM_IN_FREQ": {
-                "value": "125"
-              }
-            }
           }
         },
         "nets": {
-          "ADC_and_DAC_clk_clk_out1": {
+          "DAC_core_dac_rst_o": {
             "ports": [
-              "clk",
-              "DAC_core/clk",
-              "clk_wiz_DAC/clk_in1"
+              "DAC_core/dac_rst_o",
+              "dac_rst_o"
+            ]
+          },
+          "DAC_core_dac_wrt_o": {
+            "ports": [
+              "DAC_core/dac_wrt_o",
+              "dac_wrt_o"
+            ]
+          },
+          "DAC_core_dac_dat_o": {
+            "ports": [
+              "DAC_core/dac_dat_o",
+              "dac_data_o"
+            ]
+          },
+          "DAC_core_dac_clk_o": {
+            "ports": [
+              "DAC_core/dac_clk_o",
+              "dac_clk_o"
             ]
           },
           "dac_data1_1": {
@@ -1253,40 +1404,28 @@
               "DAC_core/dac_data2"
             ]
           },
-          "clk_wiz_DAC_clk_out1": {
-            "ports": [
-              "clk_wiz_DAC/clk_out1",
-              "DAC_core/dac_clk"
-            ]
-          },
-          "DAC_core_0_dac_dat_o": {
-            "ports": [
-              "DAC_core/dac_dat_o",
-              "dac_data_o"
-            ]
-          },
-          "DAC_core_0_dac_clk_o": {
-            "ports": [
-              "DAC_core/dac_clk_o",
-              "dac_clk_o"
-            ]
-          },
-          "DAC_core_0_dac_wrt_o": {
-            "ports": [
-              "DAC_core/dac_wrt_o",
-              "dac_wrt_o"
-            ]
-          },
-          "DAC_core_0_dac_sel_o": {
+          "DAC_core_dac_sel_o": {
             "ports": [
               "DAC_core/dac_sel_o",
               "dac_sel_o"
             ]
           },
-          "DAC_core_0_dac_rst_o": {
+          "clk_1": {
             "ports": [
-              "DAC_core/dac_rst_o",
-              "dac_rst_o"
+              "clk",
+              "DAC_core/clk"
+            ]
+          },
+          "clk_dac_m45_1": {
+            "ports": [
+              "clk_dac_m45",
+              "DAC_core/clk_dac_m45"
+            ]
+          },
+          "clk_dac_1": {
+            "ports": [
+              "clk_dac",
+              "DAC_core/clk_dac"
             ]
           }
         }
@@ -1302,7 +1441,17 @@
         "ports": {
           "clk": {
             "type": "clk",
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              }
+            }
           },
           "dataIn": {
             "direction": "I",
@@ -1327,7 +1476,17 @@
         "ports": {
           "clk": {
             "type": "clk",
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              }
+            }
           },
           "dataIn": {
             "direction": "I",
@@ -1352,7 +1511,17 @@
         "ports": {
           "clk": {
             "type": "clk",
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              }
+            }
           },
           "dataIn": {
             "direction": "I",
@@ -1377,7 +1546,17 @@
         "ports": {
           "clk": {
             "type": "clk",
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              }
+            }
           },
           "dataIn": {
             "direction": "I",
@@ -1402,7 +1581,17 @@
         "ports": {
           "clk": {
             "type": "clk",
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              }
+            }
           },
           "dataIn": {
             "direction": "I",
@@ -1427,7 +1616,21 @@
         "ports": {
           "clk": {
             "type": "clk",
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "/CLK/clk_wiz_ADC_clk_out1",
+                "value_src": "default_prop"
+              },
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              }
+            }
           },
           "regAddr": {
             "direction": "I",
@@ -1481,85 +1684,55 @@
       }
     },
     "interface_nets": {
-      "processing_system7_0_DDR": {
-        "interface_ports": [
-          "DDR",
-          "PS_ZYNQ/DDR"
-        ]
-      },
       "processing_system7_0_FIXED_IO": {
         "interface_ports": [
           "FIXED_IO",
           "PS_ZYNQ/FIXED_IO"
+        ]
+      },
+      "processing_system7_0_DDR": {
+        "interface_ports": [
+          "DDR",
+          "PS_ZYNQ/DDR"
         ]
       }
     },
     "nets": {
       "ADC_clk_adc_cdcs_o": {
         "ports": [
-          "ADC/adc_cdcs_o",
+          "CLK/adc_cdcs_o",
           "adc_cdcs_o"
         ]
       },
       "adc_clk_n_i_1": {
         "ports": [
           "adc_clk_n_i",
-          "ADC/adc_clk_n_i"
+          "CLK/adc_clk_n_i"
         ]
       },
       "adc_clk_p_i_1": {
         "ports": [
           "adc_clk_p_i",
-          "ADC/adc_clk_p_i"
+          "CLK/adc_clk_p_i"
         ]
       },
       "ADC_and_DAC_clk_clk_out1": {
         "ports": [
-          "ADC/clk",
+          "CLK/clk_125",
           "PS_ZYNQ/M01_ACLK",
-          "DAC/clk",
           "sync_digitalIn/clk",
           "convertType_14_32_ADC1/clk",
           "convertType_14_32_ADC2/clk",
           "convertType_32_14_DAC1/clk",
           "convertType_32_14_DAC2/clk",
+          "DAC/clk",
           "DSP_core/clk"
         ]
       },
       "PS_ZYNQ_peripheral_reset": {
         "ports": [
           "PS_ZYNQ/peripheral_reset",
-          "ADC/reset"
-        ]
-      },
-      "NET2FPGA_base_DAC_dac_dat_o": {
-        "ports": [
-          "DAC/dac_data_o",
-          "dac_data_o"
-        ]
-      },
-      "NET2FPGA_base_DAC_dac_clk_o": {
-        "ports": [
-          "DAC/dac_clk_o",
-          "dac_clk_o"
-        ]
-      },
-      "NET2FPGA_base_DAC_dac_wrt_o": {
-        "ports": [
-          "DAC/dac_wrt_o",
-          "dac_wrt_o"
-        ]
-      },
-      "NET2FPGA_base_DAC_dac_sel_o": {
-        "ports": [
-          "DAC/dac_sel_o",
-          "dac_sel_o"
-        ]
-      },
-      "NET2FPGA_base_DAC_dac_rst_o": {
-        "ports": [
-          "DAC/dac_rst_o",
-          "dac_rst_o"
+          "CLK/reset"
         ]
       },
       "adc_data1_i_1": {
@@ -1640,16 +1813,58 @@
           "convertType_32_14_DAC2/dataIn"
         ]
       },
-      "convertType_32_14_DAC2_dataOut": {
+      "CLK_clk_250_0deg": {
         "ports": [
-          "convertType_32_14_DAC2/dataOut",
-          "DAC/dac_data2"
+          "CLK/clk_250_m120deg",
+          "DAC/clk_dac"
+        ]
+      },
+      "CLK_clk_250_m45deg": {
+        "ports": [
+          "CLK/clk_250_m165deg",
+          "DAC/clk_dac_m45"
+        ]
+      },
+      "DAC_dac_rst_o": {
+        "ports": [
+          "DAC/dac_rst_o",
+          "dac_rst_o"
+        ]
+      },
+      "DAC_dac_wrt_o": {
+        "ports": [
+          "DAC/dac_wrt_o",
+          "dac_wrt_o"
+        ]
+      },
+      "DAC_dac_data_o": {
+        "ports": [
+          "DAC/dac_data_o",
+          "dac_data_o"
+        ]
+      },
+      "DAC_dac_clk_o": {
+        "ports": [
+          "DAC/dac_clk_o",
+          "dac_clk_o"
         ]
       },
       "convertType_32_14_DAC1_dataOut": {
         "ports": [
           "convertType_32_14_DAC1/dataOut",
           "DAC/dac_data1"
+        ]
+      },
+      "convertType_32_14_DAC2_dataOut": {
+        "ports": [
+          "convertType_32_14_DAC2/dataOut",
+          "DAC/dac_data2"
+        ]
+      },
+      "DAC_dac_sel_o": {
+        "ports": [
+          "DAC/dac_sel_o",
+          "dac_sel_o"
         ]
       }
     },

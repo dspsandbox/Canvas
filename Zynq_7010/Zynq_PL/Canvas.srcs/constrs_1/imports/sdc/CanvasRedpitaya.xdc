@@ -183,6 +183,5 @@ set_property PACKAGE_PIN M15 [get_ports {digital_o[7]}]
 #######################
 # CLOCK
 #######################
-
 set_input_delay -clock adc_clk_p_i 3.400 [get_ports adc_data1_i[*]]
 set_input_delay -clock adc_clk_p_i 3.400 [get_ports adc_data2_i[*]]
