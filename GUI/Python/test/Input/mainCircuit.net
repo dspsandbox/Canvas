@@ -1,0 +1,7 @@
+* C:\Users\pgomez\Desktop\canvas\GUI\Python\test\Input\mainCircuit.asc
+XmyConst1 N001 x1_const
+XU1 N001 x1_led0
+XU3 N002 x1_led1
+Xconst2 N002 x1_const
+.backanno
+.end

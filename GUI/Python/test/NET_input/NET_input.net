@@ -1,0 +1,12 @@
+* Z:\home\CanvasServer\LTspiceTmp\mainCircuit.asc
+XU1 N001 x32_adc1
+XU2 N003 x32_adc2
+XU3 N001 N003 N005 N002 x32_add
+XU4 N002 P001 P002 N004 x32_add
+Xoffset2 P001 x32_const
+Xclr1 N005 x1_const
+XU5 N004 x32_dac1
+XU6 N004 x32_dac2
+Xclr2 P002 x1_const
+.backanno
+.end

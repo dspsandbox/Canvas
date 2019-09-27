@@ -1,0 +1,4 @@
+#!bin/sh -e
+/home/Canvas/bitstreamLoader.sh 
+/home/Canvas/constantsLoader 
+exit 0
