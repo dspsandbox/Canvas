@@ -17,8 +17,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity x32_mult is
 	Generic(PORT_WIDTH : integer := 32;
-	 THRESHOLD_0 : STD_LOGIC_VECTOR :="1000000000000000000000000";
-	 THRESHOLD_1 : STD_LOGIC_VECTOR :="100000000000000000"
+	 EXCLUDE_VAL : STD_LOGIC_VECTOR(31 downto 0) := (31=>'1',others=>'0');
+	 SUBS_VAL : STD_LOGIC_VECTOR(31 downto 0) := (31=>'1',0=>'1',others=>'0')
 	);
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
@@ -32,17 +32,17 @@ entity x32_mult is
 end x32_mult;
 
 architecture Behavioral of x32_mult is
-signal A : STD_LOGIC_VECTOR (24 downto 0);
-signal B : STD_LOGIC_VECTOR (17 downto 0);
-signal P : STD_LOGIC_VECTOR (42 downto 0);
+signal A : STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0);
+signal B : STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0);
+signal P : STD_LOGIC_VECTOR ((2*PORT_WIDTH-1) downto 0);
 
-COMPONENT mult_gen_0
+COMPONENT mult_gen_x32
   PORT (
     CLK : IN STD_LOGIC;
-    A : IN STD_LOGIC_VECTOR(24 DOWNTO 0);
-    B : IN STD_LOGIC_VECTOR(17 DOWNTO 0);
+    A : IN STD_LOGIC_VECTOR((PORT_WIDTH-1) DOWNTO 0);
+    B : IN STD_LOGIC_VECTOR((PORT_WIDTH-1) DOWNTO 0);
     SCLR : IN STD_LOGIC;
-    P : OUT STD_LOGIC_VECTOR(42 DOWNTO 0)
+    P : OUT STD_LOGIC_VECTOR((2*PORT_WIDTH-1) DOWNTO 0)
   );
 END COMPONENT;
 
@@ -50,7 +50,7 @@ END COMPONENT;
 
 begin
 --INSTANTIATION OF DSP MULTIPLIER	
-	DSP_mult_core : mult_gen_0
+	DSP_mult_core : mult_gen_x32
   	PORT MAP (
     CLK => clk,
     A => A,
@@ -60,15 +60,14 @@ begin
   );
 
 
---Consistency check to avoid A=1000000000000000000000000 or B=100000000000000000
-	A <= "1000000000000000000000001" when (dataIn0((PORT_WIDTH-1) downto (PORT_WIDTH-25))=THRESHOLD_0)  else
-	      dataIn0((PORT_WIDTH-1) downto (PORT_WIDTH-25));
+--Consistency check to avoid A=-2**31 or B=-2**31
+	A <=  SUBS_VAL when (dataIn0=EXCLUDE_VAL)  else
+	      dataIn0;
 	   
-	B <= "100000000000000001" when (dataIn1((PORT_WIDTH-1) downto (PORT_WIDTH-18))=THRESHOLD_1) else
-	      dataIn1((PORT_WIDTH-1) downto (PORT_WIDTH-18));
-	
-	dataOut(31)<=P(42);
-	dataOut(30 downto 0) <= P(40 downto 10);
+	B <=  SUBS_VAL when (dataIn1=EXCLUDE_VAL)  else
+	      dataIn1;
+
+	dataOut <= P((2*PORT_WIDTH-2) downto (PORT_WIDTH-1));
 	
 
 end Behavioral;

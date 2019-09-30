@@ -52,13 +52,12 @@
 -- The following code must appear in the VHDL architecture header.
 
 ------------- Begin Cut here for COMPONENT Declaration ------ COMP_TAG
-COMPONENT mult_gen_0
+COMPONENT mult_gen_x32
   PORT (
     CLK : IN STD_LOGIC;
-    A : IN STD_LOGIC_VECTOR(24 DOWNTO 0);
-    B : IN STD_LOGIC_VECTOR(17 DOWNTO 0);
-    SCLR : IN STD_LOGIC;
-    P : OUT STD_LOGIC_VECTOR(42 DOWNTO 0)
+    A : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    B : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    P : OUT STD_LOGIC_VECTOR(63 DOWNTO 0)
   );
 END COMPONENT;
 -- COMP_TAG_END ------ End COMPONENT Declaration ------------
@@ -67,17 +66,16 @@ END COMPONENT;
 -- body. Substitute your own instance name and net names.
 
 ------------- Begin Cut here for INSTANTIATION Template ----- INST_TAG
-your_instance_name : mult_gen_0
+your_instance_name : mult_gen_x32
   PORT MAP (
     CLK => CLK,
     A => A,
     B => B,
-    SCLR => SCLR,
     P => P
   );
 -- INST_TAG_END ------ End INSTANTIATION Template ---------
 
--- You must compile the wrapper file mult_gen_0.vhd when simulating
--- the core, mult_gen_0. When compiling the wrapper file, be sure to
+-- You must compile the wrapper file mult_gen_x32.vhd when simulating
+-- the core, mult_gen_x32. When compiling the wrapper file, be sure to
 -- reference the VHDL simulation library.
 

@@ -56,19 +56,18 @@ USE ieee.numeric_std.ALL;
 LIBRARY mult_gen_v12_0_14;
 USE mult_gen_v12_0_14.mult_gen_v12_0_14;
 
-ENTITY mult_gen_0 IS
+ENTITY mult_gen_x32 IS
   PORT (
     CLK : IN STD_LOGIC;
-    A : IN STD_LOGIC_VECTOR(24 DOWNTO 0);
-    B : IN STD_LOGIC_VECTOR(17 DOWNTO 0);
-    SCLR : IN STD_LOGIC;
-    P : OUT STD_LOGIC_VECTOR(42 DOWNTO 0)
+    A : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    B : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    P : OUT STD_LOGIC_VECTOR(63 DOWNTO 0)
   );
-END mult_gen_0;
+END mult_gen_x32;
 
-ARCHITECTURE mult_gen_0_arch OF mult_gen_0 IS
+ARCHITECTURE mult_gen_x32_arch OF mult_gen_x32 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF mult_gen_0_arch: ARCHITECTURE IS "yes";
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF mult_gen_x32_arch: ARCHITECTURE IS "yes";
   COMPONENT mult_gen_v12_0_14 IS
     GENERIC (
       C_VERBOSITY : INTEGER;
@@ -94,25 +93,17 @@ ARCHITECTURE mult_gen_0_arch OF mult_gen_0 IS
     );
     PORT (
       CLK : IN STD_LOGIC;
-      A : IN STD_LOGIC_VECTOR(24 DOWNTO 0);
-      B : IN STD_LOGIC_VECTOR(17 DOWNTO 0);
+      A : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      B : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       CE : IN STD_LOGIC;
       SCLR : IN STD_LOGIC;
-      P : OUT STD_LOGIC_VECTOR(42 DOWNTO 0)
+      P : OUT STD_LOGIC_VECTOR(63 DOWNTO 0)
     );
   END COMPONENT mult_gen_v12_0_14;
-  ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF mult_gen_0_arch: ARCHITECTURE IS "mult_gen_v12_0_14,Vivado 2018.3";
-  ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
-  ATTRIBUTE CHECK_LICENSE_TYPE OF mult_gen_0_arch : ARCHITECTURE IS "mult_gen_0,mult_gen_v12_0_14,{}";
-  ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF mult_gen_0_arch: ARCHITECTURE IS "mult_gen_0,mult_gen_v12_0_14,{x_ipProduct=Vivado 2018.3,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mult_gen,x_ipVersion=12.0,x_ipCoreRevision=14,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_VERBOSITY=0,C_MODEL_TYPE=0,C_OPTIMIZE_GOAL=1,C_XDEVICEFAMILY=zynq,C_HAS_CE=0,C_HAS_SCLR=1,C_LATENCY=3,C_A_WIDTH=25,C_A_TYPE=0,C_B_WIDTH=18,C_B_TYPE=0,C_OUT_HIGH=42,C_OUT_LOW=0,C_MULT_TYPE=1,C_CE_OVERRIDES_SCLR=0,C_CCM_IMP=0,C_B_VALUE=10000001,C_HAS_ZERO_DETECT=0,C_ROUND_OUTPUT=0,C_ROUND_PT=0}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF P: SIGNAL IS "XIL_INTERFACENAME p_intf, LAYERED_METADATA undef";
   ATTRIBUTE X_INTERFACE_INFO OF P: SIGNAL IS "xilinx.com:signal:data:1.0 p_intf DATA";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF SCLR: SIGNAL IS "XIL_INTERFACENAME sclr_intf, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
-  ATTRIBUTE X_INTERFACE_INFO OF SCLR: SIGNAL IS "xilinx.com:signal:reset:1.0 sclr_intf RST";
   ATTRIBUTE X_INTERFACE_PARAMETER OF B: SIGNAL IS "XIL_INTERFACENAME b_intf, LAYERED_METADATA undef";
   ATTRIBUTE X_INTERFACE_INFO OF B: SIGNAL IS "xilinx.com:signal:data:1.0 b_intf DATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF A: SIGNAL IS "XIL_INTERFACENAME a_intf, LAYERED_METADATA undef";
@@ -127,13 +118,13 @@ BEGIN
       C_OPTIMIZE_GOAL => 1,
       C_XDEVICEFAMILY => "zynq",
       C_HAS_CE => 0,
-      C_HAS_SCLR => 1,
-      C_LATENCY => 3,
-      C_A_WIDTH => 25,
+      C_HAS_SCLR => 0,
+      C_LATENCY => 6,
+      C_A_WIDTH => 32,
       C_A_TYPE => 0,
-      C_B_WIDTH => 18,
+      C_B_WIDTH => 32,
       C_B_TYPE => 0,
-      C_OUT_HIGH => 42,
+      C_OUT_HIGH => 63,
       C_OUT_LOW => 0,
       C_MULT_TYPE => 1,
       C_CE_OVERRIDES_SCLR => 0,
@@ -148,7 +139,7 @@ BEGIN
       A => A,
       B => B,
       CE => '1',
-      SCLR => SCLR,
+      SCLR => '0',
       P => P
     );
-END mult_gen_0_arch;
+END mult_gen_x32_arch;
