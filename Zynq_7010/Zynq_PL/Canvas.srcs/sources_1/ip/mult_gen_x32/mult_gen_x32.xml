@@ -220,11 +220,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Sep 30 10:08:15 UTC 2019</spirit:value>
+            <spirit:value>Mon Sep 30 10:41:19 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d4e9e778</spirit:value>
+            <spirit:value>9:8bd516cc</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -249,11 +249,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Sep 30 10:08:15 UTC 2019</spirit:value>
+            <spirit:value>Mon Sep 30 10:41:19 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d4e9e778</spirit:value>
+            <spirit:value>9:8bd516cc</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -264,7 +264,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d4e9e778</spirit:value>
+            <spirit:value>9:8bd516cc</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -280,11 +280,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Sep 30 10:08:15 UTC 2019</spirit:value>
+            <spirit:value>Mon Sep 30 10:41:19 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d4e9e778</spirit:value>
+            <spirit:value>9:8bd516cc</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -309,11 +309,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Sep 30 10:08:15 UTC 2019</spirit:value>
+            <spirit:value>Mon Sep 30 10:41:19 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:83c6893d</spirit:value>
+            <spirit:value>9:b3903895</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -329,11 +329,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Sep 30 10:08:15 UTC 2019</spirit:value>
+            <spirit:value>Mon Sep 30 10:41:19 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:83c6893d</spirit:value>
+            <spirit:value>9:b3903895</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -347,11 +347,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Sep 30 10:08:15 UTC 2019</spirit:value>
+            <spirit:value>Mon Sep 30 10:41:19 UTC 2019</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d4e9e778</spirit:value>
+            <spirit:value>9:8bd516cc</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -468,7 +468,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.SCLR" xilinx:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_MULT_TYPE&apos;)) = 0 or spirit:decode(id(&apos;MODELPARAM_VALUE.C_MULT_TYPE&apos;)) = 1 or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_MULT_TYPE&apos;)) = 2 and spirit:decode(id(&apos;MODELPARAM_VALUE.C_CCM_IMP&apos;)) != 1)) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LATENCY&apos;)) != 0) and spirit:decode(id(&apos;MODELPARAM_VALUE.C_HAS_SCLR&apos;)) != 0) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_MULT_TYPE&apos;)) = 2 and spirit:decode(id(&apos;MODELPARAM_VALUE.C_CCM_IMP&apos;)) = 1 and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LATENCY&apos;)) > 1 or spirit:decode(id(&apos;MODELPARAM_VALUE.C_LATENCY&apos;)) = -1) and spirit:decode(id(&apos;MODELPARAM_VALUE.C_HAS_SCLR&apos;)) != 0))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.SCLR" xilinx:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_MULT_TYPE&apos;)) = 0 or spirit:decode(id(&apos;MODELPARAM_VALUE.C_MULT_TYPE&apos;)) = 1 or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_MULT_TYPE&apos;)) = 2 and spirit:decode(id(&apos;MODELPARAM_VALUE.C_CCM_IMP&apos;)) != 1)) and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LATENCY&apos;)) != 0) and spirit:decode(id(&apos;MODELPARAM_VALUE.C_HAS_SCLR&apos;)) != 0) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_MULT_TYPE&apos;)) = 2 and spirit:decode(id(&apos;MODELPARAM_VALUE.C_CCM_IMP&apos;)) = 1 and (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LATENCY&apos;)) > 1 or spirit:decode(id(&apos;MODELPARAM_VALUE.C_LATENCY&apos;)) = -1) and spirit:decode(id(&apos;MODELPARAM_VALUE.C_HAS_SCLR&apos;)) != 0))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -517,7 +517,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_HAS_SCLR</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_HAS_SCLR">0</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_HAS_SCLR">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_LATENCY</spirit:name>
@@ -986,7 +986,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>SyncClear</spirit:name>
-      <spirit:value spirit:format="bool" spirit:resolve="user" spirit:id="PARAM_VALUE.SyncClear" spirit:order="19">false</spirit:value>
+      <spirit:value spirit:format="bool" spirit:resolve="user" spirit:id="PARAM_VALUE.SyncClear" spirit:order="19">true</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -1030,6 +1030,7 @@
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PipeStages" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PortAWidth" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PortBWidth" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.SyncClear" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

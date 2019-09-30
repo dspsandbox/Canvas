@@ -55,10 +55,11 @@
 
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 mult_gen_x32 your_instance_name (
-  .CLK(CLK),  // input wire CLK
-  .A(A),      // input wire [31 : 0] A
-  .B(B),      // input wire [31 : 0] B
-  .P(P)      // output wire [63 : 0] P
+  .CLK(CLK),    // input wire CLK
+  .A(A),        // input wire [31 : 0] A
+  .B(B),        // input wire [31 : 0] B
+  .SCLR(SCLR),  // input wire SCLR
+  .P(P)        // output wire [63 : 0] P
 );
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 

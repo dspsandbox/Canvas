@@ -57,6 +57,7 @@ COMPONENT mult_gen_x32
     CLK : IN STD_LOGIC;
     A : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     B : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SCLR : IN STD_LOGIC;
     P : OUT STD_LOGIC_VECTOR(63 DOWNTO 0)
   );
 END COMPONENT;
@@ -71,6 +72,7 @@ your_instance_name : mult_gen_x32
     CLK => CLK,
     A => A,
     B => B,
+    SCLR => SCLR,
     P => P
   );
 -- INST_TAG_END ------ End INSTANTIATION Template ---------
