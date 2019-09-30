@@ -54,6 +54,14 @@ signal led_signal : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
 
 ---------------------------------------------------------------------------------------------------
 --AUTO GENERATED SIGNALS START
+signal N000 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
+signal N001 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
+signal N002 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
+signal N003 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
+signal N004 : STD_LOGIC := '0';
+signal N005 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
+signal N006 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
+signal N007 : STD_LOGIC_VECTOR((PORT_WIDTH-1) downto 0) := ((PORT_WIDTH-1)=>'1',others=>'0');
 --AUTO GENERATED SIGNALS END
 ---------------------------------------------------------------------------------------------------
 
@@ -93,6 +101,33 @@ begin
     
 ---------------------------------------------------------------------------------------------------
 --AUTO GENERATED INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS START
+--x32_dac1_0:
+dac1_signal<=N000;
+
+x32_shiftL_0 : entity xil_defaultlib.x32_shiftL
+port map(clk=>clk,dataIn=>N001,dataShiftL=>N002,dataOut=>N000);
+
+x32_add_0 : entity xil_defaultlib.x32_add
+port map(clk=>clk,reset=>N004,dataIn0=>N003,dataIn1=>N001,dataOut=>N001);
+
+x32_mult_0 : entity xil_defaultlib.x32_mult
+port map(clk=>clk,reset=>N004,dataIn0=>N005,dataIn1=>N006,dataOut=>N003);
+
+x32_sub_0 : entity xil_defaultlib.x32_sub
+port map(clk=>clk,reset=>N004,dataIn0=>N007,dataIn1=>N001,dataOut=>N005);
+
+--x32_adc1_0:
+N007<=adc1_signal;
+
+--x1_const_0:
+N004<=x1ConstReg(0);
+
+--x32_const_0:
+N006<=x32ConstReg(0);
+
+--x32_const_1:
+N002<=x32ConstReg(1);
+
 --AUTO GENERATED INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS END
 ---------------------------------------------------------------------------------------------------
 

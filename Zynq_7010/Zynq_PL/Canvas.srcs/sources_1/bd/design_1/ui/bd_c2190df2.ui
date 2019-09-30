@@ -13,14 +13,14 @@ preplace portBus adc_clk_n_i -pg 1 -y 360 -defaultsOSRD
 preplace inst clk_wiz_ADC -pg 1 -lvl 2 -y 90 -defaultsOSRD
 preplace inst const_1 -pg 1 -lvl 2 -y 220 -defaultsOSRD
 preplace netloc PS_ZYNQ_peripheral_reset 1 0 2 NJ 20 90
-preplace netloc clk_wiz_ADC_clk_250_m120deg 1 2 1 N
-preplace netloc clk_wiz_ADC_clk_250_m150deg 1 2 1 N
+preplace netloc clk_wiz_ADC_clk_250_m120deg 1 2 1 590
+preplace netloc clk_wiz_ADC_clk_250_m150deg 1 2 1 580
 preplace netloc adc_clk_n_i_1 1 0 2 -80J 80 N
-preplace netloc clk_wiz_ADC_locked 1 2 1 590
+preplace netloc clk_wiz_ADC_locked 1 2 1 610
 preplace netloc ADC_clk_adc_cdcs_o 1 2 1 NJ
-preplace netloc clk_wiz_ADC_clk_125_0deg 1 2 1 580J
+preplace netloc clk_wiz_ADC_clk_125_0deg 1 2 1 600J
 preplace netloc adc_clk_p_i_1 1 0 2 NJ 340 100
-levelinfo -pg 1 -100 70 440 610 -top 0 -bot 420
+levelinfo -pg 1 -100 70 440 630 -top 0 -bot 420
 "
 }
 0
