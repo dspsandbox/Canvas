@@ -79,6 +79,18 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/imports/Canvas/x32_add.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/Canvas/x32_switch.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/Canvas/DSP_core.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -115,13 +127,6 @@
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../Python scripts/IMPLEMENTATION/VIVADO_PROJECT_GIT/DSP_creator.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd"/>
           <Attr Name="ImportTime" Val="1563891322"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/Canvas/x32_add.vhd">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -300,13 +305,6 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/imports/Canvas/x32_shiftR.vhd">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/Canvas/x32_switch.vhd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>

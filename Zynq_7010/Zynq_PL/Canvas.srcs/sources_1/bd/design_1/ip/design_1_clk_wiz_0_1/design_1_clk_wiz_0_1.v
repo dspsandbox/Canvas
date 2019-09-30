@@ -57,8 +57,8 @@
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
 // clk_125_0deg___125.000______0.000______50.0______128.871____112.379
-// clk_250_0deg___250.000____-120.000______50.0______112.962____112.379
-// clk_250_m45deg___250.000____-165.000______50.0______112.962____112.379
+// clk_250_m120deg___250.000____-120.000______50.0______112.962____112.379
+// clk_250_m150deg___250.000____-150.000______50.0______112.962____112.379
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -73,8 +73,8 @@ module design_1_clk_wiz_0_1
  (
   // Clock out ports
   output        clk_125_0deg,
-  output        clk_250_0deg,
-  output        clk_250_m45deg,
+  output        clk_250_m120deg,
+  output        clk_250_m150deg,
   // Status and control signals
   input         reset,
   output        locked,
@@ -87,8 +87,8 @@ module design_1_clk_wiz_0_1
   (
   // Clock out ports  
   .clk_125_0deg(clk_125_0deg),
-  .clk_250_0deg(clk_250_0deg),
-  .clk_250_m45deg(clk_250_m45deg),
+  .clk_250_m120deg(clk_250_m120deg),
+  .clk_250_m150deg(clk_250_m150deg),
   // Status and control signals               
   .reset(reset), 
   .locked(locked),

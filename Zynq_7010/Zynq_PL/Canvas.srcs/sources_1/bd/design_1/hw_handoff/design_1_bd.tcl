@@ -268,8 +268,8 @@ proc create_hier_cell_DAC { parentCell nameHier } {
 
   # Create pins
   create_bd_pin -dir I -type clk clk
-  create_bd_pin -dir I clk_dac
-  create_bd_pin -dir I clk_dac_m45
+  create_bd_pin -dir I dac_clk
+  create_bd_pin -dir I dac_clk_m30deg
   create_bd_pin -dir O dac_clk_o
   create_bd_pin -dir I -from 13 -to 0 dac_data1
   create_bd_pin -dir I -from 13 -to 0 dac_data2
@@ -277,6 +277,7 @@ proc create_hier_cell_DAC { parentCell nameHier } {
   create_bd_pin -dir O dac_rst_o
   create_bd_pin -dir O dac_sel_o
   create_bd_pin -dir O dac_wrt_o
+  create_bd_pin -dir I locked
 
   # Create instance: DAC_core, and set properties
   set block_name DAC_core
@@ -296,10 +297,11 @@ proc create_hier_cell_DAC { parentCell nameHier } {
   connect_bd_net -net DAC_core_dac_sel_o [get_bd_pins dac_sel_o] [get_bd_pins DAC_core/dac_sel_o]
   connect_bd_net -net DAC_core_dac_wrt_o [get_bd_pins dac_wrt_o] [get_bd_pins DAC_core/dac_wrt_o]
   connect_bd_net -net clk_1 [get_bd_pins clk] [get_bd_pins DAC_core/clk]
-  connect_bd_net -net clk_dac_1 [get_bd_pins clk_dac] [get_bd_pins DAC_core/clk_dac]
-  connect_bd_net -net clk_dac_m45_1 [get_bd_pins clk_dac_m45] [get_bd_pins DAC_core/clk_dac_m45]
+  connect_bd_net -net dac_clk_1 [get_bd_pins dac_clk] [get_bd_pins DAC_core/dac_clk]
+  connect_bd_net -net dac_clk_m30deg_1 [get_bd_pins dac_clk_m30deg] [get_bd_pins DAC_core/dac_clk_m30deg]
   connect_bd_net -net dac_data1_1 [get_bd_pins dac_data1] [get_bd_pins DAC_core/dac_data1]
   connect_bd_net -net dac_data2_1 [get_bd_pins dac_data2] [get_bd_pins DAC_core/dac_data2]
+  connect_bd_net -net locked_1 [get_bd_pins locked] [get_bd_pins DAC_core/locked]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -347,7 +349,8 @@ proc create_hier_cell_CLK { parentCell nameHier } {
   create_bd_pin -dir I -from 0 -to 0 -type clk adc_clk_p_i
   create_bd_pin -dir O -type clk clk_125
   create_bd_pin -dir O -type clk clk_250_m120deg
-  create_bd_pin -dir O -type clk clk_250_m165deg
+  create_bd_pin -dir O -type clk clk_250_m150deg
+  create_bd_pin -dir O locked
   create_bd_pin -dir I -type rst reset
 
   # Create instance: clk_wiz_ADC, and set properties
@@ -371,15 +374,15 @@ proc create_hier_cell_CLK { parentCell nameHier } {
    CONFIG.CLKOUT3_JITTER {112.962} \
    CONFIG.CLKOUT3_PHASE_ERROR {112.379} \
    CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {250} \
-   CONFIG.CLKOUT3_REQUESTED_PHASE {-165} \
+   CONFIG.CLKOUT3_REQUESTED_PHASE {-150} \
    CONFIG.CLKOUT3_USED {true} \
    CONFIG.CLKOUT4_DRIVES {BUFG} \
    CONFIG.CLKOUT5_DRIVES {BUFG} \
    CONFIG.CLKOUT6_DRIVES {BUFG} \
    CONFIG.CLKOUT7_DRIVES {BUFG} \
    CONFIG.CLK_OUT1_PORT {clk_125_0deg} \
-   CONFIG.CLK_OUT2_PORT {clk_250_0deg} \
-   CONFIG.CLK_OUT3_PORT {clk_250_m45deg} \
+   CONFIG.CLK_OUT2_PORT {clk_250_m120deg} \
+   CONFIG.CLK_OUT3_PORT {clk_250_m150deg} \
    CONFIG.FEEDBACK_SOURCE {FDBK_AUTO} \
    CONFIG.JITTER_SEL {No_Jitter} \
    CONFIG.MMCM_BANDWIDTH {OPTIMIZED} \
@@ -392,7 +395,7 @@ proc create_hier_cell_CLK { parentCell nameHier } {
    CONFIG.MMCM_CLKOUT1_DUTY_CYCLE {0.500} \
    CONFIG.MMCM_CLKOUT1_PHASE {-120.000} \
    CONFIG.MMCM_CLKOUT2_DIVIDE {3} \
-   CONFIG.MMCM_CLKOUT2_PHASE {-165.000} \
+   CONFIG.MMCM_CLKOUT2_PHASE {-150.000} \
    CONFIG.MMCM_COMPENSATION {ZHOLD} \
    CONFIG.MMCM_DIVCLK_DIVIDE {1} \
    CONFIG.NUM_OUT_CLKS {3} \
@@ -410,8 +413,9 @@ proc create_hier_cell_CLK { parentCell nameHier } {
   connect_bd_net -net adc_clk_n_i_1 [get_bd_pins adc_clk_n_i] [get_bd_pins clk_wiz_ADC/clk_in1_n]
   connect_bd_net -net adc_clk_p_i_1 [get_bd_pins adc_clk_p_i] [get_bd_pins clk_wiz_ADC/clk_in1_p]
   connect_bd_net -net clk_wiz_ADC_clk_125_0deg [get_bd_pins clk_125] [get_bd_pins clk_wiz_ADC/clk_125_0deg]
-  connect_bd_net -net clk_wiz_ADC_clk_250_0deg [get_bd_pins clk_250_m120deg] [get_bd_pins clk_wiz_ADC/clk_250_0deg]
-  connect_bd_net -net clk_wiz_ADC_clk_250_m45deg [get_bd_pins clk_250_m165deg] [get_bd_pins clk_wiz_ADC/clk_250_m45deg]
+  connect_bd_net -net clk_wiz_ADC_clk_250_m120deg [get_bd_pins clk_250_m120deg] [get_bd_pins clk_wiz_ADC/clk_250_m120deg]
+  connect_bd_net -net clk_wiz_ADC_clk_250_m150deg [get_bd_pins clk_250_m150deg] [get_bd_pins clk_wiz_ADC/clk_250_m150deg]
+  connect_bd_net -net clk_wiz_ADC_locked [get_bd_pins locked] [get_bd_pins clk_wiz_ADC/locked]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -557,8 +561,9 @@ proc create_root_design { parentCell } {
   # Create port connections
   connect_bd_net -net ADC_and_DAC_clk_clk_out1 [get_bd_pins CLK/clk_125] [get_bd_pins DAC/clk] [get_bd_pins DSP_core/clk] [get_bd_pins PS_ZYNQ/M01_ACLK] [get_bd_pins convertType_14_32_ADC1/clk] [get_bd_pins convertType_14_32_ADC2/clk] [get_bd_pins convertType_32_14_DAC1/clk] [get_bd_pins convertType_32_14_DAC2/clk] [get_bd_pins sync_digitalIn/clk]
   connect_bd_net -net ADC_clk_adc_cdcs_o [get_bd_ports adc_cdcs_o] [get_bd_pins CLK/adc_cdcs_o]
-  connect_bd_net -net CLK_clk_250_0deg [get_bd_pins CLK/clk_250_m120deg] [get_bd_pins DAC/clk_dac]
-  connect_bd_net -net CLK_clk_250_m45deg [get_bd_pins CLK/clk_250_m165deg] [get_bd_pins DAC/clk_dac_m45]
+  connect_bd_net -net CLK_clk_250_0deg [get_bd_pins CLK/clk_250_m120deg] [get_bd_pins DAC/dac_clk]
+  connect_bd_net -net CLK_clk_250_m150deg [get_bd_pins CLK/clk_250_m150deg] [get_bd_pins DAC/dac_clk_m30deg]
+  connect_bd_net -net CLK_locked [get_bd_pins CLK/locked] [get_bd_pins DAC/locked]
   connect_bd_net -net DAC_dac_clk_o [get_bd_ports dac_clk_o] [get_bd_pins DAC/dac_clk_o]
   connect_bd_net -net DAC_dac_data_o [get_bd_ports dac_data_o] [get_bd_pins DAC/dac_data_o]
   connect_bd_net -net DAC_dac_rst_o [get_bd_ports dac_rst_o] [get_bd_pins DAC/dac_rst_o]

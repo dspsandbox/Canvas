@@ -56,8 +56,9 @@ USE ieee.numeric_std.ALL;
 ENTITY design_1_DAC_core_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
-    clk_dac : IN STD_LOGIC;
-    clk_dac_m45 : IN STD_LOGIC;
+    dac_clk : IN STD_LOGIC;
+    dac_clk_m30deg : IN STD_LOGIC;
+    locked : IN STD_LOGIC;
     dac_data1 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
     dac_data2 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
     dac_dat_o : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
@@ -74,8 +75,9 @@ ARCHITECTURE design_1_DAC_core_0_0_arch OF design_1_DAC_core_0_0 IS
   COMPONENT DAC_core IS
     PORT (
       clk : IN STD_LOGIC;
-      clk_dac : IN STD_LOGIC;
-      clk_dac_m45 : IN STD_LOGIC;
+      dac_clk : IN STD_LOGIC;
+      dac_clk_m30deg : IN STD_LOGIC;
+      locked : IN STD_LOGIC;
       dac_data1 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
       dac_data2 : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
       dac_dat_o : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
@@ -95,14 +97,17 @@ ARCHITECTURE design_1_DAC_core_0_0_arch OF design_1_DAC_core_0_0 IS
   ATTRIBUTE IP_DEFINITION_SOURCE OF design_1_DAC_core_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 125000000, PHASE 0.0, CLK_DOMAIN design_1_clk_wiz_0_1_clk_125_0deg, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF dac_clk: SIGNAL IS "XIL_INTERFACENAME dac_clk, FREQ_HZ 250000000, PHASE -120.0, CLK_DOMAIN /CLK/clk_wiz_ADC_clk_out1, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF dac_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 dac_clk CLK";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 125000000, PHASE 0.0, CLK_DOMAIN /CLK/clk_wiz_ADC_clk_out1, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
 BEGIN
   U0 : DAC_core
     PORT MAP (
       clk => clk,
-      clk_dac => clk_dac,
-      clk_dac_m45 => clk_dac_m45,
+      dac_clk => dac_clk,
+      dac_clk_m30deg => dac_clk_m30deg,
+      locked => locked,
       dac_data1 => dac_data1,
       dac_data2 => dac_data2,
       dac_dat_o => dac_dat_o,

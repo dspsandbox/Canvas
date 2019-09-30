@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
---Date        : Fri Sep 27 17:18:57 2019
+--Date        : Mon Sep 30 11:48:03 2019
 --Host        : PC1091 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -18,7 +18,8 @@ entity CLK_imp_16U7QN1 is
     adc_clk_p_i : in STD_LOGIC_VECTOR ( 0 to 0 );
     clk_125 : out STD_LOGIC;
     clk_250_m120deg : out STD_LOGIC;
-    clk_250_m165deg : out STD_LOGIC;
+    clk_250_m150deg : out STD_LOGIC;
+    locked : out STD_LOGIC;
     reset : in STD_LOGIC
   );
 end CLK_imp_16U7QN1;
@@ -34,10 +35,10 @@ architecture STRUCTURE of CLK_imp_16U7QN1 is
     clk_in1_p : in STD_LOGIC;
     clk_in1_n : in STD_LOGIC;
     reset : in STD_LOGIC;
-    locked : out STD_LOGIC;
     clk_125_0deg : out STD_LOGIC;
-    clk_250_0deg : out STD_LOGIC;
-    clk_250_m45deg : out STD_LOGIC
+    clk_250_m120deg : out STD_LOGIC;
+    clk_250_m150deg : out STD_LOGIC;
+    locked : out STD_LOGIC
   );
   end component design_1_clk_wiz_0_1;
   signal ADC_clk_adc_cdcs_o : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -45,25 +46,26 @@ architecture STRUCTURE of CLK_imp_16U7QN1 is
   signal adc_clk_n_i_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal adc_clk_p_i_1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal clk_wiz_ADC_clk_125_0deg : STD_LOGIC;
-  signal clk_wiz_ADC_clk_250_0deg : STD_LOGIC;
-  signal clk_wiz_ADC_clk_250_m45deg : STD_LOGIC;
-  signal NLW_clk_wiz_ADC_locked_UNCONNECTED : STD_LOGIC;
+  signal clk_wiz_ADC_clk_250_m120deg : STD_LOGIC;
+  signal clk_wiz_ADC_clk_250_m150deg : STD_LOGIC;
+  signal clk_wiz_ADC_locked : STD_LOGIC;
 begin
   PS_ZYNQ_peripheral_reset <= reset;
   adc_cdcs_o(0) <= ADC_clk_adc_cdcs_o(0);
   adc_clk_n_i_1(0) <= adc_clk_n_i(0);
   adc_clk_p_i_1(0) <= adc_clk_p_i(0);
   clk_125 <= clk_wiz_ADC_clk_125_0deg;
-  clk_250_m120deg <= clk_wiz_ADC_clk_250_0deg;
-  clk_250_m165deg <= clk_wiz_ADC_clk_250_m45deg;
+  clk_250_m120deg <= clk_wiz_ADC_clk_250_m120deg;
+  clk_250_m150deg <= clk_wiz_ADC_clk_250_m150deg;
+  locked <= clk_wiz_ADC_locked;
 clk_wiz_ADC: component design_1_clk_wiz_0_1
      port map (
       clk_125_0deg => clk_wiz_ADC_clk_125_0deg,
-      clk_250_0deg => clk_wiz_ADC_clk_250_0deg,
-      clk_250_m45deg => clk_wiz_ADC_clk_250_m45deg,
+      clk_250_m120deg => clk_wiz_ADC_clk_250_m120deg,
+      clk_250_m150deg => clk_wiz_ADC_clk_250_m150deg,
       clk_in1_n => adc_clk_n_i_1(0),
       clk_in1_p => adc_clk_p_i_1(0),
-      locked => NLW_clk_wiz_ADC_locked_UNCONNECTED,
+      locked => clk_wiz_ADC_locked,
       reset => PS_ZYNQ_peripheral_reset
     );
 const_1: component design_1_xlconstant_0_1
@@ -78,15 +80,16 @@ use UNISIM.VCOMPONENTS.ALL;
 entity DAC_imp_1YBUH12 is
   port (
     clk : in STD_LOGIC;
-    clk_dac : in STD_LOGIC;
-    clk_dac_m45 : in STD_LOGIC;
+    dac_clk : in STD_LOGIC;
+    dac_clk_m30deg : in STD_LOGIC;
     dac_clk_o : out STD_LOGIC;
     dac_data1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dac_data2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dac_data_o : out STD_LOGIC_VECTOR ( 13 downto 0 );
     dac_rst_o : out STD_LOGIC;
     dac_sel_o : out STD_LOGIC;
-    dac_wrt_o : out STD_LOGIC
+    dac_wrt_o : out STD_LOGIC;
+    locked : in STD_LOGIC
   );
 end DAC_imp_1YBUH12;
 
@@ -94,8 +97,9 @@ architecture STRUCTURE of DAC_imp_1YBUH12 is
   component design_1_DAC_core_0_0 is
   port (
     clk : in STD_LOGIC;
-    clk_dac : in STD_LOGIC;
-    clk_dac_m45 : in STD_LOGIC;
+    dac_clk : in STD_LOGIC;
+    dac_clk_m30deg : in STD_LOGIC;
+    locked : in STD_LOGIC;
     dac_data1 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dac_data2 : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dac_dat_o : out STD_LOGIC_VECTOR ( 13 downto 0 );
@@ -111,14 +115,15 @@ architecture STRUCTURE of DAC_imp_1YBUH12 is
   signal DAC_core_dac_sel_o : STD_LOGIC;
   signal DAC_core_dac_wrt_o : STD_LOGIC;
   signal clk_1 : STD_LOGIC;
-  signal clk_dac_1 : STD_LOGIC;
-  signal clk_dac_m45_1 : STD_LOGIC;
+  signal dac_clk_1 : STD_LOGIC;
+  signal dac_clk_m30deg_1 : STD_LOGIC;
   signal dac_data1_1 : STD_LOGIC_VECTOR ( 13 downto 0 );
   signal dac_data2_1 : STD_LOGIC_VECTOR ( 13 downto 0 );
+  signal locked_1 : STD_LOGIC;
 begin
   clk_1 <= clk;
-  clk_dac_1 <= clk_dac;
-  clk_dac_m45_1 <= clk_dac_m45;
+  dac_clk_1 <= dac_clk;
+  dac_clk_m30deg_1 <= dac_clk_m30deg;
   dac_clk_o <= DAC_core_dac_clk_o;
   dac_data1_1(13 downto 0) <= dac_data1(13 downto 0);
   dac_data2_1(13 downto 0) <= dac_data2(13 downto 0);
@@ -126,18 +131,20 @@ begin
   dac_rst_o <= DAC_core_dac_rst_o;
   dac_sel_o <= DAC_core_dac_sel_o;
   dac_wrt_o <= DAC_core_dac_wrt_o;
+  locked_1 <= locked;
 DAC_core: component design_1_DAC_core_0_0
      port map (
       clk => clk_1,
-      clk_dac => clk_dac_1,
-      clk_dac_m45 => clk_dac_m45_1,
+      dac_clk => dac_clk_1,
+      dac_clk_m30deg => dac_clk_m30deg_1,
       dac_clk_o => DAC_core_dac_clk_o,
       dac_dat_o(13 downto 0) => DAC_core_dac_dat_o(13 downto 0),
       dac_data1(13 downto 0) => dac_data1_1(13 downto 0),
       dac_data2(13 downto 0) => dac_data2_1(13 downto 0),
       dac_rst_o => DAC_core_dac_rst_o,
       dac_sel_o => DAC_core_dac_sel_o,
-      dac_wrt_o => DAC_core_dac_wrt_o
+      dac_wrt_o => DAC_core_dac_wrt_o,
+      locked => locked_1
     );
 end STRUCTURE;
 library IEEE;
@@ -2559,7 +2566,8 @@ architecture STRUCTURE of design_1 is
   signal ADC_and_DAC_clk_clk_out1 : STD_LOGIC;
   signal ADC_clk_adc_cdcs_o : STD_LOGIC_VECTOR ( 0 to 0 );
   signal CLK_clk_250_0deg : STD_LOGIC;
-  signal CLK_clk_250_m45deg : STD_LOGIC;
+  signal CLK_clk_250_m150deg : STD_LOGIC;
+  signal CLK_locked : STD_LOGIC;
   signal DAC_dac_clk_o : STD_LOGIC;
   signal DAC_dac_data_o : STD_LOGIC_VECTOR ( 13 downto 0 );
   signal DAC_dac_rst_o : STD_LOGIC;
@@ -2654,21 +2662,23 @@ CLK: entity work.CLK_imp_16U7QN1
       adc_clk_p_i(0) => adc_clk_p_i_1,
       clk_125 => ADC_and_DAC_clk_clk_out1,
       clk_250_m120deg => CLK_clk_250_0deg,
-      clk_250_m165deg => CLK_clk_250_m45deg,
+      clk_250_m150deg => CLK_clk_250_m150deg,
+      locked => CLK_locked,
       reset => PS_ZYNQ_peripheral_reset(0)
     );
 DAC: entity work.DAC_imp_1YBUH12
      port map (
       clk => ADC_and_DAC_clk_clk_out1,
-      clk_dac => CLK_clk_250_0deg,
-      clk_dac_m45 => CLK_clk_250_m45deg,
+      dac_clk => CLK_clk_250_0deg,
+      dac_clk_m30deg => CLK_clk_250_m150deg,
       dac_clk_o => DAC_dac_clk_o,
       dac_data1(13 downto 0) => convertType_32_14_DAC1_dataOut(13 downto 0),
       dac_data2(13 downto 0) => convertType_32_14_DAC2_dataOut(13 downto 0),
       dac_data_o(13 downto 0) => DAC_dac_data_o(13 downto 0),
       dac_rst_o => DAC_dac_rst_o,
       dac_sel_o => DAC_dac_sel_o,
-      dac_wrt_o => DAC_dac_wrt_o
+      dac_wrt_o => DAC_dac_wrt_o,
+      locked => CLK_locked
     );
 DSP_core: component design_1_DSP_core_0_0
      port map (
