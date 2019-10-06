@@ -819,7 +819,7 @@
                  <item>
                   <widget class="QLabel" name="label_9">
                    <property name="text">
-                    <string>Auto load bitstream/constants after boot</string>
+                    <string>Auto load after PS boot</string>
                    </property>
                   </widget>
                  </item>
