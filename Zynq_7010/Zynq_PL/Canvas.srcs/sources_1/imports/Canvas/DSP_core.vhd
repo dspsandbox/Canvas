@@ -77,23 +77,23 @@ begin
 					x32ConstReg(regAddr_var)<=x32RegVal_var;
 				else
 					x1ConstReg(regAddr_var)<=x1RegVal_var;
-				end if;	
+				end if;
 			end if;
-		end if;	
+		end if;
 	end process;
 
-	-- in/out port <-> signal assignements	
+	-- in/out port <-> signal assignements
     adc1_signal<=adc1;
     adc2_signal<=adc2;
     dac1<=dac1_signal;
     dac2<=dac2_signal;
     digitalIn_signal<=digitalIn;
     digitalOut<=digitalOut_signal;
-    led<=led_signal;	
-    
+    led<=led_signal;
+
 ---------------------------------------------------------------------------------------------------
---AUTO GENERATED INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS START
---AUTO GENERATED INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS END
+--AUTO GENERATED INSTANTIATIONS AND ASSIGNEMENTS START
+--AUTO GENERATED INSTANTIATIONS AND ASSIGNEMENTS END
 ---------------------------------------------------------------------------------------------------
 
 end Behavioral;
