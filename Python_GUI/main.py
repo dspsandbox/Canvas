@@ -51,7 +51,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         self.projectName=""
         self.projectDirPath=""
         self.projectFilePath=""
-        self.setWindowIcon(QtGui.QIcon(os.path.join(pathResoures,"GUI","icon.png")))
+        self.setWindowIcon(QtGui.QIcon(os.path.join(pathResoures,"GUI","iconWhiteBackground.png")))
         #Timer
         self.timerSynthImpl = QtCore.QTimer()
         #SSH objects
