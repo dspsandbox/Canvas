@@ -13,15 +13,15 @@ INFO: [IP_Flow 19-234] Refreshing IP repositories
 WARNING: [IP_Flow 19-2248] Failed to load user IP repository '/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.runs/synth_1/e:/Redpitaya/ip_repo/configIP_1.0'; Can't find the specified path.
 If this directory should no longer be in your list of user repositories, go to the IP Settings dialog and remove it.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2018.3/data/ip'.
-add_files: Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1392.527 ; gain = 8.020 ; free physical = 419 ; free virtual = 3118
+add_files: Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 1393.527 ; gain = 8.020 ; free physical = 164 ; free virtual = 3131
 Command: synth_design -top design_1_wrapper -part xc7z010clg400-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 9589 
+INFO: Helper process launched with PID 1584 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 1418.512 ; gain = 25.945 ; free physical = 291 ; free virtual = 2995
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:15 . Memory (MB): peak = 1418.512 ; gain = 24.945 ; free physical = 85 ; free virtual = 3005
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'design_1_wrapper' [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:53]
 INFO: [Synth 8-3491] module 'design_1' declared at '/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/bd/design_1/synth/design_1.vhd:2472' bound to instance 'design_1_i' of component 'design_1' [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:93]
@@ -243,10 +243,10 @@ INFO: [Synth 8-3491] module 'DSP_core' declared at '/home/CanvasServer/Implement
 INFO: [Synth 8-638] synthesizing module 'DSP_core' [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/imports/Canvas/DSP_core.vhd:40]
 	Parameter PORT_WIDTH bound to: 32 - type: integer 
 	Parameter CONSTANT_REGISTER_DEPTH bound to: 8 - type: integer 
-WARNING: [Synth 8-6014] Unused sequential element regType_reg was removed.  [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/imports/Canvas/DSP_core.vhd:76]
-WARNING: [Synth 8-6014] Unused sequential element regAddr_var_reg was removed.  [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/imports/Canvas/DSP_core.vhd:77]
-WARNING: [Synth 8-6014] Unused sequential element x32RegVal_var_reg was removed.  [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/imports/Canvas/DSP_core.vhd:78]
-WARNING: [Synth 8-6014] Unused sequential element x1RegVal_var_reg was removed.  [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/imports/Canvas/DSP_core.vhd:79]
+WARNING: [Synth 8-6014] Unused sequential element regType_reg was removed.  [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/imports/Canvas/DSP_core.vhd:72]
+WARNING: [Synth 8-6014] Unused sequential element regAddr_var_reg was removed.  [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/imports/Canvas/DSP_core.vhd:73]
+WARNING: [Synth 8-6014] Unused sequential element x32RegVal_var_reg was removed.  [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/imports/Canvas/DSP_core.vhd:74]
+WARNING: [Synth 8-6014] Unused sequential element x1RegVal_var_reg was removed.  [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/imports/Canvas/DSP_core.vhd:75]
 WARNING: [Synth 8-6014] Unused sequential element x32ConstReg_reg was removed. 
 INFO: [Synth 8-256] done synthesizing module 'DSP_core' (12#1) [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/imports/Canvas/DSP_core.vhd:40]
 INFO: [Synth 8-256] done synthesizing module 'design_1_DSP_core_0_0' (13#1) [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/bd/design_1/ip/design_1_DSP_core_0_0/synth/design_1_DSP_core_0_0.vhd:72]
@@ -2414,7 +2414,7 @@ WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has un
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port FTMD_TRACEIN_DATA[23]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:36 ; elapsed = 00:00:54 . Memory (MB): peak = 1578.262 ; gain = 185.695 ; free physical = 277 ; free virtual = 2984
+Finished RTL Elaboration : Time (s): cpu = 00:00:35 ; elapsed = 00:00:54 . Memory (MB): peak = 1578.262 ; gain = 184.695 ; free physical = 219 ; free virtual = 2998
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -2427,10 +2427,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:37 ; elapsed = 00:00:55 . Memory (MB): peak = 1578.262 ; gain = 185.695 ; free physical = 285 ; free virtual = 2993
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:54 . Memory (MB): peak = 1578.262 ; gain = 184.695 ; free physical = 227 ; free virtual = 3006
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:37 ; elapsed = 00:00:55 . Memory (MB): peak = 1578.262 ; gain = 185.695 ; free physical = 285 ; free virtual = 2993
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:36 ; elapsed = 00:00:54 . Memory (MB): peak = 1578.262 ; gain = 184.695 ; free physical = 227 ; free virtual = 3006
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 622 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -2470,7 +2470,7 @@ Finished Parsing XDC File [/home/CanvasServer/Implementation/_local/Zynq_7010/Zy
 Parsing XDC File [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_1_0/design_1_proc_sys_reset_1_0.xdc] for cell 'design_1_i/PS_ZYNQ/proc_sys_reset_125/U0'
 Finished Parsing XDC File [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/sources_1/bd/design_1/ip/design_1_proc_sys_reset_1_0/design_1_proc_sys_reset_1_0.xdc] for cell 'design_1_i/PS_ZYNQ/proc_sys_reset_125/U0'
 INFO: [Timing 38-2] Deriving generated clocks
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1801.305 ; gain = 0.000 ; free physical = 83 ; free virtual = 2719
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1800.305 ; gain = 0.000 ; free physical = 71 ; free virtual = 2727
 Parsing XDC File [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/constrs_1/imports/sdc/CanvasRedpitaya.xdc]
 Finished Parsing XDC File [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/constrs_1/imports/sdc/CanvasRedpitaya.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.srcs/constrs_1/imports/sdc/CanvasRedpitaya.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
@@ -2479,7 +2479,7 @@ Parsing XDC File [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Can
 Finished Parsing XDC File [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.runs/synth_1/dont_touch.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.runs/synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1801.305 ; gain = 0.000 ; free physical = 83 ; free virtual = 2719
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1800.305 ; gain = 0.000 ; free physical = 70 ; free virtual = 2727
 Sourcing Tcl File [/tools/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'design_1_i/PS_ZYNQ/axi_interconnect/m00_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/handshake'
 Finished Sourcing Tcl File [/tools/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'design_1_i/PS_ZYNQ/axi_interconnect/m00_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/handshake'
 Sourcing Tcl File [/tools/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_handshake.tcl] for cell 'design_1_i/PS_ZYNQ/axi_interconnect/m00_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_aw/handshake'
@@ -2574,26 +2574,26 @@ Sourcing Tcl File [/tools/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_s
 Finished Sourcing Tcl File [/tools/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl] for cell 'design_1_i/PS_ZYNQ/axi_interconnect/m02_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_r/handshake/xpm_cdc_single_src2dest_inst'
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/tools/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1801.305 ; gain = 0.000 ; free physical = 82 ; free virtual = 2718
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1800.305 ; gain = 0.000 ; free physical = 69 ; free virtual = 2726
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1801.305 ; gain = 0.000 ; free physical = 82 ; free virtual = 2718
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1800.305 ; gain = 0.000 ; free physical = 69 ; free virtual = 2726
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 602 instances were transformed.
   FDR => FDRE: 600 instances
   SRL16 => SRL16E: 2 instances
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1801.305 ; gain = 0.000 ; free physical = 82 ; free virtual = 2718
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 1801.305 ; gain = 0.000 ; free physical = 81 ; free virtual = 2718
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1800.305 ; gain = 0.000 ; free physical = 69 ; free virtual = 2726
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 1800.305 ; gain = 0.000 ; free physical = 69 ; free virtual = 2726
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:46 ; elapsed = 00:01:05 . Memory (MB): peak = 1801.305 ; gain = 408.738 ; free physical = 182 ; free virtual = 2819
+Finished Constraint Validation : Time (s): cpu = 00:00:45 ; elapsed = 00:01:05 . Memory (MB): peak = 1800.305 ; gain = 406.738 ; free physical = 168 ; free virtual = 2827
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:46 ; elapsed = 00:01:05 . Memory (MB): peak = 1801.305 ; gain = 408.738 ; free physical = 182 ; free virtual = 2819
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:45 ; elapsed = 00:01:05 . Memory (MB): peak = 1800.305 ; gain = 406.738 ; free physical = 168 ; free virtual = 2827
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -2677,7 +2677,7 @@ Applied set_property DONT_TOUCH = true for design_1_i/PS_ZYNQ/axi_interconnect/m
 Applied set_property DONT_TOUCH = true for design_1_i/PS_ZYNQ/axi_interconnect/m02_couplers/auto_cc/inst/\gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_b /handshake/xpm_cdc_single_src2dest_inst. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for design_1_i/PS_ZYNQ/axi_interconnect/m02_couplers/auto_cc/inst/\gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_r /handshake/xpm_cdc_single_src2dest_inst. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:46 ; elapsed = 00:01:06 . Memory (MB): peak = 1801.305 ; gain = 408.738 ; free physical = 181 ; free virtual = 2818
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:46 ; elapsed = 00:01:06 . Memory (MB): peak = 1800.305 ; gain = 406.738 ; free physical = 166 ; free virtual = 2826
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'slave_attachment'
 INFO: [Synth 8-5544] ROM "s_axi_rresp_i" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
@@ -3056,7 +3056,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'dest_state_reg' using enco
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'axi_protocol_converter_v2_1_18_b2s_rd_cmd_fsm'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:50 ; elapsed = 00:01:10 . Memory (MB): peak = 1801.305 ; gain = 408.738 ; free physical = 167 ; free virtual = 2806
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:49 ; elapsed = 00:01:10 . Memory (MB): peak = 1800.305 ; gain = 406.738 ; free physical = 153 ; free virtual = 2814
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3833,7 +3833,7 @@ INFO: [Synth 8-3886] merging instance 'design_1_i/PS_ZYNQ/axi_interconnect/m01_c
 INFO: [Synth 8-3886] merging instance 'design_1_i/PS_ZYNQ/axi_interconnect/m01_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_fwd_ar/m_areset_dly_reg[2]' (FD) to 'design_1_i/PS_ZYNQ/axi_interconnect/m01_couplers/auto_cc/inst/gen_clock_conv.gen_async_lite_conv.clock_conv_lite_resp_b/s_areset_dly_reg[2]'
 INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:55 ; elapsed = 00:01:16 . Memory (MB): peak = 1801.305 ; gain = 408.738 ; free physical = 138 ; free virtual = 2786
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:55 ; elapsed = 00:01:17 . Memory (MB): peak = 1800.305 ; gain = 406.738 ; free physical = 120 ; free virtual = 2791
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3845,13 +3845,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:02 ; elapsed = 00:01:24 . Memory (MB): peak = 1922.305 ; gain = 529.738 ; free physical = 73 ; free virtual = 2514
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:02 ; elapsed = 00:01:24 . Memory (MB): peak = 1922.305 ; gain = 528.738 ; free physical = 86 ; free virtual = 2529
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:03 ; elapsed = 00:01:25 . Memory (MB): peak = 1941.312 ; gain = 548.746 ; free physical = 94 ; free virtual = 2500
+Finished Timing Optimization : Time (s): cpu = 00:01:03 ; elapsed = 00:01:25 . Memory (MB): peak = 1941.312 ; gain = 547.746 ; free physical = 72 ; free virtual = 2515
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3863,7 +3863,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:07 ; elapsed = 00:01:29 . Memory (MB): peak = 1958.336 ; gain = 565.770 ; free physical = 93 ; free virtual = 2500
+Finished Technology Mapping : Time (s): cpu = 00:01:07 ; elapsed = 00:01:29 . Memory (MB): peak = 1958.336 ; gain = 564.770 ; free physical = 81 ; free virtual = 2512
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -3989,7 +3989,7 @@ WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/
 WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [/tools/Xilinx/Vivado/2018.3/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:588]
 INFO: [Common 17-14] Message 'Synth 8-5396' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:09 ; elapsed = 00:01:31 . Memory (MB): peak = 1958.336 ; gain = 565.770 ; free physical = 92 ; free virtual = 2499
+Finished IO Insertion : Time (s): cpu = 00:01:08 ; elapsed = 00:01:31 . Memory (MB): peak = 1958.336 ; gain = 564.770 ; free physical = 82 ; free virtual = 2515
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -4002,7 +4002,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:09 ; elapsed = 00:01:31 . Memory (MB): peak = 1958.336 ; gain = 565.770 ; free physical = 92 ; free virtual = 2499
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:09 ; elapsed = 00:01:31 . Memory (MB): peak = 1958.336 ; gain = 564.770 ; free physical = 82 ; free virtual = 2515
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -4014,25 +4014,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:09 ; elapsed = 00:01:31 . Memory (MB): peak = 1958.336 ; gain = 565.770 ; free physical = 92 ; free virtual = 2499
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:09 ; elapsed = 00:01:32 . Memory (MB): peak = 1958.336 ; gain = 564.770 ; free physical = 82 ; free virtual = 2515
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:09 ; elapsed = 00:01:31 . Memory (MB): peak = 1958.336 ; gain = 565.770 ; free physical = 92 ; free virtual = 2499
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:09 ; elapsed = 00:01:32 . Memory (MB): peak = 1958.336 ; gain = 564.770 ; free physical = 82 ; free virtual = 2515
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:09 ; elapsed = 00:01:31 . Memory (MB): peak = 1958.336 ; gain = 565.770 ; free physical = 91 ; free virtual = 2499
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:09 ; elapsed = 00:01:32 . Memory (MB): peak = 1958.336 ; gain = 564.770 ; free physical = 81 ; free virtual = 2514
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:09 ; elapsed = 00:01:31 . Memory (MB): peak = 1958.336 ; gain = 565.770 ; free physical = 91 ; free virtual = 2499
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:09 ; elapsed = 00:01:32 . Memory (MB): peak = 1958.336 ; gain = 564.770 ; free physical = 81 ; free virtual = 2514
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -4073,7 +4073,7 @@ Report Cell Usage:
 |6     |LUT3       |   318|
 |7     |LUT4       |   157|
 |8     |LUT5       |   478|
-|9     |LUT6       |   201|
+|9     |LUT6       |   197|
 |10    |MMCME2_ADV |     1|
 |11    |ODDR       |    18|
 |12    |PS7        |     1|
@@ -4081,7 +4081,7 @@ Report Cell Usage:
 |14    |SRL16E     |    18|
 |15    |SRLC32E    |    47|
 |16    |FDR        |   400|
-|17    |FDRE       |  2345|
+|17    |FDRE       |  2341|
 |18    |FDSE       |   122|
 |19    |IBUF       |    36|
 |20    |IBUFDS     |     1|
@@ -4092,10 +4092,10 @@ Report Instance Areas:
 +------+--------------------------------------------------------------------------+------------------------------------------------------------------+------+
 |      |Instance                                                                  |Module                                                            |Cells |
 +------+--------------------------------------------------------------------------+------------------------------------------------------------------+------+
-|1     |top                                                                       |                                                                  |  4672|
-|2     |  design_1_i                                                              |design_1                                                          |  4601|
-|3     |    DSP_core                                                              |design_1_DSP_core_0_0                                             |    11|
-|4     |      U0                                                                  |DSP_core                                                          |    11|
+|1     |top                                                                       |                                                                  |  4664|
+|2     |  design_1_i                                                              |design_1                                                          |  4593|
+|3     |    DSP_core                                                              |design_1_DSP_core_0_0                                             |     3|
+|4     |      U0                                                                  |DSP_core                                                          |     3|
 |5     |    convertType_14_32_ADC1                                                |design_1_convertType_14_32_0_0                                    |    27|
 |6     |      U0                                                                  |convertType_14_32_21                                              |    27|
 |7     |    convertType_14_32_ADC2                                                |design_1_convertType_14_32_0_1                                    |    27|
@@ -4257,17 +4257,17 @@ Report Instance Areas:
 |163   |      xlslice                                                             |design_1_xlslice_0_0                                              |     0|
 +------+--------------------------------------------------------------------------+------------------------------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:09 ; elapsed = 00:01:31 . Memory (MB): peak = 1958.336 ; gain = 565.770 ; free physical = 91 ; free virtual = 2499
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:09 ; elapsed = 00:01:32 . Memory (MB): peak = 1958.336 ; gain = 564.770 ; free physical = 81 ; free virtual = 2514
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1342 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:03 ; elapsed = 00:01:24 . Memory (MB): peak = 1958.336 ; gain = 342.727 ; free physical = 148 ; free virtual = 2556
-Synthesis Optimization Complete : Time (s): cpu = 00:01:09 ; elapsed = 00:01:32 . Memory (MB): peak = 1958.344 ; gain = 565.770 ; free physical = 148 ; free virtual = 2556
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:02 ; elapsed = 00:01:24 . Memory (MB): peak = 1958.336 ; gain = 342.727 ; free physical = 137 ; free virtual = 2571
+Synthesis Optimization Complete : Time (s): cpu = 00:01:09 ; elapsed = 00:01:32 . Memory (MB): peak = 1958.344 ; gain = 564.770 ; free physical = 137 ; free virtual = 2571
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 440 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1958.344 ; gain = 0.000 ; free physical = 84 ; free virtual = 2495
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1958.344 ; gain = 0.000 ; free physical = 74 ; free virtual = 2510
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 402 instances were transformed.
   FDR => FDRE: 400 instances
@@ -4276,10 +4276,10 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 678 Infos, 255 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:12 ; elapsed = 00:01:34 . Memory (MB): peak = 1958.344 ; gain = 565.816 ; free physical = 290 ; free virtual = 2701
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1958.344 ; gain = 0.000 ; free physical = 290 ; free virtual = 2701
+synth_design: Time (s): cpu = 00:01:12 ; elapsed = 00:01:34 . Memory (MB): peak = 1958.344 ; gain = 564.816 ; free physical = 281 ; free virtual = 2716
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1958.344 ; gain = 0.000 ; free physical = 281 ; free virtual = 2717
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint '/home/CanvasServer/Implementation/_local/Zynq_7010/Zynq_PL/Canvas.runs/synth_1/design_1_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Sep 30 16:34:04 2019...
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 19 02:10:49 2019...

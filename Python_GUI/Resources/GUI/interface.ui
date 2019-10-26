@@ -1541,7 +1541,6 @@ p, li { white-space: pre-wrap; }
      <string>Settings</string>
     </property>
     <addaction name="actionLoadDefaultSettings"/>
-    <addaction name="actionInspectSettingsDirectory"/>
    </widget>
    <addaction name="menuProject"/>
    <addaction name="menuSettings"/>

@@ -1,14 +1,14 @@
 <Canvas>
     <SERVER>
-        <IP>82.223.15.170</IP>
-        <Port>5000</Port>
-        <Id>0</Id>
-        <Key>0</Key>
+        <IP></IP>
+        <Port></Port>
+        <Id></Id>
+        <Key></Key>
     </SERVER>
     <FPGA>
-        <IP>10.9.1.150</IP>
-        <Port>22</Port>
-        <User>root</User>
-        <Pwd>root</Pwd>
+        <IP></IP>
+        <Port></Port>
+        <User></User>
+        <Pwd></Pwd>
         </FPGA>
 </Canvas>

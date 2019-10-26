@@ -101,7 +101,6 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         self.actionQuit.triggered.connect(self.close)
         self.actionInspectProjectDirectory.triggered.connect(self.inspectProjectDirectoryCallback)
         self.actionLoadDefaultSettings.triggered.connect(self.loadDefaultSettingsCallback)
-        self.actionInspectSettingsDirectory.triggered.connect(self.inspectSettingsDirectoryCallback)
         #SERVER
         self.pushButton_serverVerify.clicked.connect(self.verifyServerCallback)
         self.pushButton_requestNetVhdl.clicked.connect(self.requestNetVhdlCallback)
@@ -168,19 +167,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             self.forceClose=True
             self.close()
         return
-###############################################################################
-    def inspectSettingsDirectoryCallback(self):
-        try:
-            if sys.platform.startswith('win'):
-                os.startfile(os.path.join(pathResoures,"Settings"))
-            else:
-                opener ="open" if sys.platform == "darwin" else "xdg-open"
-                subprocess.call([opener, os.path.join(pathResoures,"Settings")])
-            self.appendLogMessage("Inspect settings directory",messageType="OK")
-        except Exception:
-            errorMessage=str(traceback.format_exc())
-            self.appendLogMessage("Inspect settings directory",messageType="ERROR", message=errorMessage)
-        return
+
 ###############################################################################
     def inspectProjectDirectoryCallback(self):
         try:
@@ -486,11 +473,11 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         return
 ###############################################################################
     def appendLogMessage(self,process,messageType="",message= ""):
-        if ("|___" not in process):
-            if len(self.logList)>0:
+        if messageType=="" and message=="":
+            process+=datetime.now().strftime(" (%d-%b-%Y %H:%M:%S)")
+        if ("|___" not in process) and len(self.logList)>0:
                 self.logList=self.logList+[["","",""]]
-                if messageType=="" and message=="":
-                    process+=datetime.now().strftime(" (%d-%b-%Y %H:%M:%S)")
+                
 
         self.logList=self.logList+[[process,messageType,message]]
         logText='<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><style type="text/css">p, li { white-space: pre-wrap; }</style></head>'
@@ -502,7 +489,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             if messageType == "OK" :
                 aux+='<span style="color:green;">'+messageType+' '+message +"</span>"
             elif  messageType == "INFO":
-                aux+='<span style="color:green;">'+messageType+' '+message +"</span>"
+                aux+='<span style="color:blue;">'+messageType+' '+message +"</span>"
             elif messageType == "WARNING":
                 aux+='<span style="color:orange;">'+messageType+' '+message +"</span>"
             elif messageType == "ERROR":

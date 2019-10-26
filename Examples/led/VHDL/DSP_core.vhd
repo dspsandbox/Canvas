@@ -55,10 +55,6 @@ signal led_signal : STD_LOGIC_VECTOR (7 downto 0):= (others=>'0');
 ---------------------------------------------------------------------------------------------------
 --AUTO GENERATED SIGNALS START
 signal N000 : STD_LOGIC := '0';
-signal N001 : STD_LOGIC := '0';
-signal N002 : STD_LOGIC := '0';
-signal N003 : STD_LOGIC := '0';
-signal N004 : STD_LOGIC := '0';
 --AUTO GENERATED SIGNALS END
 ---------------------------------------------------------------------------------------------------
 
@@ -82,62 +78,38 @@ begin
 					x32ConstReg(regAddr_var)<=x32RegVal_var;
 				else
 					x1ConstReg(regAddr_var)<=x1RegVal_var;
-				end if;	
+				end if;
 			end if;
-		end if;	
+		end if;
 	end process;
 
-	-- in/out port <-> signal assignements	
+	-- in/out port <-> signal assignements
     adc1_signal<=adc1;
     adc2_signal<=adc2;
     dac1<=dac1_signal;
     dac2<=dac2_signal;
     digitalIn_signal<=digitalIn;
     digitalOut<=digitalOut_signal;
-    led<=led_signal;	
-    
+    led<=led_signal;
+
 ---------------------------------------------------------------------------------------------------
---AUTO GENERATED INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS START
---x1_led0_0:
-led_signal(0)<=N000;
+--AUTO GENERATED INSTANTIATIONS AND ASSIGNEMENTS START
+--x1_led4_0:
+led_signal(4)<=N000;
 
 --x1_const_0:
 N000<=x1ConstReg(0);
 
---x1_led1_0:
-led_signal(1)<=N001;
-
---x1_const_1:
-N001<=x1ConstReg(1);
-
---x1_led2_0:
-led_signal(2)<=N002;
-
---x1_const_2:
-N002<=x1ConstReg(2);
-
---x1_led3_0:
-led_signal(3)<=N003;
-
---x1_const_3:
-N003<=x1ConstReg(3);
-
---x1_led4_0:
-led_signal(4)<=N004;
-
---x1_const_4:
-N004<=x1ConstReg(4);
-
 --x1_led5_0:
-led_signal(5)<=N004;
+led_signal(5)<=N000;
 
 --x1_led6_0:
-led_signal(6)<=N004;
+led_signal(6)<=N000;
 
 --x1_led7_0:
-led_signal(7)<=N004;
+led_signal(7)<=N000;
 
---AUTO GENERATED INSTANTIATIONS AND BEHAVIORAL ASSIGNEMENTS END
+--AUTO GENERATED INSTANTIATIONS AND ASSIGNEMENTS END
 ---------------------------------------------------------------------------------------------------
 
 end Behavioral;
