@@ -850,7 +850,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         return
 ##############################################################################
     def sshLoadConstantsCallback(self):
-        self.appendLogMessage("Load contants")
+        self.appendLogMessage("Load constants")
 ########Connect
         self.sshConnect()
 ########Parse constants
