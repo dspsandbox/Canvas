@@ -473,9 +473,11 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         return
 ###############################################################################
     def appendLogMessage(self,process,messageType="",message= ""):
-        if messageType=="" and message=="":
-            process+=datetime.now().strftime(" (%d-%b-%Y %H:%M:%S)")
-        if ("|___" not in process) and len(self.logList)>0:
+        if ("|___" not in process):
+            if messageType=="" and message=="":
+                    process+=datetime.now().strftime(" (%d-%b-%Y %H:%M:%S)")
+
+            if len(self.logList)>0:
                 self.logList=self.logList+[["","",""]]
                 
 

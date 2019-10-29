@@ -1,8 +1,0 @@
-* Z:\home\CanvasServer\LTspiceTmp\mainCircuit.asc
-XU5 N001 x1_led4
-XU6 N001 x1_led5
-XU7 N001 x1_led6
-XU8 N001 x1_led7
-Xled4567 N001 x1_const
-.backanno
-.end
