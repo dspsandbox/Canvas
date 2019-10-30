@@ -32,36 +32,34 @@ entity x32_sub_noOverflow is
 end x32_sub_noOverflow;
 
 architecture Behavioral of x32_sub_noOverflow is
-
-signal sign0_reg : STD_LOGIC :='0';
-signal sign1_reg : STD_LOGIC :='0';
-signal sub_reg : STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0) := (others=>'0');
-
 begin
 	process(clk)
+		variable sign0 : STD_LOGIC :='0';
+		variable sign1 : STD_LOGIC :='0';
+		variable sub : STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0) := (others=>'0');
 	begin
 		if rising_edge(clk) then
             if reset='1' then
                 dataOut<=(others=>'0');
             else
-            	sign0_reg<=dataIn0(PORT_WIDTH-1);
-            	sign1_reg<=dataIn1(PORT_WIDTH-1);
-                sub_reg<=STD_LOGIC_VECTOR(signed(dataIn0)-signed(dataIn1));
+            	sign0:=dataIn0(PORT_WIDTH-1);
+            	sign1:=dataIn1(PORT_WIDTH-1);
+                sub:=STD_LOGIC_VECTOR(signed(dataIn0)-signed(dataIn1));
                 
-                if sign0_reg='0' and sign1_reg='1' then      --First input positive, second negative
-                	if sub_reg(PORT_WIDTH-1)='0' then        --Output positive
-                		dataOut<=sub_reg;
-                	else                                     --Output negative
+                if sign0='0' and sign1='1' then      --First input positive, second negative
+                	if sub(PORT_WIDTH-1)='0' then    --Output positive
+                		dataOut<=sub;
+                	else                             --Output negative
                 		dataOut<=MAX_VAL;
                 	end if;
-                elsif sign0_reg='1' and sign1_reg='0' then   --First input negative, second positive
-                	if sub_reg(PORT_WIDTH-1)='1' then        --Output negative
-                		dataOut<=sub_reg;
-                	else                                     --Output positive
+                elsif sign0='1' and sign1='0' then   --First input negative, second positive
+                	if sub(PORT_WIDTH-1)='1' then    --Output negative
+                		dataOut<=sub;
+                	else                             --Output positive
                 		dataOut<=MIN_VAL;
                 	end if;
-                else										 --Inputs have equal signs
-                	dataOut<=sub_reg;	
+                else							     --Inputs have equal signs
+                	dataOut<=sub;	
                 end if;
             end if;
         end if;

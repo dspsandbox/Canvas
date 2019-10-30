@@ -32,36 +32,34 @@ entity x32_add_noOverflow is
 end x32_add_noOverflow;
 
 architecture Behavioral of x32_add_noOverflow is
-
-signal sign0_reg : STD_LOGIC :='0';
-signal sign1_reg : STD_LOGIC :='0';
-signal sum_reg : STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0) := (others=>'0');
-
 begin
 	process(clk)
+		variable sign0 : STD_LOGIC :='0';
+		variable sign1 : STD_LOGIC :='0';
+		variable sum : STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0) := (others=>'0');
 	begin
 		if rising_edge(clk) then
             if reset='1' then
                 dataOut<=(others=>'0');
             else
-            	sign0_reg<=dataIn0(PORT_WIDTH-1);
-            	sign1_reg<=dataIn1(PORT_WIDTH-1);
-                sum_reg<=STD_LOGIC_VECTOR(signed(dataIn0)+signed(dataIn1));
+            	sign0:=dataIn0(PORT_WIDTH-1);
+            	sign1:=dataIn1(PORT_WIDTH-1);
+                sum:=STD_LOGIC_VECTOR(signed(dataIn0)+signed(dataIn1));
                 
-                if sign0_reg='0' and sign1_reg='0' then      --Both inputs positive
-                	if sum_reg(PORT_WIDTH-1)='0' then        --Output positive
-                		dataOut<=sum_reg;
-                	else                                     --Output negative
+                if sign0='0' and sign1='0' then      --Both inputs positive
+                	if sum(PORT_WIDTH-1)='0' then    --Output positive
+                		dataOut<=sum;
+                	else                             --Output negative
                 		dataOut<=MAX_VAL;
                 	end if;
-                elsif sign0_reg='1' and sign1_reg='1' then   --Both inputs negative
-                	if sum_reg(PORT_WIDTH-1)='1' then        --Output negative
-                		dataOut<=sum_reg;
-                	else                                     --Output positive
+                elsif sign0='1' and sign1='1' then   --Both inputs negative
+                	if sum(PORT_WIDTH-1)='1' then    --Output negative
+                		dataOut<=sum;
+                	else                             --Output positive
                 		dataOut<=MIN_VAL;
                 	end if;
-                else										 --Inputs have oposite signs
-                	dataOut<=sum_reg;	
+                else			                     --Inputs have oposite signs
+                	dataOut<=sum;	
                 end if;
             end if;
         end if;
