@@ -817,6 +817,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         except Exception:
             errorMessage=str(traceback.format_exc())
             self.appendLogMessage("|___Init. constants loader",messageType="ERROR", message=errorMessage)
+########Sync
+        self.sshExecCommand("sync")
 ########Disconnect
         self.sshDisconnect()
         return
@@ -845,6 +847,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         except Exception:
             errorMessage=str(traceback.format_exc())
             self.appendLogMessage("|___Load bitstream",messageType="ERROR", message=errorMessage)
+########Sync
+        self.sshExecCommand("sync")
 ########Disconnect
         self.sshDisconnect()
         return
@@ -903,6 +907,8 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         except Exception:
             errorMessage=str(traceback.format_exc())
             self.appendLogMessage("|___Load constants",messageType="ERROR", message=errorMessage)
+########Sync
+        self.sshExecCommand("sync")
 ########Disconnect
         self.sshDisconnect()
         return
