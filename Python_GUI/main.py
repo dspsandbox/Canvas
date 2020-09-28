@@ -754,7 +754,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         try:
             if not os.path.isdir(os.path.join(self.projectDirPath,"Zynq_7010")): os.mkdir(os.path.join(self.projectDirPath,"Zynq_7010"))
             if os.path.isdir(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS")): rmtree(os.path.join(os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS")))
-            copytree(os.path.join(pathResoures,"Zynq_PS"),os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS"))
+            copytree(os.path.join("..","Zynq_7010","Zynq_PS"),os.path.join(self.projectDirPath,"Zynq_7010","Zynq_PS"))
             self.appendLogMessage("|___Init. local Zynq_PS directory","OK")
         except Exception:
             errorMessage=str(traceback.format_exc())
