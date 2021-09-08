@@ -610,11 +610,11 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
             IP=self.lineEdit_fpgaIP.text()
             PORT=int(self.lineEdit_fpgaPort.text())
             USER=self.lineEdit_fpgaUser.text()
-            PWD=self.lineEdit_fpgaUser.text()
+            PWD=self.lineEdit_fpgaPwd.text()
             self.ssh = paramiko.SSHClient()
             self.ssh.load_system_host_keys()
             self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            self.ssh.connect(IP, port=PORT,username=USER,password=PWD)
+            self.ssh.connect(IP, port=PORT,username=USER,password=PWD, allow_agent=True)
             self.sftp = self.ssh.open_sftp()
             self.appendLogMessage("|___Connect to FPGA",messageType="OK")
         except Exception:
@@ -636,7 +636,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
         stdoutContent=stdout.read()
         stderrContent=stderr.read()
         if len(stderrContent)>0:
-            self.appendLogMessage("|______SSH execute command",messageType="ERROR", message=stderrContent)
+            self.appendLogMessage("|______SSH execute command",messageType="ERROR", message=str(stderrContent))
         return
 ###############################################################################
     def fpgaVerifyCallback(self):
@@ -766,7 +766,7 @@ class CanvasApp(QtWidgets.QMainWindow, Ui_MainWindow):
 ########Init file structure
         try:
             self.appendLogMessage("|___Init. file structure")
-            self.sshExecCommand("rm -r /home/Canvas") #Remove existing Canvas folder
+            self.sshExecCommand("rm -rf /home/Canvas") #Remove existing Canvas folder
             self.sshExecCommand("mkdir /home/Canvas") #Creates new Canvas folder
             if self.logList[-1][0]=="|___Init. file structure":
                 self.logList=self.logList[:-1]
