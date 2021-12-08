@@ -35,11 +35,11 @@ signal qdpo : STD_LOGIC_VECTOR ((PORT_WIDTH-1) downto 0):= (others=>'0');
 COMPONENT dist_mem_gen_32Bit
   PORT (
     a : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    d : IN STD_LOGIC_VECTOR(32 DOWNTO 0);
+    d : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     dpra : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     clk : IN STD_LOGIC;
     we : IN STD_LOGIC;
-    qdpo : OUT STD_LOGIC_VECTOR(32 DOWNTO 0)
+    qdpo : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END COMPONENT;
 
